@@ -67,7 +67,7 @@
                                               <div class="vc_row wpb_row vc_inner vc_row-fluid ">
                                                   <div class="vc_col-sm-12 wpb_column column_container" style="">
                                                       <div class="wpb_wrapper">
-                                                          <h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>
+                                                          @if( $section->heading != null)<h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                                           <div class="wpb_text_column wpb_content_element " style="">
                                                               <div class="wpb_wrapper">
                                                                   {!! $section->content !!}
@@ -93,7 +93,7 @@
                                               <div class="vc_row wpb_row vc_inner vc_row-fluid ">
                                                   <div class="vc_col-sm-12 wpb_column column_container" style="">
                                                       <div class="wpb_wrapper">
-                                                          <h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>
+                                                          @if( $section->heading != null)<h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                                           <div class="wpb_text_column wpb_content_element " style="">
                                                               <div class="wpb_wrapper">
                                                                   {!! $section->content !!}

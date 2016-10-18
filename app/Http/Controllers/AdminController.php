@@ -72,6 +72,7 @@ class AdminController extends Controller
       $blog->color = $request['color'];
       $blog->user_id = Auth::id();
       $blog->blog_url = cleanUrl($blog->blog_title);
+      $blog->portfolio_link = $request['portf_link'];
       $blog->sub_category = $request['category'];
       $blog->heading = $request['intro-paragraph'];
       $blog->content = $request['content'];
@@ -149,6 +150,7 @@ class AdminController extends Controller
         $blog->color = $request['color'];
         $blog->user_id = Auth::id();
         $blog->blog_url = cleanUrl($blog->blog_title);
+        $blog->portfolio_link = $request['portf_link'];
         $blog->sub_category = strtolower($request['category']);
         $blog->heading = $request['intro-paragraph'];
         $blog->content = $request['content'];

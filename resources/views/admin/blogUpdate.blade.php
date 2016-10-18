@@ -74,6 +74,14 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="portf_link">Portfolio Link</label>
+                <input type="text" class="form-control" name="portf_link" id="portf_link" value="{{ $blog->portfolio_link }}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-4">
               <div class="form-group" style="">
                 <label for="media">Blog Cover Photo (recommended width: 969 <a target="_blank" href="{{ URL::asset($blog->media_url) }}">Current</a>)</label>

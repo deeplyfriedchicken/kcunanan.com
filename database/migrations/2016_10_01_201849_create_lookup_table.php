@@ -28,6 +28,7 @@ class CreateLookupTable extends Migration
         $table->integer('blog_shares')->nullable();
         $table->string('media_url')->nullable();
         $table->string('portfolio_image')->nullable();
+        $table->string('portfolio_link')->nullable();
         $table->string('helper_type')->nullable();
         $table->string('color')->nullable();
         $table->string('quote_author')->nullable();
