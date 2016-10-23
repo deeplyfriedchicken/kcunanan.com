@@ -16,11 +16,11 @@
                                   </div>
                                   <div class="wpb_column ish-grid5 ish-pt-taglines">
                                       <h1 data-firstletter="W">What I&#039;ve done</h1>
-                                      <h2>&amp; is worth to mention</h2>
+                                      <h2>&amp; is worth mentioning</h2>
                                   </div>
                                   <div class="wpb_column ish-grid5 ish-pt-taglines-additional">
                                       <p>
-                                          Have a look around at my applications! Most projects are web apps, but I do have some hardware and design projects in here too!
+                                          Have a look around at my work! Most projects are web apps, but I do have some hardware and design projects in here too!
                                       </p>
                                   </div>
                                   <div class="wpb_column ish-grid1">
@@ -72,9 +72,9 @@
                                         <div class="ish-p-item">
                                             <div class="ish-p-img" style="background-image: url('{{ URL::asset($item->portfolio_image) }}');">
                                             </div>
-                                            <div class="ish-p-overlay ish-color9 ish-text-color4">
+                                            <div class="ish-p-overlay ish-color9 ish-text-color6">
                                                 <div>
-                                                    <span class="ish-p-title"><span class="ish-p-box" style="opacity: 1;"><span class="ish-p-headline">{{ $item->blog_title }}</span></span></span>
+                                                    <span class="ish-p-title"><span class="ish-p-box" style="opacity: 1; background-color: {{ $colors[rand(0, count($colors)-1)] }}"><span class="ish-p-headline">{{ $item->blog_title }}</span><span class="ish-p-cat">{{ $item->sub_category }}</span></span></span>
                                                 </div>
                                             </div>
                                         </div>

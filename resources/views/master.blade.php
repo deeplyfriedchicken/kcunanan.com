@@ -13,7 +13,7 @@
     <!-- HTML5 enabling script -->
     <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-    <title>Kevin Cunanan - Full Stack Web Developer</title>
+    <title>Kevin Cunanan - Full Stack Web Engineer</title>
 
 
 
@@ -106,13 +106,15 @@
                       </a>
 
                       <!-- Default HTML tagline -->
-                      <span class="ish-ph-wp_tagline"><span>Full Stack Web Developer</span></span>
+                      <span class="ish-ph-wp_tagline"><span>Full Stack Engineer</span></span>
                       <!-- Main navigation -->
                       <nav class="ish-ph-main_nav">
                           <ul id="mainnav" class="ish-ph-mn-main_nav ish-nt-regular ish-megamenu">
                               <li class="menu-item {{ Request::is('/') ? 'current_page_parent' : '' }}"><a href="/">Home</a>
                               </li>
                               <li class="menu-item {{ Request::is('portfolio/') ? 'current_page_parent' : '' }}"><a href="/portfolio">Portfolio</a>
+                              </li>
+                              <li class="menu-item"><a href="{{ URL::asset('kevin-resume.pdf') }}">Resume</a>
                               </li>
                               {{-- <li class="menu-item {{ Request::is('gallery') ? 'current_page_parent' : '' }}"><a href="/gallery">Gallery</a>
                               </li> --}}
@@ -157,7 +159,7 @@
                           <a href="/"><img src="{{ URL::asset('favicon.png') }}" alt="Freelo Logo"></a>
                           <br /><span id="span_4f8c_10">Hosted and Developed By Myself</span>
                           <br />I'm a full stack engineer with experience in big data, compression, and more.
-                          <br />I consider myself both a designer and a developer.</p>
+                          <br />Check out <a href="{{ URL::asset('kevin-resume.pdf') }}" target="_blank">my resume</a> or go to <a href="/portfolio">my portfolio</a>.</p>
                   </div>
               </div>
               <div id="ishyoboy-twitter-widget-3" class="ish-grid6 widget-2 widget widget_ishyoboy-twitter-widget">

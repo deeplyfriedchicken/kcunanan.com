@@ -69,6 +69,9 @@
                   @foreach($tagged as $tag)
                     <option value="{{ $tag->tag }}" selected>{{ $tag->tag }}</option>
                   @endforeach
+                  @foreach($allTags as $tag)
+                    <option value="{{ $tag->tag }}">{{ $tag->tag }}</option>
+                  @endforeach
                 </select>
               </div>
             </div>

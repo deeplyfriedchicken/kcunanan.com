@@ -18,8 +18,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      $colors = ['ish-color9 ish-text-color6', 'ish-color8 ish-text-color3', 'ish-color3 ish-text-color9', 'ish-color10 ish-text-color6'];
-      $category = ['coding', 'tech', 'sports', 'anime', 'vacation', 'music'];
+      $colors = ['#2b3956', '#8d2232', '#3a9ed7', '#434949'];
+      $category = ['full stack web development', 'tech', 'sports', 'anime', 'vacation', 'music'];
+      $filters = ['web development', 'full stack', 'design', 'handmade', 'mysql5', 'laravel 5', 'ruby on rails', 'jekyll', ]
       $post = Lookup::where('category', 'blog')->orWhere('category', 'post')->orderBy('date_posted', 'asc')->first();
       View::share('category', $category);
       View::share('colors', $colors);

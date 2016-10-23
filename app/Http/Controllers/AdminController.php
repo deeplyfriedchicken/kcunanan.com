@@ -61,9 +61,10 @@ class AdminController extends Controller
     public function editBlog($id) {
       $blog = Lookup::findOrFail($id);
       $tag = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $id)->get();
+      $allTags = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
-      return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'sections' => $sections, 'sections_count' => $sections_count]);
+      return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'allTags' => $allTags, 'sections' => $sections, 'sections_count' => $sections_count]);
     }
     public function updateBlog(Request $request, $id) {
       $blog = Lookup::findOrFail($id);
@@ -137,10 +138,11 @@ class AdminController extends Controller
         }
       $blog = Lookup::findOrFail($id);
       $tag = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $id)->get();
+      $allTags = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
       $request->session()->flash('updated-blog', 'Blog post successfully updated.');
-      return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'sections' => $sections, 'sections_count' => $sections_count]);
+      return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'allTags' => $allTags, 'sections' => $sections, 'sections_count' => $sections_count]);
     }
     public function storePost(Request $request)
     {

@@ -12,7 +12,7 @@
                                         <div class="vc_row wpb_row vc_inner vc_row-fluid ">
                                             <div class="vc_col-sm-12 wpb_column column_container" >
                                                 <div class="wpb_wrapper">
-                                                    <h1 class="ish-sc-element ish-sc_headline ish-color4 ish-center ish-bottom-margin-none">Cunanan!</h1>
+                                                    <h1 class="ish-sc-element ish-sc_headline ish-color4 ish-center ish-bottom-margin-none">Welcome!</h1>
                                                 </div>
                                             </div>
                                         </div>
@@ -31,7 +31,7 @@
 
                                                     <div class="wpb_text_column wpb_content_element  ish-text-color4" >
                                                         <div class="wpb_wrapper">
-                                                            <p>Hi! I'm Kevin Cunanan. I am currently a junior at Claremont McKenna College double majoring in Computer Science and Philosophy. I love volleyball, rock climbing, and cats. My passion for web development has inspired me to build useful and interactive database-driven web applications.</p>
+                                                            <p>Hi! I'm Kevin Cunanan. I am currently a junior at Claremont McKenna College double majoring in Computer Science and Philosophy. I love volleyball, rock climbing, and cats. My passion for software development has inspired me to build useful and interactive database-driven web applications. To learn more, check out <a href="{{ URL::asset('kevin-resume.pdf') }}" target="_blank">my resume</a> or go to <a href="/portfolio">my portfolio</a>.</p>
 
                                                         </div>
                                                     </div>
@@ -55,8 +55,8 @@
                                             <a href="/posts/{{ $item->category }}/{{ $item->sub_category }}/{{ $item->blog_url }}" id="a_4f8c_0">
                                                 <div class="ish-p-item">
                                                     <div class="ish-p-img" style="background-image: url('{{ URL::asset($item->portfolio_image) }}')"></div>
-                                                    <div class="ish-p-overlay {{ $colors[rand(0,count($colors)-1)] }}">
-                                                        <div><span class="ish-p-title"><span class="ish-p-box" id="span_4f8c_0"><span class="ish-p-headline">{{ $item->blog_title }}</span><span class="ish-p-cat">{{ $item->sub_category }}</span></span>
+                                                    <div class="ish-p-overlay ish-color-8 text-color-6">
+                                                        <div><span class="ish-p-title"><span class="ish-p-box" id="span_4f8c_0" style="background-color: {{ $colors[rand(0, count($colors)-1)] }}"><span class="ish-p-headline">{{ $item->blog_title }}</span><span class="ish-p-cat">{{ $item->sub_category }}</span></span>
                                                             </span>
                                                         </div>
                                                     </div>

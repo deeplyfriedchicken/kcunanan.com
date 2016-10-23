@@ -16,7 +16,7 @@
                                             </div>
                                             <div class="wpb_column ish-grid5 ish-pt-taglines">
                                                 <h1 data-firstletter="M">My Thoughts</h1>
-                                                <h2>in this creative world!</h2>
+                                                <h2>about what I've encountered in life.</h2>
                                             </div>
                                             <div class="wpb_column ish-grid5 ish-pt-taglines-additional">
                                                 <p>

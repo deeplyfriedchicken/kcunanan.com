@@ -20,23 +20,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $portfolio = DB::table('lookups')->where('category', 'portfolio')->get();
+        $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'desc')->take(10)->get();
         return view('index', ['portfolio' => $portfolio]);
     }
     public function showPortfolio()
     {
-      $portfolio = DB::table('lookups')->where('category', 'portfolio')->get();
+      $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('date_posted', 'asc')->get();
       $tags = Lookup::distinct()->where('category', 'ptag')->get(['tag']);
       return view('portfolio', ['portfolio' => $portfolio, 'tags' => $tags]);
     }
     public function showPosts() {
-        $posts = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('date_posted', 'asc')->paginate(2);
+        $posts = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('created_at', 'desc')->paginate(4);
         $categories = Lookup::distinct()->where('category', 'blog')->orWhere('category', 'portfolio')->get(['sub_category']); //will provide distinct
-        $latest = Lookup::where('category', 'blog')->orWHere('category', 'portfolio')->orderBy('date_posted', 'asc')->take(6)->get();
+        $latest = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('date_posted', 'asc')->take(6)->get();
         return view('blog-classic', ['posts' => $posts, 'categories' => $categories, 'latest' => $latest]);
     }
     public function showBlogs() {
-      $blogs = Lookup::where('category', 'blog')->orderBy('date_posted', 'asc')->paginate(2);
+      $blogs = Lookup::where('category', 'blog')->orderBy('created_at', 'desc')->paginate(2);
       $categories = Lookup::where('category', 'blog')->pluck('category', 'sub_category');
       return view('blog-classic', ['blogs' => $blogs, 'categories' => $categories]);
     }
