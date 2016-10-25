@@ -59,7 +59,7 @@
                                         <ul>
                                             <li><a class="ish-active" href="#all" data-filter="*">All</a></li>
                                             @foreach($tags as $tag)
-                                              <li><a href="#" data-filter=".pfilt-{{ $tag->tag }}">{{ ucwords($tag->tag) }}</a></li>
+                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
                                             @endforeach
                                         </ul>
                                         </nav>
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="ish-p-items-container" style="width: calc( 100% + 20px ); margin: -10px;">
                                   @foreach($portfolio as $item)
-                                    <div class="ish-p-col <?php $ptags = DB::table('lookups')->where('ref_id', $item->id)->where('category', 'ptag')->get() ?>@foreach($ptags as $ptag) pfilt-{{ $ptag->tag }} @endforeach {{ $item->portfolio_ish }}">
+                                    <div class="ish-p-col <?php $ptags = DB::table('lookups')->where('ref_id', $item->id)->where('category', 'ptag')->get() ?>@foreach($ptags as $ptag) pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($ptag->tag)) }} @endforeach {{ $item->portfolio_ish }}">
                                         <a href="/posts/{{ $item->category }}/{{ $item->sub_category }}/{{ $item->blog_url }}" style="border-width: 10px;">
                                         <div class="ish-p-item">
                                             <div class="ish-p-img" style="background-image: url('{{ URL::asset($item->portfolio_image) }}');">

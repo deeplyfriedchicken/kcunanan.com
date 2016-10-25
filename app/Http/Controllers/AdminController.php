@@ -55,7 +55,7 @@ class AdminController extends Controller
       return redirect('shm-admin/settings');
     }
     public function showBlogs() {
-      $blogs = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('date_posted', 'asc')->get();
+      $blogs = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('created_at', 'desc')->get();
       return view('admin/blogs', ['blogs' => $blogs]);
     }
     public function editBlog($id) {
@@ -64,6 +64,9 @@ class AdminController extends Controller
       $allTags = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
+      if($sections_count == null) {
+        $sections_count = 1;
+      }
       return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'allTags' => $allTags, 'sections' => $sections, 'sections_count' => $sections_count]);
     }
     public function updateBlog(Request $request, $id) {
@@ -141,6 +144,9 @@ class AdminController extends Controller
       $allTags = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
+      if($sections_count == null) {
+        $sections_count = 1;
+      }
       $request->session()->flash('updated-blog', 'Blog post successfully updated.');
       return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'allTags' => $allTags, 'sections' => $sections, 'sections_count' => $sections_count]);
     }

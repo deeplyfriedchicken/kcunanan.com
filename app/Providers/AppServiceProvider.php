@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     {
       $colors = ['#2b3956', '#8d2232', '#3a9ed7', '#434949'];
       $category = ['full stack web development', 'tech', 'sports', 'anime', 'vacation', 'music'];
-      $filters = ['web development', 'full stack', 'design', 'handmade', 'mysql5', 'laravel 5', 'ruby on rails', 'jekyll', ]
+      $filters = ['web development', 'full stack', 'design', 'handmade', 'mysql5', 'laravel 5', 'ruby on rails', 'jekyll'];
       $post = Lookup::where('category', 'blog')->orWhere('category', 'post')->orderBy('date_posted', 'asc')->first();
       View::share('category', $category);
       View::share('colors', $colors);

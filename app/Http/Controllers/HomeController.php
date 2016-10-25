@@ -25,7 +25,7 @@ class HomeController extends Controller
     }
     public function showPortfolio()
     {
-      $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('date_posted', 'asc')->get();
+      $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'desc')->get();
       $tags = Lookup::distinct()->where('category', 'ptag')->get(['tag']);
       return view('portfolio', ['portfolio' => $portfolio, 'tags' => $tags]);
     }

@@ -102,6 +102,7 @@
                 <label for="portfolio-preview">Portfolio Preview</label>
                 <select name="portfolio-ish" class="form-control">
                   <option value="ish-p-col-w1 ish-p-col-h1" @if($blog->portfolio_ish == "ish-p-col-w1 ish-p-col-h1") selected @endif>Square 1x1</option>
+                  <option value="ish-p-col-w2 ish-p-col-h2" @if($blog->portfolio_ish == "ish-p-col-w2 ish-p-col-h2") selected @endif>Big Square (2x2)</option>
                   <option value="ish-p-col-w1 ish-p-col-h2" @if($blog->portfolio_ish == "ish-p-col-w1 ish-p-col-h2") selected @endif>Vertical 2x1</option>
                   <option value="ish-p-col-w2 ish-p-col-h1" @if($blog->portfolio_ish == "ish-p-col-w2 ish-p-col-h1") selected @endif>Horizontal 1x2</option>
                 </select>
