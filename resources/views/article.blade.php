@@ -14,6 +14,7 @@
                                     <div class="vc_col-sm-6 wpb_column column_container ish-center" style="">
                                         <div class="wpb_wrapper">
                                             <h1 class="ish-sc-element ish-sc_headline ish-color8 ish-bottom-margin-none" style="@if($blog[0]->color) color:{{ $blog[0]->color }} @endif">{{ $blog[0]->blog_title }}</h1>
+                                              @if($blog[0]->portfolio_link != null)<a href="{{ $blog[0]->portfolio_link }}"> @if(strpos($blog[0]->portfolio_link, 'github' !== false) View Code @else View Site @endif </a>@endif
                                             {{-- <h5 class="ish-sc-element ish-sc_headline ish-color2">{{ $blog[0]->heading }}</h5> --}}
                                         </div>
                                     </div>
