@@ -55,10 +55,10 @@
                                 <div class="ish-post-content">
                                     <h2 class="ish-h3"><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}">{{ $post->blog_title }}</a></h2>
                                     <div class="ish-blog-post-details">
-                                        <span><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}">{{ $post->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}">{{ ucwords($post->sub_category) }}</a><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}"><span>{{ ucwords($post->category) }}</span></a>
+                                        <span><a href="/posts/{{ strtolower($post->category) }}/{{ strtolower($post->sub_category) }}/{{ strtolower($post->blog_url) }}">{{ $post->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}">{{ ucwords($post->sub_category) }}</a><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}"><span>{{ ucwords($post->category) }}</span></a>
                                     </div>
                                     <div class="ish-blog-post-media ish-blog-image">
-                                        <a href="#">
+                                        <a href="/posts/{{ strtolower($post->category) }}/{{ strtolower($post->sub_category) }}/{{ strtolower($post->blog_url) }}">
                                         <img width="1170" height="732" src="{{ URL::asset($post->media_url) }}" class="attachment-theme-large size-theme-large wp-post-image" alt="1602123" /></a>
                                     </div>
                                     <div class="ish-blog-post-excerpt">
@@ -129,7 +129,7 @@
                                     </div>
                                     <ul>
                                       @foreach($categories as $category)
-                                        <li class="cat-item cat-item-13"><a href="/posts/{{ $category->category }}/{{ $category->sub_category }}" title="">{{ $category->sub_category }}</a> ({{ DB::table('lookups')->where('sub_category', $category->sub_category)->count() }})</li>
+                                        <li class="cat-item cat-item-13"><a href="/posts/{{ strtolower($category->category) }}/{{ strtolower($category->sub_category) }}" title="">{{ $category->sub_category }}</a> ({{ DB::table('lookups')->where('sub_category', $category->sub_category)->count() }})</li>
                                       @endforeach
                                     </ul>
                                 </div>
@@ -143,7 +143,7 @@
                                     </div>
                                     <ul class="recent-projects-widget">
                                       @foreach($latest as $post)
-                                        <li><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}"><img width="200" height="200" src="{{ URL::asset($post->media_url) }}" class="attachment-theme-thumbnail size-theme-thumbnail wp-post-image" alt="papers" /></a></li>
+                                        <li><a href="/posts/{{ strtolower($post->category) }}/{{ strtolower($post->sub_category) }}/{{ strtolower($post->blog_url) }}"><img width="200" height="200" src="{{ URL::asset($post->media_url) }}" class="attachment-theme-thumbnail size-theme-thumbnail wp-post-image" alt="papers" /></a></li>
                                       @endforeach
                                     </ul>
                                     <a class="ish-button-small" href="#">Go to Blog</a>
