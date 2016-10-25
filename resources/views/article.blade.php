@@ -1,4 +1,15 @@
 @extends('master')
+@section('stylesheets')
+  <style>
+  #portfolio-link {
+    @if($blog[0]->color) background-color: {{ $blog[0]->color }} @endif;
+    width: 50%;
+  }
+  #portfolio-link:hover {
+    background-color: #2c3a55;
+  }
+  </style>
+@endsection
 @section('content')
             <!-- Content part section -->
             <section class="ish-part_content ish-without-sidebar">
@@ -8,13 +19,22 @@
                         <div class="vc_col-sm-12 wpb_column column_container" style="">
                             <div class="wpb_wrapper">
                                 <div class="ish-sc-element ish-sc_image ish-center ish-fullwidth">
-                                  <a href="{{ URL::asset($blog[0]->media_url) }}" title="" target="_blank"><img width="969" src="{{ URL::asset($blog[0]->media_url) }}" class="attachment-theme-large size-theme-large" alt="{{ $blog[0]->blog_title }}"  /></a>
+                                  <a href="{{ URL::asset($blog[0]->media_url) }}" title="" target="_blank"><img width="969" src="{{ URL::asset($blog[0]->media_url) }}" class="attachment-theme-large size-theme-large" alt="{{ $blog[0]->blog_title }}"/></a>
                                 </div>
                                 <div class="vc_row wpb_row vc_inner vc_row-fluid  ish-valign-middle">
                                     <div class="vc_col-sm-6 wpb_column column_container ish-center" style="">
                                         <div class="wpb_wrapper">
-                                            <h1 class="ish-sc-element ish-sc_headline ish-color8 ish-bottom-margin-none" style="@if($blog[0]->color) color:{{ $blog[0]->color }} @endif">{{ $blog[0]->blog_title }}</h1>
-                                              @if($blog[0]->portfolio_link != null)<a href="{{ $blog[0]->portfolio_link }}" target="_blank"> @if(strpos($blog[0]->portfolio_link, 'github' !== false) View Code @else View The Site @endif </a>@endif
+                                            <h1 class="ish-sc-element ish-sc_headline ish-color8 ish-bottom-margin-none" style=" @if($blog[0]->color) {{ 'color:'.$blog[0]->color }}  @endif">{{ $blog[0]->blog_title }}</h1>
+                                              <div class="ish-sc-element ish-sc_cf7 ish-color6 ish-text-color1 ish-bg-text-color1 ish-button-bg-color5 ish-button-text-color4">
+                                                                <div class="ish-row">
+                                                                    <div class="ish-grid12">
+                                                                        <p class="portfolio-p">
+                                                                            @if($blog[0]->portfolio_link != null)<a class="portfolio-link" href="{{ $blog[0]->portfolio_link }}" target="_blank"><button id="portfolio-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;"> @if(strpos($blog[0]->portfolio_link, 'github') !== false) View Code @else View The Site @endif </button></a>@endif
+                                                                            </p><div id="msg" class="message"></div>
+                                                                        <p></p>
+                                                                    </div>
+                                                                </div>
+                                                    </div>
                                             {{-- <h5 class="ish-sc-element ish-sc_headline ish-color2">{{ $blog[0]->heading }}</h5> --}}
                                         </div>
                                     </div>
