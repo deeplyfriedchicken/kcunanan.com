@@ -144,11 +144,11 @@ class AdminController extends Controller
       $allTags = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
-      if(isEmpty($sections_count)) {
-        $sections_count = 1;
+      if($sections_count->count()) {
+        $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
       }
       else {
-        Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
+        $sections_count = 1;
       }
       $request->session()->flash('updated-blog', 'Blog post successfully updated.');
       return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'allTags' => $allTags, 'sections' => $sections, 'sections_count' => $sections_count]);

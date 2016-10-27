@@ -112,33 +112,61 @@
           <input type="hidden" id="num-sections" name="num-sections" value=@if(isset($sections_count)) {{ $sections_count }} @else 1 @endif>
           <div>
           <?php $counter = 1 ?>
-          @foreach($sections as $section)
+          @if($sections->count())
+            @foreach($sections as $section)
+              <div class="section{{ $counter }}">
+                <div class="row push-down">
+                  <div class="col-md-4">
+                    <label for="type{{ $counter }}">Type of Section {{ $counter }}</label>
+                    <select name="type{{ $counter }}" class="form-control">
+                      <option value="fp" @if($section->helper_type == "fp") selected @endif>Full Width Paragraph</option>
+                      <option value="imp" @if($section->helper_type == "imp") selected @endif>Left Image and Right Paragraph</option>
+                      <option value="pim" @if($section->helper_type == "pim") selected @endif>Left Paragraph and Right Image</option>
+                    </select>
+                    <label for="title1">Subtitle {{ $counter }}</label><input type="text" class="form-control title-help" name="title{{ $counter }}" value="{{ $section->heading }}">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="color{{ $counter }}">Title Color {{ $counter }}</label>
+                    <input id="color{{ $counter }}" name="color{{ $counter }}" type="text" class="form-control colorme" value="{{ $section->color }}">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="image{{ $counter }}">Section Photo {{ $counter }} (if applicable @if($section->media_url) <a target="_blank" href="{{ URL::asset($section->media_url) }}">current</a> <input type="hidden" name="old_image{{ $counter }}" value="<?php echo $section->media_url ?>"> @endif)</label>
+                    <input id="image{{ $counter }}" name="image{{ $counter }}" type="file" class="file">
+                  </div>
+                </div>
+                  <div class="form-group">
+                    <textarea name="content{{ $counter }}" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $section->content }}</textarea>
+                  </div>
+                </div>
+                <?php $counter++ ?>
+            @endforeach
+          @else
             <div class="section{{ $counter }}">
               <div class="row push-down">
                 <div class="col-md-4">
                   <label for="type{{ $counter }}">Type of Section {{ $counter }}</label>
                   <select name="type{{ $counter }}" class="form-control">
-                    <option value="fp" @if($section->helper_type == "fp") selected @endif>Full Width Paragraph</option>
-                    <option value="imp" @if($section->helper_type == "imp") selected @endif>Left Image and Right Paragraph</option>
-                    <option value="pim" @if($section->helper_type == "pim") selected @endif>Left Paragraph and Right Image</option>
+                    <option value="fp">Full Width Paragraph</option>
+                    <option value="imp">Left Image and Right Paragraph</option>
+                    <option value="pim">Left Paragraph and Right Image</option>
                   </select>
-                  <label for="title1">Subtitle {{ $counter }}</label><input type="text" class="form-control title-help" name="title{{ $counter }}" value="{{ $section->heading }}">
+                  <label for="title1">Subtitle {{ $counter }}</label><input type="text" class="form-control title-help" name="title{{ $counter }}" value="">
                 </div>
                 <div class="col-md-4">
                   <label for="color{{ $counter }}">Title Color {{ $counter }}</label>
-                  <input id="color{{ $counter }}" name="color{{ $counter }}" type="text" class="form-control colorme" value="{{ $section->color }}">
+                  <input id="color{{ $counter }}" name="color{{ $counter }}" type="text" class="form-control colorme" value="">
                 </div>
                 <div class="col-md-4">
-                  <label for="image{{ $counter }}">Section Photo {{ $counter }} (if applicable @if($section->media_url) <a target="_blank" href="{{ URL::asset($section->media_url) }}">current</a> <input type="hidden" name="old_image{{ $counter }}" value="<?php echo $section->media_url ?>"> @endif)</label>
+                  <label for="image{{ $counter }}">Section Photo {{ $counter }}</label>
                   <input id="image{{ $counter }}" name="image{{ $counter }}" type="file" class="file">
                 </div>
               </div>
                 <div class="form-group">
-                  <textarea name="content{{ $counter }}" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $section->content }}</textarea>
+                  <textarea name="content{{ $counter }}" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
               </div>
               <?php $counter++ ?>
-          @endforeach
+          @endif
           </div>
           <button class="btn btn-success" type="submit">Save</button>
         </form>
