@@ -1,4 +1,12 @@
 @extends('master')
+@section('stylesheets')
+  <style>
+   .focus-heading {
+     font-size: 20px;
+     font-weight: 800;
+   }
+  </style>
+@endsection
 @section('content')
   <div class="ish-part_tagline ish-tagline_regular ish-tagline-colored ish-no-pattern-img">
       <div class="ish-overlay ish-default-tagline">
@@ -57,10 +65,32 @@
                                     <div class="ish-vc_row_inner">
                                         <nav class="ish-sc-element ish-p-filter" data-type="organize">
                                         <ul>
-                                            <li><a class="ish-active" href="#all" data-filter="*">All</a></li>
-                                            @foreach($tags as $tag)
+                                            <li><span class="focus-heading">I know these languages:</span></li>
+                                            @foreach($pls as $tag)
                                               <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
                                             @endforeach
+                                            <br>
+                                            <li><span class="focus-heading">I've used these frameworks:</span></li>
+                                            @foreach($frs as $tag)
+                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                            @endforeach
+                                            <br>
+                                            <li><span class="focus-heading">I have the following skills:</span></li>
+                                            @foreach($skills as $tag)
+                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                            @endforeach
+                                            <br>
+                                            <li><span class="focus-heading">I utilized these libraries and APIs:</span></li>
+                                            @foreach($js as $tag)
+                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                            @endforeach
+                                            <br>
+                                            <li><span class="focus-heading">I have worked at these places:</span></li>
+                                            @foreach($workplaces as $tag)
+                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                            @endforeach
+                                            <br>
+                                            <li><a class="ish-active" href="#all" data-filter="*">All</a></li>
                                         </ul>
                                         </nav>
                                     </div>

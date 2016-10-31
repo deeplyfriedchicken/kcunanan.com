@@ -52,7 +52,69 @@ class AdminController extends Controller
       }
       $user->save();
       $request->session()->flash('updated-user', 'User settings successfully updated.');
-      return redirect('shm-admin/settings');
+      return view('admin/settings');
+    }
+    public function showSorts() {
+      $languages = Lookup::where('category', 'sort')->where('sub_category', 'pl')->get();
+      $frameworks = Lookup::where('category', 'sort')->where('sub_category', 'framework')->get();
+      $skills = Lookup::where('category', 'sort')->where('sub_category', 'skill')->get();
+      $jslibraries = Lookup::where('category', 'sort')->where('sub_category', 'jslibrary')->get();
+      $workplace = Lookup::where('category', 'sort')->where('sub_category', 'workplace')->get();
+      return view('admin/sort', ['pls' => $languages, 'frs' => $frameworks, 'skills' => $skills, 'js' => $jslibraries, 'workplaces' => $workplace]);
+    }
+    public function updateSorts(Request $request) {
+      Lookup::where('category', 'sort')->delete();
+      if($request['pl']) {
+        foreach($request['pl'] as $item) {
+            $tag = new Lookup;
+            $tag->category = 'sort';
+            $tag->sub_category = 'pl';
+            $tag->tag = $item;
+            $tag->save();
+        }
+      }
+      if($request['frs']) {
+        foreach($request['frs'] as $item) {
+            $tag = new Lookup;
+            $tag->category = 'sort';
+            $tag->sub_category = 'framework';
+            $tag->tag = $item;
+            $tag->save();
+        }
+      }
+      if($request['skills']) {
+        foreach($request['skills'] as $item) {
+            $tag = new Lookup;
+            $tag->category = 'sort';
+            $tag->sub_category = 'skill';
+            $tag->tag = $item;
+            $tag->save();
+        }
+      }
+      if($request['js']) {
+        foreach($request['js'] as $item) {
+            $tag = new Lookup;
+            $tag->category = 'sort';
+            $tag->sub_category = 'jslibrary';
+            $tag->tag = $item;
+            $tag->save();
+        }
+      }
+      if($request['workplaces']) {
+        foreach($request['workplaces'] as $item) {
+            $tag = new Lookup;
+            $tag->category = 'sort';
+            $tag->sub_category = 'workplace';
+            $tag->tag = $item;
+            $tag->save();
+        }
+      }
+      $languages = Lookup::where('category', 'sort')->where('sub_category', 'pl')->get();
+      $frameworks = Lookup::where('category', 'sort')->where('sub_category', 'framework')->get();
+      $skills = Lookup::where('category', 'sort')->where('sub_category', 'skill')->get();
+      $jslibraries = Lookup::where('category', 'sort')->where('sub_category', 'jslibrary')->get();
+      $workplace = Lookup::where('category', 'sort')->where('sub_category', 'workplace')->get();
+      return view('admin/sort', ['pls' => $languages, 'frs' => $frameworks, 'skills' => $skills, 'js' => $jslibraries, 'workplaces' => $workplace]);
     }
     public function showBlogs() {
       $blogs = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('created_at', 'desc')->get();
@@ -86,16 +148,16 @@ class AdminController extends Controller
       if ($request->file('photo') != null) {
         $image = Image::make($request->file('photo'));
         $image_id = uniqid();
-        $path = public_path('upload/'.$image_id.".".$request->file('photo')->extension());
-        $blog->media_url = 'upload/'.$image_id.".".$request->file('photo')->extension();
+        $path = public_path('uploads/'.$imagse_id.".".$request->file('photo')->extension());
+        $blog->media_url = 'uploads/'.$image_id.".".$request->file('photo')->extension();
         $image->save($path);
         runSync();
       }
       if ($request->file('portf-photo') != null) {
         $image = Image::make($request->file('portf-photo'));
         $image_id = uniqid();
-        $path = public_path('upload/'.$image_id.".".$request->file('portf-photo')->extension());
-        $blog->portfolio_image = 'upload/'.$image_id.".".$request->file('portf-photo')->extension();
+        $path = public_path('uploads/'.$image_id.".".$request->file('portf-photo')->extension());
+        $blog->portfolio_image = 'uploads/'.$image_id.".".$request->file('portf-photo')->extension();
         $image->save($path);
         runSync();
       }
@@ -173,16 +235,16 @@ class AdminController extends Controller
         if ($request->file('portf-photo') != null) {
           $image = Image::make($request->file('portf-photo'));
           $image_id = uniqid();
-          $path = public_path('upload/'.$image_id.".".$request->file('portf-photo')->extension());
-          $blog->portfolio_image = 'upload/'.$image_id.".".$request->file('portf-photo')->extension();
+          $path = public_path('uploads/'.$image_id.".".$request->file('portf-photo')->extension());
+          $blog->portfolio_image = 'uploads/'.$image_id.".".$request->file('portf-photo')->extension();
           $image->save($path);
           runSync();
         }
         if ($request->file('photo') != null) {
           $image = Image::make($request->file('photo'));
           $image_id = uniqid();
-          $path = public_path('upload/'.$image_id.".".$request->file('photo')->extension());
-          $blog->media_url = 'upload/'.$image_id.".".$request->file('photo')->extension();
+          $path = public_path('uploads/'.$image_id.".".$request->file('photo')->extension());
+          $blog->media_url = 'uploads/'.$image_id.".".$request->file('photo')->extension();
           $image->save($path);
           runSync();
         }

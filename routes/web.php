@@ -19,6 +19,9 @@ Route::get('posts/portfolio', function() {
   return redirect()->route('portfolio');
 });
 
+Route::post('search', ['uses' => 'HomeController@searchURL']);
+Route::get('search/{term}', ['uses' => 'HomeController@search']);
+
 Route::get('about', function() {
   return view('about-me');
 });
@@ -49,6 +52,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'kevin'], function () {
   Route::get('users', ['uses' => 'AdminController@showUsers']);
 
   Route::patch('users/approve/{id}', ['as' => 'user.verify', 'uses' => 'AdminController@approveUser']);
+
+  Route::get('sort', ['uses' => 'AdminController@showSorts']);
+  Route::post('sort',['uses' => 'AdminController@updateSorts']);
 });
 
 Route::group(['middleware' => ['web']], function() {

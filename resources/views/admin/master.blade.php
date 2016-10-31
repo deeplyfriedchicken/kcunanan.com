@@ -148,7 +148,7 @@
             </ul>
           </a>
         </li>
-        <li class="{{ Request::is('kevin/pages') ? 'active' : '' }} treeview">
+        <li class="{{ Request::is('kevin/sort') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-edit"></i>
             <span>Pages</span>
@@ -157,7 +157,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Edit Pages</a></li>
+            <li><a href="/kevin/sort"><i class="fa fa-circle-o"></i> Edit Sorting</a></li>
             <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Navigation</a></li>
             <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Social Media</a></li>
           </ul>

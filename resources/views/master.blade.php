@@ -52,7 +52,8 @@
       <!-- Search bar -->
       <section class="ish-part_searchbar ish-a-search">
           <div>
-              <form  method="get" id="headersearchform" action="#">
+              <form  method="post" id="headersearchform" action="/search">
+                {{ csrf_field() }}
                   <label>
                       <input type="text" value="" name="s" id="sh" autocomplete="off" placeholder="Search ...">
                   </label>

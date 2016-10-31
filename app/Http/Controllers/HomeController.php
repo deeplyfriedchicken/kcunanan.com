@@ -26,18 +26,34 @@ class HomeController extends Controller
     public function showPortfolio()
     {
       $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'desc')->get();
-      $tags = Lookup::distinct()->where('category', 'ptag')->get(['tag']);
-      return view('portfolio', ['portfolio' => $portfolio, 'tags' => $tags]);
+      $languages = Lookup::where('category', 'sort')->where('sub_category', 'pl')->get();
+      $frameworks = Lookup::where('category', 'sort')->where('sub_category', 'framework')->get();
+      $skills = Lookup::where('category', 'sort')->where('sub_category', 'skill')->get();
+      $jslibraries = Lookup::where('category', 'sort')->where('sub_category', 'jslibrary')->get();
+      $workplace = Lookup::where('category', 'sort')->where('sub_category', 'workplace')->get();
+      return view('portfolio', ['portfolio' => $portfolio, 'pls' => $languages, 'frs' => $frameworks, 'skills' => $skills, 'js' => $jslibraries, 'workplaces' => $workplace]);
+    }
+    public function searchURL(Request $request) {
+      $term = $request['s'];
+      return redirect('/search/'.$term);
+    }
+    public function search($term) {
+      $ids = Lookup::where('tag', 'LIKE', '%'.$term.'%')->get();
+      $array = [];
+      $i = 0;
+      foreach($ids as $id) {
+        $array[$i] = $id->ref_id;
+        $i++;
+      }
+      $posts = Lookup::whereIn('id', $array)->get();
+      return view('search', ['posts' => $posts, 'ids' => $array, 'term' => $term]);
     }
     public function showPosts() {
         $posts = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('created_at', 'desc')->paginate(4);
-        $categories = Lookup::distinct()->where('category', 'blog')->orWhere('category', 'portfolio')->get(['sub_category']); //will provide distinct
-        $latest = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('date_posted', 'asc')->take(6)->get();
-        return view('blog-classic', ['posts' => $posts, 'categories' => $categories, 'latest' => $latest]);
+        return view('blog-classic', ['posts' => $posts]);
     }
     public function showBlogs() {
       $blogs = Lookup::where('category', 'blog')->orderBy('created_at', 'desc')->paginate(2);
-      $categories = Lookup::where('category', 'blog')->pluck('category', 'sub_category');
       return view('blog-classic', ['blogs' => $blogs, 'categories' => $categories]);
     }
     public function showPost($lookup_category, $sub_category, $url)
