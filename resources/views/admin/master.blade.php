@@ -136,6 +136,11 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="/kevin/sync">
+            <i class="fa fa-exchange"></i> <span>Sync</span>
+          </a>
+        </li>
         <li class="{{ Request::is('kevin/blog') ? 'active' : '' }} treeview">
           <a href="">
             <i class="fa fa-th"></i> <span>Blog Posts</span>

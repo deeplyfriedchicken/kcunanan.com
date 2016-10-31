@@ -67,7 +67,11 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="tags">Tags <span>(separated by commas)</span></label>
-                <select id="tags" name="tags[]" class="form-control" multiple="multiple"></select>
+                <select id="tags" name="tags[]" class="form-control" multiple="multiple">
+                  @foreach($tags as $tag)
+                    <option value="{{ $tag->tag }}">{{ $tag->tag }}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
           </div>

@@ -55,6 +55,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'kevin'], function () {
 
   Route::get('sort', ['uses' => 'AdminController@showSorts']);
   Route::post('sort',['uses' => 'AdminController@updateSorts']);
+
+  Route::get('sync', ['uses' => 'AdminController@sync']);
 });
 
 Route::group(['middleware' => ['web']], function() {

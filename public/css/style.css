@@ -1973,8 +1973,8 @@ body.ish-sticky-on:not(.ish-boxed) .ish-body {
 .ish-part_content .ish-section-filter li {
 	display:inline-block;
 	font-weight:500;
-	font-size:16px;
-	line-height:20px
+	font-size:12px;
+	line-height:8px
 }
 .ish-part_content .ish-section-filter a {
 	text-decoration:none;

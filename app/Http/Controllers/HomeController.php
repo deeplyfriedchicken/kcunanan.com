@@ -25,12 +25,12 @@ class HomeController extends Controller
     }
     public function showPortfolio()
     {
-      $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'desc')->get();
-      $languages = Lookup::where('category', 'sort')->where('sub_category', 'pl')->get();
-      $frameworks = Lookup::where('category', 'sort')->where('sub_category', 'framework')->get();
-      $skills = Lookup::where('category', 'sort')->where('sub_category', 'skill')->get();
-      $jslibraries = Lookup::where('category', 'sort')->where('sub_category', 'jslibrary')->get();
-      $workplace = Lookup::where('category', 'sort')->where('sub_category', 'workplace')->get();
+      $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'asc')->get();
+      $languages = Lookup::where('category', 'sort')->where('sub_category', 'pl')->orderBy('tag', 'asc')->get();
+      $frameworks = Lookup::where('category', 'sort')->where('sub_category', 'framework')->orderBy('tag', 'asc')->get();
+      $skills = Lookup::where('category', 'sort')->where('sub_category', 'skill')->orderBy('tag', 'asc')->get();
+      $jslibraries = Lookup::where('category', 'sort')->where('sub_category', 'jslibrary')->orderBy('tag', 'asc')->get();
+      $workplace = Lookup::where('category', 'sort')->where('sub_category', 'workplace')->orderBy('tag', 'asc')->get();
       return view('portfolio', ['portfolio' => $portfolio, 'pls' => $languages, 'frs' => $frameworks, 'skills' => $skills, 'js' => $jslibraries, 'workplaces' => $workplace]);
     }
     public function searchURL(Request $request) {

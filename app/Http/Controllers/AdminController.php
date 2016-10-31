@@ -34,7 +34,13 @@ class AdminController extends Controller
     }
     public function newPost()
     {
-      return view('admin/blog');
+      $tags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
+      return view('admin/blog', ['tags' => $tags]);
+    }
+    public function sync(Request $request) {
+      runSync();
+      $request->session()->flash('sync', 'Successfully synced.');
+      return redirect('/kevin');
     }
     public function updateSettings(Request $request) {
       $user = User::where('id', Auth::user()->id)->first();
@@ -123,7 +129,7 @@ class AdminController extends Controller
     public function editBlog($id) {
       $blog = Lookup::findOrFail($id);
       $tag = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $id)->get();
-      $allTags = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->get();
+      $allTags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
       if($sections_count == null) {
@@ -203,7 +209,7 @@ class AdminController extends Controller
         }
       $blog = Lookup::findOrFail($id);
       $tag = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $id)->get();
-      $allTags = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->get();
+      $allTags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       if($sections_count->count()) {
