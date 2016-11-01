@@ -8,6 +8,9 @@
   #portfolio-link:hover {
     background-color: #2c3a55;
   }
+  h6.tags {
+    font-weight: 800;
+  }
   </style>
 @endsection
 @section('content')
@@ -43,6 +46,7 @@
 
                                             <div class="wpb_text_column wpb_content_element " style="">
                                                 <div class="wpb_wrapper">
+                                                    <h6 class="tags">Tags: @foreach($tags as $tag)@if($loop->last){{ $tag->tag }}@else{{ $tag->tag }}, @endif @endforeach</h6>
                                                     <p>{{ $blog[0]->heading }}</p>
                                                 </div>
                                             </div>

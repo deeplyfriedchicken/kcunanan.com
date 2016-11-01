@@ -36,6 +36,8 @@ Route::get('posts/blogs', ['uses' => 'HomeController@showBlogs']);
 
 Route::get('posts/{lookup_category}/{sub_category}/{url}', ['uses' => 'HomeController@showPost']);
 
+Route::post('contact', ['uses' => 'HomeController@sendMessage']);
+
 Route::group(['middleware' => ['auth'], 'prefix' => 'kevin'], function () {
   Route::get('/', ['uses' => 'AdminController@index']);
   Route::get('settings', function() {
@@ -57,6 +59,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'kevin'], function () {
   Route::post('sort',['uses' => 'AdminController@updateSorts']);
 
   Route::get('sync', ['uses' => 'AdminController@sync']);
+  Route::get('mail/{id}', ['uses' => 'AdminController@viewMail']);
 });
 
 Route::group(['middleware' => ['web']], function() {

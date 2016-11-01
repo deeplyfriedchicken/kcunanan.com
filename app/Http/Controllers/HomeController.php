@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Mail;
 use App\Lookup;
 
 class HomeController extends Controller
@@ -32,6 +33,17 @@ class HomeController extends Controller
       $jslibraries = Lookup::where('category', 'sort')->where('sub_category', 'jslibrary')->orderBy('tag', 'asc')->get();
       $workplace = Lookup::where('category', 'sort')->where('sub_category', 'workplace')->orderBy('tag', 'asc')->get();
       return view('portfolio', ['portfolio' => $portfolio, 'pls' => $languages, 'frs' => $frameworks, 'skills' => $skills, 'js' => $jslibraries, 'workplaces' => $workplace]);
+    }
+    public function sendMessage(Request $request) {
+      $mail = new Mail;
+      $mail->name = $request['name'];
+      $mail->subject = $request['subject'];
+      $mail->email = $request['email'];
+      $mail->message = $request['message'];
+      $mail->seen = false;
+      $mail->save();
+      $request->session()->flash('mail-success', 'Message successfully sent.');
+      return view('contact');
     }
     public function searchURL(Request $request) {
       $term = $request['s'];
@@ -62,7 +74,7 @@ class HomeController extends Controller
       if($blog == null) {
         // return 404
       }
-      $tags = Lookup::where('category', 'tag')->where('ref_id', $blog[0]->id)->get();
+      $tags = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $blog[0]->id)->get();
       if(session()->has($sub_category."+".$url) == false) {
           $viewcount = Lookup::where('sub_category', $sub_category)->where('blog_url', $url)->increment('blog_views');
            session([$sub_category."+".$url => $sub_category."+".$url]);

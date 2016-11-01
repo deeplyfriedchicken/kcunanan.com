@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\User;
+use App\Mail;
 use App\Lookup;
 use Image;
 use Auth;
@@ -30,12 +31,19 @@ function cleanUrl($string) {
 class AdminController extends Controller
 {
     public function index() {
-      return view('admin/index');
+      $mails = Mail::get();
+      return view('admin/index', ['mails' => $mails]);
     }
     public function newPost()
     {
       $tags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
       return view('admin/blog', ['tags' => $tags]);
+    }
+    public function viewMail($id) {
+      $mail = Mail::findOrFail($id);
+      $mail->seen = 1;
+      $mail->save();
+      return view('admin/read-mail', ['mail' => $mail]);
     }
     public function sync(Request $request) {
       runSync();

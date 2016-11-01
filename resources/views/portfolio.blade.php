@@ -85,7 +85,7 @@
                                               <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
                                             @endforeach
                                             <br>
-                                            <li><span class="focus-heading">I have worked at these places:</span></li>
+                                            <li><span class="focus-heading">I have worked for these companies:</span></li>
                                             @foreach($workplaces as $tag)
                                               <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
                                             @endforeach

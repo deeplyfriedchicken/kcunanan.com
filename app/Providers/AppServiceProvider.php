@@ -24,11 +24,6 @@ class AppServiceProvider extends ServiceProvider
       $latest = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('date_posted', 'asc')->take(6)->get();
       $post = Lookup::where('category', 'blog')->orWhere('category', 'post')->orderBy('date_posted', 'asc')->first();
       $categories = Lookup::distinct()->where('category', 'blog')->orWhere('category', 'portfolio')->get(['sub_category']); //will provide distinct
-      $languages = ['php', 'mysql', 'java', 'html', 'css', 'javascript', 'typescript', 'jquery', 'git', 'ruby', 'liquid', 'python', 'sml'];
-      $frameworks = ['laravel5', 'nodejs', 'angular2', 'ruby on rails', 'lumen', 'hadoop', 'spark'];
-      $skills = ['crud', 'cron', 'compression', 'scraping', 'data visualization', 'chartjs', 'instagram', 'twitter', 'twilio'];
-      $jslibraries = ['chartsjs', 'isotope'];
-      $workplaces = ['code for america', 'ufuzzy', 'source'];
       View::share('category', $category);
       View::share('categories', $categories);
       View::share('colors', $colors);

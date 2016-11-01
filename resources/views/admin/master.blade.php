@@ -134,6 +134,9 @@
         <li class="{{ Request::is('kevin') ? 'active' : '' }} treeview">
           <a href="/kevin">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red">{{ DB::table('mails')->where('seen', 0)->count() }}</small>
+            </span>
           </a>
         </li>
         <li class="treeview">
