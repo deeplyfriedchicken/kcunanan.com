@@ -26,7 +26,7 @@ class HomeController extends Controller
     }
     public function showPortfolio()
     {
-      $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'asc')->get();
+      $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'desc')->get();
       $languages = Lookup::where('category', 'sort')->where('sub_category', 'pl')->orderBy('tag', 'asc')->get();
       $frameworks = Lookup::where('category', 'sort')->where('sub_category', 'framework')->orderBy('tag', 'asc')->get();
       $skills = Lookup::where('category', 'sort')->where('sub_category', 'skill')->orderBy('tag', 'asc')->get();
@@ -51,10 +51,15 @@ class HomeController extends Controller
     }
     public function search($term) {
       $ids = Lookup::where('tag', 'LIKE', '%'.$term.'%')->get();
+      $ids2 = Lookup::where('blog_title', 'LIKE', '%'.$term.'%')->orWhere('heading', 'LIKE', '%'.$term.'%')->get();
       $array = [];
       $i = 0;
       foreach($ids as $id) {
         $array[$i] = $id->ref_id;
+        $i++;
+      }
+      foreach($ids2 as $id) {
+        $array[$i] = $id->id;
         $i++;
       }
       $posts = Lookup::whereIn('id', $array)->get();

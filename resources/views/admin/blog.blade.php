@@ -66,7 +66,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="tags">Tags <span>(separated by commas)</span></label>
+                <label for="tags">Tags</label>
                 <select id="tags" name="tags[]" class="form-control" multiple="multiple">
                   @foreach($tags as $tag)
                     <option value="{{ $tag->tag }}">{{ $tag->tag }}</option>
@@ -76,10 +76,16 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="portf_link">Portfolio Link</label>
                 <input type="text" class="form-control" name="portf_link" id="portf_link">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="portf_link">GitHub Repo</label>
+                <input type="text" class="form-control" name="github_repo" id="github_repo">
               </div>
             </div>
           </div>

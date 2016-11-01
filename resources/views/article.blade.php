@@ -1,11 +1,11 @@
 @extends('master')
 @section('stylesheets')
   <style>
-  #portfolio-link {
+  #portfolio-link, #github-link {
     @if($blog[0]->color) background-color: {{ $blog[0]->color }} @endif;
-    width: 50%;
+    width: 85%;
   }
-  #portfolio-link:hover {
+  #portfolio-link:hover, #github-link:hover {
     background-color: #2c3a55;
   }
   h6.tags {
@@ -30,9 +30,15 @@
                                             <h1 class="ish-sc-element ish-sc_headline ish-color8 ish-bottom-margin-none" style=" @if($blog[0]->color) {{ 'color:'.$blog[0]->color }}  @endif">{{ $blog[0]->blog_title }}</h1>
                                               <div class="ish-sc-element ish-sc_cf7 ish-color6 ish-text-color1 ish-bg-text-color1 ish-button-bg-color5 ish-button-text-color4">
                                                                 <div class="ish-row">
-                                                                    <div class="ish-grid12">
+                                                                    <div class="ish-grid6">
                                                                         <p class="portfolio-p">
-                                                                            @if($blog[0]->portfolio_link != null)<a class="portfolio-link" href="{{ $blog[0]->portfolio_link }}" target="_blank"><button id="portfolio-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;"> @if(strpos($blog[0]->portfolio_link, 'github') !== false) View Code @else View The Site @endif </button></a>@endif
+                                                                            @if($blog[0]->portfolio_link != null)<a class="portfolio-link" href="{{ $blog[0]->portfolio_link }}" target="_blank"><button id="portfolio-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Site</button></a>@endif
+                                                                            </p><div id="msg" class="message"></div>
+                                                                        <p></p>
+                                                                    </div>
+                                                                    <div class="ish-grid6">
+                                                                        <p class="portfolio-p">
+                                                                            @if($blog[0]->github_url != null)<a class="github-link" href="{{ $blog[0]->github_url }}" target="_blank"><button id="github-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Code</button></a>@endif
                                                                             </p><div id="msg" class="message"></div>
                                                                         <p></p>
                                                                     </div>
