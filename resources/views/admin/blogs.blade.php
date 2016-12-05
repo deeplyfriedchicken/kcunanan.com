@@ -29,7 +29,7 @@
                   <td>{{ $blog->date_posted->format('F j, Y') }}</td>
                   <td>{{ $blog->blog_views }}</td>
                   <td>{{ $blog->heading }}</td>
-                  <td><a href="edit/{{ $blog->id }}" class="btn btn-success">Edit</a></td>
+                  <td><a href="/kevin/blog/edit/{{ $blog->id }}" class="btn btn-success">Edit</a></td>
                 </tr>
                 @endforeach
               </tbody>

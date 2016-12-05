@@ -30,18 +30,22 @@
                                             <h1 class="ish-sc-element ish-sc_headline ish-color8 ish-bottom-margin-none" style=" @if($blog[0]->color) {{ 'color:'.$blog[0]->color }}  @endif">{{ $blog[0]->blog_title }}</h1>
                                               <div class="ish-sc-element ish-sc_cf7 ish-color6 ish-text-color1 ish-bg-text-color1 ish-button-bg-color5 ish-button-text-color4">
                                                                 <div class="ish-row">
+                                                                    @if($blog[0]->portfolio_link != null)
                                                                     <div class="ish-grid6">
                                                                         <p class="portfolio-p">
-                                                                            @if($blog[0]->portfolio_link != null)<a class="portfolio-link" href="{{ $blog[0]->portfolio_link }}" target="_blank"><button id="portfolio-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Site</button></a>@endif
+                                                                            <a class="portfolio-link" href="{{ $blog[0]->portfolio_link }}" target="_blank"><button id="portfolio-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Site</button></a>
                                                                             </p><div id="msg" class="message"></div>
                                                                         <p></p>
                                                                     </div>
+                                                                    @endif
+                                                                    @if($blog[0]->github_url != null)
                                                                     <div class="ish-grid6">
                                                                         <p class="portfolio-p">
-                                                                            @if($blog[0]->github_url != null)<a class="github-link" href="{{ $blog[0]->github_url }}" target="_blank"><button id="github-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Code</button></a>@endif
+                                                                            <a class="github-link" href="{{ $blog[0]->github_url }}" target="_blank"><button id="github-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Code</button></a>
                                                                             </p><div id="msg" class="message"></div>
                                                                         <p></p>
                                                                     </div>
+                                                                    @endif
                                                                 </div>
                                                     </div>
                                             {{-- <h5 class="ish-sc-element ish-sc_headline ish-color2">{{ $blog[0]->heading }}</h5> --}}
@@ -80,13 +84,77 @@
                             </div>
                         </div>
                     </div>
+                    @elseif($section->helper_type == 'fc')
+                      <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection" style="">
+                          <div class="ish-vc_row_inner">
+                              <div class="vc_col-sm-12 wpb_column column_container" style="">
+                                  <div class="wpb_wrapper">
+                                      <h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>
+                                      <div class="wpb_text_column wpb_content_element " style="">
+                                          <div class="wpb_wrapper">
+                                            {!! $section->code !!}
+
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    @elseif($section->helper_type == 'fim')<div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection" style="">
+                        <div class="ish-vc_row_inner">
+                            <div class="vc_col-sm-12 wpb_column column_container" style="">
+                                <div class="wpb_wrapper">
+                                    <h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>
+                                    <div class="wpb_text_column wpb_content_element " style="">
+                                        <div class="wpb_wrapper">
+                                          <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img width="571" height="357" src="{{ URL::asset($section->media_url) }}" class="attachment-theme-half size-theme-half" alt=""  /></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif($section->helper_type == 'cp')
+                      <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection ish-valign-middle" style="">
+                          <div class="ish-vc_row_inner">
+                              <div class="vc_col-sm-6 wpb_column column_container" style="">
+                                  <div class="wpb_wrapper">
+                                      <div class="ish-sc-element ish-sc_image ish-fullwidth">
+                                          {!! $section->code !!}
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="vc_col-sm-6 wpb_column column_container" style="">
+                                  <div class="wpb_wrapper">
+                                      <div class="ish-sc-element ish-sc_box ish-fullwidth" style=" padding:  0 30px 0 30px; border-width: 3px;">
+                                          <div class="ish-box-inner">
+                                              <div class="vc_row wpb_row vc_inner vc_row-fluid ">
+                                                  <div class="vc_col-sm-12 wpb_column column_container" style="">
+                                                      <div class="wpb_wrapper">
+                                                          @if( $section->heading != null)<h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
+                                                          <div class="wpb_text_column wpb_content_element " style="">
+                                                              <div class="wpb_wrapper">
+                                                                  {!! $section->content !!}
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                     @elseif($section->helper_type == 'imp')
                       <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection ish-valign-middle" style="">
                           <div class="ish-vc_row_inner">
                               <div class="vc_col-sm-6 wpb_column column_container" style="">
                                   <div class="wpb_wrapper">
                                       <div class="ish-sc-element ish-sc_image ish-fullwidth">
-                                          <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img width="571" height="357" src="{{ URL::asset($section->media_url) }}" class="attachment-theme-half size-theme-half" alt="Ice Scream"  /></a>
+                                          <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img width="571" height="357" src="{{ URL::asset($section->media_url) }}" class="attachment-theme-half size-theme-half" alt=""  /></a>
                                       </div>
                                   </div>
                               </div>
@@ -114,6 +182,39 @@
                               </div>
                           </div>
                       </div>
+                      @elseif($section->helper_type == 'pc')
+                        <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection ish-valign-middle" style="">
+                            <div class="ish-vc_row_inner">
+                                <div class="vc_col-sm-6 wpb_column column_container ish-right" style="">
+                                    <div class="wpb_wrapper">
+                                        <div class="ish-sc-element ish-sc_box ish-fullwidth" style=" padding:  0 30px 0 30px; border-width: 3px;">
+                                            <div class="ish-box-inner">
+                                                <div class="vc_row wpb_row vc_inner vc_row-fluid ">
+                                                    <div class="vc_col-sm-12 wpb_column column_container" style="">
+                                                        <div class="wpb_wrapper">
+                                                            @if( $section->heading != null)<h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
+                                                            <div class="wpb_text_column wpb_content_element " style="">
+                                                                <div class="wpb_wrapper">
+                                                                    {!! $section->content !!}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vc_col-sm-6 wpb_column column_container" style="">
+                                    <div class="wpb_wrapper">
+                                        <div class="ish-sc-element ish-sc_image ish-fullwidth">
+                                            {!! $section->code !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                       @elseif($section->helper_type == 'pim')
                       <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection ish-valign-middle" style="">
                           <div class="ish-vc_row_inner">
@@ -141,7 +242,7 @@
                               <div class="vc_col-sm-6 wpb_column column_container" style="">
                                   <div class="wpb_wrapper">
                                       <div class="ish-sc-element ish-sc_image ish-fullwidth">
-                                          <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img width="571" height="547" src="{{ URL::asset($section->media_url) }}" class="attachment-theme-half size-theme-half" alt="ice_scream" /></a>
+                                          <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img width="571" height="547" src="{{ URL::asset($section->media_url) }}" class="attachment-theme-half size-theme-half" alt="" /></a>
                                       </div>
                                   </div>
                               </div>
@@ -157,7 +258,7 @@
                                               <div class="vc_row wpb_row vc_inner vc_row-fluid ">
                                                   <div class="vc_col-sm-12 wpb_column column_container" style="">
                                                       <div class="wpb_wrapper">
-                                                          <blockquote class="ish-sc-element ish-sc_quote ish-h3 ish-center">&#8220;My advice to you is not to inquire why or whither, but just enjoy your ice cream while it&#8217;s on your plate.&#8221;<cite>Thornton Wilder</cite></blockquote>
+                                                          <blockquote class="ish-sc-element ish-sc_quote ish-h3 ish-center">&#8220;My advice to you is not to inquire why or whither, but just enjoy your  while it&#8217;s on your plate.&#8221;<cite>Thornton Wilder</cite></blockquote>
                                                       </div>
                                                   </div>
                                               </div>

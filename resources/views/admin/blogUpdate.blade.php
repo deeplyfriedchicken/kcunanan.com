@@ -126,8 +126,13 @@
                     <label for="type{{ $counter }}">Type of Section {{ $counter }}</label>
                     <select name="type{{ $counter }}" class="form-control">
                       <option value="fp" @if($section->helper_type == "fp") selected @endif>Full Width Paragraph</option>
+                      <option value="fim" @if($section->helper_type == "fim") selected @endif>Full Image</option>
+                      <option value="fc" @if($section->helper_type == "fc") selected @endif>Full Code</option>
                       <option value="imp" @if($section->helper_type == "imp") selected @endif>Left Image and Right Paragraph</option>
                       <option value="pim" @if($section->helper_type == "pim") selected @endif>Left Paragraph and Right Image</option>
+                      <option value="cp" @if($section->helper_type == "cp") selected @endif>Left Code and Right Paragraph</option>
+                      <option value="pc" @if($section->helper_type == "pc") selected @endif>Left Paragraph and Right Code</option>
+
                     </select>
                     <label for="title1">Subtitle {{ $counter }}</label><input type="text" class="form-control title-help" name="title{{ $counter }}" value="{{ $section->heading }}">
                   </div>
@@ -141,7 +146,10 @@
                   </div>
                 </div>
                   <div class="form-group">
-                    <textarea name="content{{ $counter }}" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $section->content }}</textarea>
+                    <label for="code{{ $counter }}">Code {{ $counter }} </label>
+                    <textarea name="code{{ $counter }}" id="code{{ $counter }}" class='form-control'>{{ $section->code }}</textarea>
+                    <label for="content{{ $counter }}">Paragraph {{ $counter }}</label>
+                    <textarea name="content{{ $counter }}" id="content{{ $counter }}" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $section->content }}</textarea>
                   </div>
                 </div>
                 <?php $counter++ ?>
@@ -153,8 +161,12 @@
                   <label for="type{{ $counter }}">Type of Section {{ $counter }}</label>
                   <select name="type{{ $counter }}" class="form-control">
                     <option value="fp">Full Width Paragraph</option>
+                    <option value="fim">Full Image</option>
+                    <option value="fc">Full Code</option>
                     <option value="imp">Left Image and Right Paragraph</option>
                     <option value="pim">Left Paragraph and Right Image</option>
+                    <option value="cp">Left Code and Right Paragraph</option>
+                    <option value="pc">Left Paragraph and Right Code</option>
                   </select>
                   <label for="title1">Subtitle {{ $counter }}</label><input type="text" class="form-control title-help" name="title{{ $counter }}" value="">
                 </div>
@@ -168,6 +180,9 @@
                 </div>
               </div>
                 <div class="form-group">
+                  <label for="code{{ $counter }}">Code {{ $counter }}</label>
+                  <textarea name="code{{ $counter }}" id="code{{ $counter }}" class='form-control'></textarea>
+                  <label for="content{{ $counter }}">Paragraph {{ $counter }}</label>
                   <textarea name="content{{ $counter }}" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
               </div>
@@ -190,8 +205,12 @@
         "<label for='type{{ $sections_count }}'>Section {{ $sections_count }} Type</label>" +
         "<select name='type{{ $sections_count }}' class='form-control'>" +
           "<option value='fp'>Full Width Paragraph</option>" +
+          "<option value='fim'>Full Image</option>" +
+          "<option value='fc'>Full Code</option>" +
+          "<option value='cp'>Left Code and Right Paragraph</option>" +
           "<option value='imp'>Left Image and Right Paragraph</option>" +
           "<option value='pim'>Left Paragraph and Right Image</option>" +
+          "<option value='pc'>Left Paragraph and Right Code</option>" +
         "</select>" +
         "<label for='title{{ $sections_count }}'>Subtitle {{ $sections_count }}</label>" + "<input type='text' class='form-control title-help' name='title{{ $sections_count }}'>" +
       "</div>" +
@@ -205,6 +224,9 @@
       "</div>" +
     "</div>" +
       "<div class='form-group'>" +
+        "<label for='code{{ $sections_count }}'>Code {{ $counter }}</label>" +
+        "<textarea name='code{{ $counter }}' id='code{{ $counter }}' class='form-control'></textarea>" +
+        "<label for='content{{ $counter }}'>Paragraph {{ $counter }}</label>" +
         "<textarea name='content{{ $sections_count }}' class='textarea textarea{{ $sections_count }}' placeholder='Place some text here'></textarea>" +
       "</div>" +
     "</div>";

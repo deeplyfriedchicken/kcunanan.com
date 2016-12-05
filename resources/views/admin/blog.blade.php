@@ -122,8 +122,12 @@
                 <label for="type1">Type of Section</label>
                 <select name="type1" class="form-control">
                   <option value="fp">Full Width Paragraph</option>
+                  <option value="fim">Full Image</option>
+                  <option value="fc">Full Code</option>
                   <option value="imp">Left Image and Right Paragraph</option>
+                  <option value="cp">Left Code and Right Paragraph</option>
                   <option value="pim">Left Paragraph and Right Image</option>
+                  <option value="pc">Left Paragraph and Right Code</option>
                 </select>
                 <label for="title1">Subtitle</label><input type="text" class="form-control title-help" name="title1">
               </div>
@@ -137,6 +141,8 @@
               </div>
             </div>
               <div class="form-group">
+                <label for="code1">Code 1</label>
+                <textarea name="code1" id="code1" class='form-control'></textarea>
                 <textarea name="content1" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
               </div>
             </div>

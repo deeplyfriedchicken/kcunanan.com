@@ -14,8 +14,8 @@ use Auth;
 use Carbon\Carbon;
 
 function runSync() {
-    chdir('/homepages/37/d587320544/htdocs/kcunanan');
-    shell_exec('./sync.sh'); //moving things to public after image upload
+    // chdir('/homepages/37/d587320544/htdocs/kcunanan');
+    // shell_exec('./sync.sh'); //moving things to public after image upload
 }
 function cleanUrl($string) {
   $string = strtolower($string);
@@ -194,7 +194,7 @@ class AdminController extends Controller
       }
       Lookup::where('category', 'article_helper')->where('ref_id', $blog->id)->delete();
       for($i = 1; $i <= $request['num-sections']; $i++) {
-            if($request["content".$i]) {
+            if($request["content".$i] || $request["code".$i]) {
               $section = new Lookup;
               $section->ref_id = $blog->id;
               $section->category = "article_helper";
@@ -202,6 +202,7 @@ class AdminController extends Controller
               $section->color = $request["color".$i];
               $section->heading = $request["title".$i];
               $section->content = $request["content".$i];
+              $section->code = $request["code".$i];
               if ($request->file('image'.$i) != null) {
                 $image = Image::make($request->file('image'.$i));
                 $image_id = uniqid();
@@ -243,6 +244,7 @@ class AdminController extends Controller
         $blog->sub_category = strtolower($request['category']);
         $blog->heading = $request['intro-paragraph'];
         $blog->content = $request['content'];
+
         if($request['lookup_category'] == 'portfolio') {
             $blog->portfolio_ish = $request['portfolio-ish'];
         }
@@ -267,6 +269,7 @@ class AdminController extends Controller
         $blog->date_posted = Carbon::now()->toDateString();
         $blog->save();
         // tags
+        $return_id = $blog->id;
         if($request['tags']) {
           foreach($request['tags'] as $tags) {
             $tag = new Lookup;
@@ -282,7 +285,7 @@ class AdminController extends Controller
           }
         }
         for($i = 1; $i <= $request['num-sections']; $i++) {
-            if($request["content".$i]) {
+            if($request["content".$i] || $request["code".$i]) {
               $section = new Lookup;
               $section->ref_id = $blog->id;
               $section->category = "article_helper";
@@ -290,6 +293,7 @@ class AdminController extends Controller
               $section->color = $request["color".$i];
               $section->heading = $request["title".$i];
               $section->content = $request["content".$i];
+              $section->code = $request["code".$i];
               if ($request->file('image'.$i) != null) {
                 $image = Image::make($request->file('image'.$i));
                 $image_id = uniqid();
@@ -306,6 +310,16 @@ class AdminController extends Controller
           // $file->ref_id = $blog->id;
           // $file->save();
         $request->session()->flash('added-blog', 'Blog post successfully saved.');
-        return view('admin/blog');
+        $tag = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $return_id)->get();
+        $allTags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
+        $sections = Lookup::where('category', 'article_helper')->where('ref_id', $return_id)->get();
+        $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $return_id)->get();
+        if($sections_count->count()) {
+          $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $return_id)->count();
+        }
+        else {
+          $sections_count = 1;
+        }
+        return redirect('/kevin/blog/edit/'.$return_id);
     }
 }

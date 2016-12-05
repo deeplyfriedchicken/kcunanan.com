@@ -35,6 +35,7 @@ class CreateLookupTable extends Migration
         $table->string('quote_author')->nullable();
         $table->string('heading')->nullable();
         $table->text('content')->nullable();
+        $table->text('code')->nullable();
         $table->string('tag')->nullable();
         $table->date('date_posted')->nullable();
         $table->timestamps();
