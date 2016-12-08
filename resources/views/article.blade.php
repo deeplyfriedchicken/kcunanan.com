@@ -30,22 +30,34 @@
                                             <h1 class="ish-sc-element ish-sc_headline ish-color8 ish-bottom-margin-none" style=" @if($blog[0]->color) {{ 'color:'.$blog[0]->color }}  @endif">{{ $blog[0]->blog_title }}</h1>
                                               <div class="ish-sc-element ish-sc_cf7 ish-color6 ish-text-color1 ish-bg-text-color1 ish-button-bg-color5 ish-button-text-color4">
                                                                 <div class="ish-row">
-                                                                    @if($blog[0]->portfolio_link != null)
+                                                                  @if($blog[0]->portfolio_link != null && $blog[0]->github_url != null)
                                                                     <div class="ish-grid6">
                                                                         <p class="portfolio-p">
                                                                             <a class="portfolio-link" href="{{ $blog[0]->portfolio_link }}" target="_blank"><button id="portfolio-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Site</button></a>
                                                                             </p><div id="msg" class="message"></div>
                                                                         <p></p>
                                                                     </div>
-                                                                    @endif
-                                                                    @if($blog[0]->github_url != null)
                                                                     <div class="ish-grid6">
                                                                         <p class="portfolio-p">
                                                                             <a class="github-link" href="{{ $blog[0]->github_url }}" target="_blank"><button id="github-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Code</button></a>
                                                                             </p><div id="msg" class="message"></div>
                                                                         <p></p>
                                                                     </div>
-                                                                    @endif
+                                                                  @elseif($blog[0]->portfolio_link != null && $blog[0]->github_url == null)
+                                                                    <div class="ish-grid12">
+                                                                        <p class="portfolio-p">
+                                                                            <a class="portfolio-link" href="{{ $blog[0]->portfolio_link }}" target="_blank"><button id="portfolio-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Site</button></a>
+                                                                            </p><div id="msg" class="message"></div>
+                                                                        <p></p>
+                                                                    </div>
+                                                                  @elseif($blog[0]->github_url != null && $blog[0]->portfolio_link == null)
+                                                                    <div class="ish-grid12">
+                                                                        <p class="portfolio-p">
+                                                                            <a class="github-link" href="{{ $blog[0]->github_url }}" target="_blank"><button id="github-link" class="wpcf7-form-control wpcf7-submit ish-cf7-submit" style="color: #fff;">View Code</button></a>
+                                                                            </p><div id="msg" class="message"></div>
+                                                                        <p></p>
+                                                                    </div>
+                                                                  @endif
                                                                 </div>
                                                     </div>
                                             {{-- <h5 class="ish-sc-element ish-sc_headline ish-color2">{{ $blog[0]->heading }}</h5> --}}
@@ -106,8 +118,8 @@
                                 <div class="wpb_wrapper">
                                     <h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>
                                     <div class="wpb_text_column wpb_content_element " style="">
-                                        <div class="wpb_wrapper">
-                                          <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img width="571" height="357" src="{{ URL::asset($section->media_url) }}" class="attachment-theme-half size-theme-half" alt=""  /></a>
+                                        <div class="wpb_wrapper" style="text-align: center;">
+                                          <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img src="{{ URL::asset($section->media_url) }}" alt=""  /></a>
 
                                         </div>
                                     </div>
@@ -283,7 +295,13 @@
                                     </div>-->
                         <div class="ish-display-table">
                             <div class="ish-single_portfolio_post_navigation ish-single_navigation ish-grid6 ish-color1 ish-text-color4">
-                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="#"><span class="ish-icon ish-right"><span class="ish-icon-left-open-big"></span></span> Next</a><span class="ish-spacer">/</span><a class="ish-border" href="#">Previous <span class="ish-icon ish-right"><span class="ish-icon-right-open-big"></span></span></a></div>
+                              @if($next == null && $previous != null)
+                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="{{ $previous }}">Previous <span class="ish-icon ish-right"><span class="ish-icon-right-open-big"></span></span></a></div>
+                              @elseif ($previous == null && $next != null)
+                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="{{ $next }}"><span class="ish-icon ish-right"><span class="ish-icon-left-open-big"></span></span> Next</a><span class="ish-spacer">/</span></div>
+                              @else
+                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="{{ $next }}"><span class="ish-icon ish-right"><span class="ish-icon-left-open-big"></span></span> Next</a><span class="ish-spacer">/</span><a class="ish-border" href="{{ $previous }}">Previous <span class="ish-icon ish-right"><span class="ish-icon-right-open-big"></span></span></a></div>
+                              @endif
                             </div>
                             <div class="table-vertical-divider"></div>
                             <div class="share_box share_box_fixed ish-grid6 ish-color7 ish-text-color4">

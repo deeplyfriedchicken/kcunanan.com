@@ -86,6 +86,22 @@ class HomeController extends Controller
       }
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $blog[0]->id)->get();
       $author = DB::table('users')->where('id', $blog[0]->user_id)->get();
-      return view('article', ['blog' => $blog, 'author' => $author, 'sections' => $sections, 'tags' => $tags]);
+      $previous = Lookup::where('category', $lookup_category)->where('id', '<', $blog[0]->id)->max('id');
+      if($previous != null) {
+          $previous = Lookup::findOrFail($previous);
+          $previousUrl = '/posts/'.$previous->category."/".$previous->sub_category."/".$previous->blog_url;
+      }
+      else {
+        $previousUrl = null;
+      }
+      $next = Lookup::where('category', $lookup_category)->where('id', '>', $blog[0]->id)->min('id');
+      if($next != null) {
+        $next = Lookup::findOrFail($next);
+        $nextUrl = '/posts/'.$next->category."/".$next->sub_category."/".$next->blog_url;
+      }
+      else {
+        $nextUrl = null;
+      }
+      return view('article', ['blog' => $blog, 'author' => $author, 'sections' => $sections, 'tags' => $tags, 'previous' => $previousUrl, 'next' => $nextUrl]);
     }
 }

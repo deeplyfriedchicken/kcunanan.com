@@ -163,7 +163,7 @@ class AdminController extends Controller
       if ($request->file('photo') != null) {
         $image = Image::make($request->file('photo'));
         $image_id = uniqid();
-        $path = public_path('uploads/'.$imagse_id.".".$request->file('photo')->extension());
+        $path = public_path('uploads/'.$image_id.".".$request->file('photo')->extension());
         $blog->media_url = 'uploads/'.$image_id.".".$request->file('photo')->extension();
         $image->save($path);
         runSync();
@@ -194,7 +194,7 @@ class AdminController extends Controller
       }
       Lookup::where('category', 'article_helper')->where('ref_id', $blog->id)->delete();
       for($i = 1; $i <= $request['num-sections']; $i++) {
-            if($request["content".$i] || $request["code".$i]) {
+            if($request["content".$i] || $request["code".$i] || $request->file('portf-photo') != null) {
               $section = new Lookup;
               $section->ref_id = $blog->id;
               $section->category = "article_helper";
@@ -285,7 +285,7 @@ class AdminController extends Controller
           }
         }
         for($i = 1; $i <= $request['num-sections']; $i++) {
-            if($request["content".$i] || $request["code".$i]) {
+            if($request["content".$i] || $request["code".$i] || $request->file('portf-photo') != null) {
               $section = new Lookup;
               $section->ref_id = $blog->id;
               $section->category = "article_helper";
