@@ -14,8 +14,8 @@ use Auth;
 use Carbon\Carbon;
 
 function runSync() {
-    // chdir('/homepages/37/d587320544/htdocs/kcunanan');
-    // shell_exec('./sync.sh'); //moving things to public after image upload
+    chdir('/homepages/37/d587320544/htdocs/kcunanan');
+    shell_exec('./sync.sh'); //moving things to public after image upload
 }
 function cleanUrl($string) {
   $string = strtolower($string);
