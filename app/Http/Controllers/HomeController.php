@@ -62,7 +62,7 @@ class HomeController extends Controller
         $array[$i] = $id->id;
         $i++;
       }
-      $posts = Lookup::whereIn('id', $array)->get();
+      $posts = Lookup::whereIn('id', $array)->orderBy('created_at', 'desc')->get();
       return view('search', ['posts' => $posts, 'ids' => $array, 'term' => $term]);
     }
     public function showPosts() {

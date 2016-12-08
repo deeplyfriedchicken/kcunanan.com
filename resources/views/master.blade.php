@@ -35,7 +35,7 @@
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Dosis%3A300%2C300italic%2C400%2C400italic%2Cregular%2Citalic%2C600%2C600italic%2C700%2C700italic%2Cregular%2Cregular%2Cregular%2Cregular%2C&amp;subset=latin&amp;ver=4.4.2' type='text/css' media='all' />
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Playfair+Display%3A300%2C300italic%2C400%2C400italic%2Cregular%2Citalic%2C600%2C600italic%2C700%2C700italic%2C700italic%2C700italic%2C700italic%2C700italic%2C700italic%2C&amp;subset=latin&amp;ver=4.4.2' type='text/css' media='all' />
-    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Lobster|Raleway">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&amp;subset=latin%2Clatin-ext' type='text/css' media='all' />
 
 
