@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../font/BebasNeue.otf') format('opentype');
+  /*url('../font/Lato-Black.ttf') format('truetype'),
+  url('../font/Lato-BlackItalic.ttf') format('truetype'),
+  url('../font/Lato-Bold.ttf') format('truetype'),
+  url('../font/Lato-BoldItalic.ttf') format('truetype'),
+  url('../font/Lato-Hairline.ttf') format('truetype'),
+  url('../font/Lato-HairlineItalic.ttf') format('truetype'),
+
+  url('../font/Lato-HeavyItalic.ttf') format('truetype'),
+  url('../font/Lato-Italic.ttf') format('truetype'),
+  url('../font/Lato-Light.ttf') format('truetype');        */
+}
+@font-face {
+  font-family: 'Montserrat Light';
+  src: url('../font/Montserrat-Light.ttf') format('truetype');
+}

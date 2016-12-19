@@ -79,7 +79,12 @@ class HomeController extends Controller
       if($blog == null) {
         // return 404
       }
-      $tags = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $blog[0]->id)->get();
+      if($lookup_category == 'portfolio') {
+        $tags = Lookup::where('category', 'ptag')->where('ref_id', $blog[0]->id)->get();
+      }
+      else {
+        $tags = Lookup::where('category', 'tag')->where('ref_id', $blog[0]->id)->get();
+      }
       if(session()->has($sub_category."+".$url) == false) {
           $viewcount = Lookup::where('sub_category', $sub_category)->where('blog_url', $url)->increment('blog_views');
            session([$sub_category."+".$url => $sub_category."+".$url]);

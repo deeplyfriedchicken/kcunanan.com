@@ -7,7 +7,7 @@ body,
 .ish-shopping-cart ul,
 .ish-shopping-cart ul a
 {
-	font-family:    'Raleway', sans-serif !important;
+	font-family:    'Montserrat', sans-serif !important;
 	font-weight:    400;
 }
 
@@ -16,7 +16,7 @@ body,
 p, ul, ol, div, .ish-gmap_box {
 	font-size:      18px;
 	font-style:     normal;
-	line-height:    30px;
+	line-height:    25px;
 }
 
 .wpb_row.ish-valign-middle > .ish-vc_row_inner > .wpb_column.ish-pt-taglines-additional {
@@ -31,7 +31,7 @@ p, ul, ol, div, .ish-gmap_box {
 .ish-sc_menu li > span,
 .widget .menu-item > a,
 .widget .menu-item > span {
-	font-family: 'Raleway', sans-serif !important;
+	font-family: 'Montserrat', sans-serif !important;
 	font-weight: 400;
 }
 
@@ -44,7 +44,7 @@ p, ul, ol, div, .ish-gmap_box {
 .ish-megamenu:not(.ish-ph-mn-be_resp):not(.ish-phb-be_resp) .ish-megamenu-column > span,
 .ish-sc_recent_posts .ish-post-title a
 {
-	font-family: 'Lobster', sans-serif !important;
+	font-family: 'Bebas Neue', sans-serif !important;
 	font-weight: 900 !important;
 	/*font-size: px !important;*/
 }
@@ -61,11 +61,11 @@ p, ul, ol, div, .ish-gmap_box {
 .ish-phb-be_resp a,
 .ish-sc_quote cite
 {
-	font-family:    'Raleway', sans-serif !important;
+	font-family:    'Bebas Neue', sans-serif !important;
 	font-size:      14px;
 	font-style:     normal;
 	line-height:    18px;
-	font-weight:    400 !important;
+	font-weight:    600 !important;
 
 }
 
@@ -73,11 +73,12 @@ p, ul, ol, div, .ish-gmap_box {
 /* Headlines -------------------------------------------------------------------------------------------------------- */
 h1, .ish-h1, .ish-sc_quote .ish-h1, .widget .ish-h1, .ish-h1 > p,
 .ish-part_searchbar input[type="text"] {
-	font-family:    'Lobster', sans-serif !important;
-	font-size:      52px !important;  /* !important because of VC */
+	font-family:    'Bebas Neue', sans-serif !important;
+	font-size:      50px !important;  /* !important because of VC */
 	font-weight:    700;
 	/*font-style:     italic;*/
 	line-height:    60px;
+	text-transform: uppercase;
 }
 
 .ish-sc_quote.ish-h1 cite {
@@ -87,7 +88,7 @@ h1, .ish-h1, .ish-sc_quote .ish-h1, .widget .ish-h1, .ish-h1 > p,
 
 
 h2, .ish-h2, .ish-sc_quote .ish-h2, .widget .ish-h2, .ish-h2 > p {
-	font-family:    'Lobster', sans-serif !important;
+	font-family:    'Bebas Neue', sans-serif !important;
 	font-size:      42px;
 	font-weight:    700;
 	/*font-style:     italic;*/
@@ -101,7 +102,7 @@ h2, .ish-h2, .ish-sc_quote .ish-h2, .widget .ish-h2, .ish-h2 > p {
 
 
 h3, .ish-h3, .ish-sc_quote .ish-h3, .widget .ish-h3, .ish-h3 > p {
-	font-family:    'Lobster', sans-serif !important;
+	font-family:    'Bebas Neue', sans-serif !important;
 	font-size:      34px;
 	font-weight:    700;
 	/*font-style:     italic;*/
@@ -114,7 +115,7 @@ h3, .ish-h3, .ish-sc_quote .ish-h3, .widget .ish-h3, .ish-h3 > p {
 }
 
 h4, .ish-h4, .ish-sc_quote .ish-h4, .widget .ish-h4, .ish-h4 > p, .ish-p-headline {
-	font-family:    'Lobster', sans-serif !important;
+	font-family:    'Bebas Neue', sans-serif !important;
 	font-size:      24px;
 	font-weight:    700;
 	/*font-style:     italic;*/
@@ -127,7 +128,7 @@ h4, .ish-h4, .ish-sc_quote .ish-h4, .widget .ish-h4, .ish-h4 > p, .ish-p-headlin
 }
 
 h5, .ish-h5, .ish-sc_quote .ish-h5, .widget .ish-h5, .ish-h5 > p {
-	font-family:    'Raleway', sans-serif !important;
+	font-family:    'Montserrat', sans-serif !important;
 	font-size:      17px;
 	font-weight:    400;
 	font-style:     normal;
@@ -140,7 +141,7 @@ h5, .ish-h5, .ish-sc_quote .ish-h5, .widget .ish-h5, .ish-h5 > p {
 }
 
 h6, .ish-h6, .ish-sc_quote .ish-h6, .widget .ish-h6, .ish-h6 > p {
-	font-family:    'Raleway', sans-serif !important;
+	font-family:    'Montserrat', sans-serif !important;
 	font-size:      14px;
 	font-weight:    400;
 	font-style:     normal;
@@ -154,7 +155,7 @@ h6, .ish-h6, .ish-sc_quote .ish-h6, .widget .ish-h6, .ish-h6 > p {
 
 .ish-part_tagline h1, .ish-part_tagline h1 > p,
 .ish-part_tagline .ish-overlay-box .ish-archive-lead h1, .ish-part_tagline .ish-overlay-box .ish-archive-lead > h1 {
-	font-family:    'Lobster', sans-serif !important;
+	font-family:    'Bebas Neue', sans-serif !important;
 	font-size:      52px !important;
 	font-weight:    700;
 	/*font-style:     italic;*/
@@ -165,7 +166,7 @@ h6, .ish-h6, .ish-sc_quote .ish-h6, .widget .ish-h6, .ish-h6 > p {
 .ish-part_tagline .ish-pt-taglines-left.ish-default h2 > p{*/
 .ish-part_tagline h2, .ish-part_tagline h2 > p,
 .ish-part_tagline .ish-archive-lead h1, .ish-part_tagline .ish-archive-lead h1 > p {
-	font-family:    'Lobster', sans-serif !important;
+	font-family:    'Bebas Neue', sans-serif !important;
 	font-size:       34px !important;
 	font-weight:     700;
 	/*font-style:      italic;*/

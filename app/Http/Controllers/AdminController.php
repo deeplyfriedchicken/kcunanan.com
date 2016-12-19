@@ -136,7 +136,7 @@ class AdminController extends Controller
     }
     public function editBlog($id) {
       $blog = Lookup::findOrFail($id);
-      $tag = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $id)->get();
+      $tag = Lookup::where('category', 'tag')->where('ref_id', $id)->orWhere('category', 'ptag')->where('ref_id', $id)->get();
       $allTags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
@@ -177,7 +177,7 @@ class AdminController extends Controller
         runSync();
       }
       $blog->save();
-      Lookup::where('category', 'tag')->orwhere('category', 'ptag')->where('ref_id', $blog->id)->delete();
+      Lookup::where('category', 'tag')->where('ref_id', $blog->id)->orwhere('category', 'ptag')->where('ref_id', $blog->id)->delete();
       if($request['tags']) {
           foreach($request['tags'] as $tags) {
               $tag = new Lookup;
@@ -218,7 +218,7 @@ class AdminController extends Controller
             }
         }
       $blog = Lookup::findOrFail($id);
-      $tag = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $id)->get();
+      $tag = Lookup::where('category', 'tag')->where('ref_id', $id)->orWhere('category', 'ptag')->where('ref_id', $id)->get();
       $allTags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();

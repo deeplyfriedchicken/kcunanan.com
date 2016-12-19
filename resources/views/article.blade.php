@@ -11,6 +11,17 @@
   h6.tags {
     font-weight: 800;
   }
+  h3 {
+    font-family: 'Montserrat' !important;
+    font-weight: 600;
+  }
+  .ish-sc-element-15 {
+    margin-bottom: 15px;
+  }
+  p {
+    color: #000;
+    font-family: 'Montserrat Light';
+  }
   </style>
 @endsection
 @section('content')
@@ -85,7 +96,7 @@
                         <div class="ish-vc_row_inner">
                             <div class="vc_col-sm-12 wpb_column column_container" style="">
                                 <div class="wpb_wrapper">
-                                    <h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>
+                                    @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                     <div class="wpb_text_column wpb_content_element " style="">
                                         <div class="wpb_wrapper">
                                           {!! $section->content !!}
@@ -101,7 +112,7 @@
                           <div class="ish-vc_row_inner">
                               <div class="vc_col-sm-12 wpb_column column_container" style="">
                                   <div class="wpb_wrapper">
-                                      <h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>
+                                      @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                       <div class="wpb_text_column wpb_content_element " style="">
                                           <div class="wpb_wrapper">
                                             {!! $section->code !!}
@@ -116,7 +127,7 @@
                         <div class="ish-vc_row_inner">
                             <div class="vc_col-sm-12 wpb_column column_container" style="">
                                 <div class="wpb_wrapper">
-                                    <h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>
+                                    @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                     <div class="wpb_text_column wpb_content_element " style="">
                                         <div class="wpb_wrapper" style="text-align: center;">
                                           <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img src="{{ URL::asset($section->media_url) }}" alt=""  /></a>
@@ -145,7 +156,7 @@
                                               <div class="vc_row wpb_row vc_inner vc_row-fluid ">
                                                   <div class="vc_col-sm-12 wpb_column column_container" style="">
                                                       <div class="wpb_wrapper">
-                                                          @if( $section->heading != null)<h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
+                                                          @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                                           <div class="wpb_text_column wpb_content_element " style="">
                                                               <div class="wpb_wrapper">
                                                                   {!! $section->content !!}
@@ -178,7 +189,7 @@
                                               <div class="vc_row wpb_row vc_inner vc_row-fluid ">
                                                   <div class="vc_col-sm-12 wpb_column column_container" style="">
                                                       <div class="wpb_wrapper">
-                                                          @if( $section->heading != null)<h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
+                                                          @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                                           <div class="wpb_text_column wpb_content_element " style="">
                                                               <div class="wpb_wrapper">
                                                                   {!! $section->content !!}
@@ -204,7 +215,7 @@
                                                 <div class="vc_row wpb_row vc_inner vc_row-fluid ">
                                                     <div class="vc_col-sm-12 wpb_column column_container" style="">
                                                         <div class="wpb_wrapper">
-                                                            @if( $section->heading != null)<h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
+                                                            @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                                             <div class="wpb_text_column wpb_content_element " style="">
                                                                 <div class="wpb_wrapper">
                                                                     {!! $section->content !!}
@@ -237,7 +248,7 @@
                                               <div class="vc_row wpb_row vc_inner vc_row-fluid ">
                                                   <div class="vc_col-sm-12 wpb_column column_container" style="">
                                                       <div class="wpb_wrapper">
-                                                          @if( $section->heading != null)<h3 class="ish-sc-element ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
+                                                          @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                                           <div class="wpb_text_column wpb_content_element " style="">
                                                               <div class="wpb_wrapper">
                                                                   {!! $section->content !!}
@@ -296,11 +307,11 @@
                         <div class="ish-display-table">
                             <div class="ish-single_portfolio_post_navigation ish-single_navigation ish-grid6 ish-color1 ish-text-color4">
                               @if($next == null && $previous != null)
-                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="{{ $previous }}">Previous <span class="ish-icon ish-right"><span class="ish-icon-right-open-big"></span></span></a></div>
+                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="{{ $previous }}"><span class="ish-icon ish-left"><span class="ish-icon-left-open-big"></span></span> Previous</a></div>
                               @elseif ($previous == null && $next != null)
-                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="{{ $next }}"><span class="ish-icon ish-right"><span class="ish-icon-left-open-big"></span></span> Next</a><span class="ish-spacer">/</span></div>
+                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="{{ $next }}">Next <span class="ish-icon ish-right"><span class="ish-icon-right-open-big"></span></span></a></div>
                               @else
-                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="{{ $next }}"><span class="ish-icon ish-right"><span class="ish-icon-left-open-big"></span></span> Next</a><span class="ish-spacer">/</span><a class="ish-border" href="{{ $previous }}">Previous <span class="ish-icon ish-right"><span class="ish-icon-right-open-big"></span></span></a></div>
+                                <div class="portfolio-next-prev-link ish-next-prev-link"><a class="ish-border" href="{{ $previous }}"><span class="ish-icon ish-left"><span class="ish-icon-left-open-big"></span></span> Previous</a><span class="ish-spacer">/</span><a class="ish-border" href="{{ $next }}">Next <span class="ish-icon ish-right"><span class="ish-icon-right-open-big"></span></span></a></div>
                               @endif
                             </div>
                             <div class="table-vertical-divider"></div>

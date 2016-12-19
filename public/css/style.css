@@ -1296,7 +1296,8 @@ body.ish-sticky-on:not(.ish-boxed) .ish-body {
 	display:inline-block;
 	white-space:nowrap;
 	padding:15px 15px;
-	margin:0 0 1px
+	margin:0 0 1px;
+	font-size: 22px;
 }
 .ish-ph-main_nav>ul>li.menu-item>a {
 	padding-top:16px !important
@@ -1502,7 +1503,7 @@ body.ish-sticky-on:not(.ish-boxed) .ish-body {
 	border-bottom:1px solid;
 	display:block;
 	padding:5px 0;
-	font-size:14px;
+	font-size:20px;
 	font-weight:500;
 	line-height:30px
 }
@@ -1978,7 +1979,7 @@ body.ish-sticky-on:not(.ish-boxed) .ish-body {
 }
 .ish-part_content .ish-section-filter a {
 	text-decoration:none;
-	padding:10px 14px;
+	padding:12px 8px;
 	-webkit-transform:translateZ(0);
 	-ms-transform:translateZ(0);
 	transform:translateZ(0);
