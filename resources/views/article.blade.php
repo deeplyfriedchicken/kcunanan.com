@@ -11,16 +11,9 @@
   h6.tags {
     font-weight: 800;
   }
-  h3 {
-    font-family: 'Crete Round' !important;
-    font-weight: 600;
-  }
-  .ish-sc-element-15 {
-    margin-bottom: 15px;
-  }
   p {
-    color: #000;
-    font-family: 'Open Sans';
+  	color: #000;
+  	font-family: 'Open Sans';
   }
   </style>
 @endsection

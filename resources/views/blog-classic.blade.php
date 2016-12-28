@@ -1,4 +1,111 @@
 @extends('master')
+@section('stylesheets')
+  <style>
+  a.third,a.third:visited,a.third:hover,a.third:active{
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+	position:relative;
+  transition:0.5s color ease;
+	text-decoration:none;
+	color:#81b3d2;
+}
+a.third:hover{
+	color:#d73444;
+}
+a.before:before,a.after:after{
+  content: "";
+  transition:0.5s all ease;
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+  position:absolute;
+}
+a.before:before{
+  top:-0.25em;
+}
+a.after:after{
+  bottom:-0.5em;
+}
+a.before:before,a.after:after{
+  height:5px;
+  height:0.35rem;
+  width:0;
+  background:#2b3956;
+}
+a.first:after{
+  left:0;
+}
+a.second:after{
+  right:0;
+}
+a.third:after,a.sixth:before,a.sixth:after{
+  left:50%;
+  -webkit-transform:translateX(-50%);
+          transform:translateX(-50%);
+}
+a.before:hover:before,a.after:hover:after{
+  width:100%;
+}
+.square{
+  box-sizing:border-box;
+  margin-left:-0.4em;
+  position:relative;
+  overflow:hidden;
+  padding: 15px;
+}
+.square a{
+  position:static;
+  padding:0.8em 0.8em;
+  font-weight: 600;
+  font-size: 15px;
+}
+.square:before,.square:after{
+  content: "";
+  box-sizing:border-box;
+  transition:0.25s all ease;
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+  position:absolute;
+  width:5px;
+  width:0.35rem;
+  height:0;
+  background:#2b3956;
+}
+.square:before{
+  left:0;
+  bottom:-0.3em;
+}
+.square.individual:before{
+  transition-delay:0.6s;
+}
+.square:after{
+  right:0;
+  top:-0.1em;
+}
+.square.individual:after{
+  transition-delay:0.2s;
+}
+.square a:before{
+  left:0;
+  transition:0.25s all ease;
+}
+.square a:after{
+  right:0;
+  transition:0.25s all ease;
+}
+.square.individual a:after{
+  transition:0.25s all ease 0.4s;
+}
+.square:hover:before,.square:hover:after{
+  height:calc(100% + 0.4em);
+}
+.square:hover a:before,.square:hover a:after{
+  width:100%;
+}
+.ish-blog.ish-blog-classic .wpb_row .ish-blog-post-links a:hover {
+  color: #edaa1e;
+}
+  </style>
+@endsection
 @section('content')
               <div class="ish-part_tagline ish-tagline_regular ish-tagline-colored ish-no-pattern-img">
                 <div class="ish-overlay ish-default-tagline">
@@ -67,7 +174,7 @@
                                         </p>
                                     </div>
                                     <span class="ish-blog-post-links">
-                                    <a class="ish-read-more" href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}">Read more</a>
+                                    <span class="square individual"><a class="before after ish-read-more" href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}">Read more</a></span>
                                     </span>
                                 </div>
                             </div>

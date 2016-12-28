@@ -6183,3 +6183,14 @@ p.demo_store {
 #div_4f8c_13{ padding:  60px 60px 60px 60px; border-width: 3px;}
 #span_4f8c_10{line-height: 40px;}
 #div_24aa_0{text-align: center}
+
+h3 {
+	font-family: 'Crete Round' !important;
+	font-weight: 600;
+}
+.ish-sc-element-15 {
+	margin-bottom: 15px;
+}
+p {
+	font-family: 'Open Sans';
+}
