@@ -348,7 +348,8 @@ body
 [class^="ish-part_"] > .wpb_row, [class*=" ish-part_"] > .wpb_row,
 .ish-blog-classic > .wpb_row[class*="ish-color"]
 {
-	background-color: #f9f9f9;
+	background-color: #fff;
+	/* EDIT FOR BACKGROUND COLOR*/
 }
 
 .ish-row_section .ish-row-decor-top polyline.ish-color,
@@ -5613,4 +5614,25 @@ body
 	.ish-tooltip-color10 .tooltipster-arrow-right span{
 		border-left-color: #472025 !important;
 		border-right-color: #472025 !important;
+	}
+	.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+	}
+	@keyframes blink{
+	    0% { opacity:1; }
+	    50% { opacity:0; }
+	    100% { opacity:1; }
+	}
+	@-webkit-keyframes blink{
+	    0% { opacity:1; }
+	    50% { opacity:0; }
+	    100% { opacity:1; }
+	}
+	@-moz-keyframes blink{
+	    0% { opacity:1; }
+	    50% { opacity:0; }
+	    100% { opacity:1; }
 	}

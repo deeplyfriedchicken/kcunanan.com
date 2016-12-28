@@ -1,18 +1,26 @@
 @extends('master')
+@section('stylesheets')
+  <style>
+    h1#kevin {
+      font-family: 'Bitter', serif !important;
+      text-transform: none;
+    }
+  </style>
+@endsection
 @section('content')
             <!-- Content part section -->
             <section class="ish-part_content ish-without-sidebar">
 
                 <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-bottom-margin-half ish-resp-centered ish-row_notsection ish-valign-middle" >
                     <div class="ish-vc_row_inner">
-                        <div class="vc_col-sm-4 wpb_column column_container" >
+                        <div class="vc_col-sm-12 wpb_column column_container" >
                             <div class="wpb_wrapper">
                                 <div class="ish-sc-element ish-sc_box ish-color7 ish-text-color4 ish-fullwidth ish-same-height ish-has-valign ish-valign-middle" id="div_4f8c_0">
                                     <div class="ish-box-inner">
                                         <div class="vc_row wpb_row vc_inner vc_row-fluid ">
                                             <div class="vc_col-sm-12 wpb_column column_container" >
                                                 <div class="wpb_wrapper">
-                                                    <h1 class="ish-sc-element ish-sc_headline ish-color4 ish-center ish-bottom-margin-none">Welcome!</h1>
+                                                    <h1 class="ish-sc-element ish-sc_headline ish-color4 ish-center ish-bottom-margin-none" id="kevin">Kevin loves <span id="typed"></span></h1>
                                                 </div>
                                             </div>
                                         </div>
@@ -21,27 +29,7 @@
                             </div>
                         </div>
 
-                        <div class="vc_col-sm-8 wpb_column column_container" >
-                            <div class="wpb_wrapper">
-                                <div class="ish-sc-element ish-sc_box ish-color5 ish-text-color4 ish-fullwidth ish-same-height ish-has-valign ish-valign-middle" id="div_4f8c_1">
-                                    <div class="ish-box-inner">
-                                        <div class="vc_row wpb_row vc_inner vc_row-fluid ">
-                                            <div class="vc_col-sm-12 wpb_column column_container" >
-                                                <div class="wpb_wrapper">
 
-                                                    <div class="wpb_text_column wpb_content_element  ish-text-color4" >
-                                                        <div class="wpb_wrapper">
-                                                            <p>Hi! I'm Kevin Cunanan. I am currently a junior at Claremont McKenna College double majoring in Computer Science and Philosophy. I love volleyball, rock climbing, and cats. My passion for software development has inspired me to build useful and interactive database-driven web applications. To learn more, check out <a href="{{ URL::asset('kevin-resume.pdf') }}" target="_blank">my resume</a> or go to <a href="/portfolio">my portfolio</a>.</p>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-bottom-margin-half ish-resp-centered ish-row_notsection ish-has-portfolio" >
@@ -110,4 +98,24 @@
             </section>
             <!-- Content part section END -->
     <!-- ish-body END -->
+    @endsection
+    @section('scripts')
+    <script>
+
+    $("#typed").typed({
+        strings: ["the full stack", "the fun stack <i class='fa fa-heart'></i>", "data <i class='fa fa-bar-chart'></i>", "to be challenged <i class='fa fa-cog fa-spin'></i>"],
+        typeSpeed: 50,
+        backSpeed: 100,
+        backDelay: 1000,
+        contentType: 'html',
+        callback: function(){
+            lift();
+        }
+    });
+    function lift(){
+        $(".head-text").addClass("lift-text");
+    }
+
+
+    </script>
     @endsection

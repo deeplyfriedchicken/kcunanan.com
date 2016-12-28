@@ -59,7 +59,7 @@
                 <div class="ish-vc_row_inner">
                     <div class="vc_col-sm-12 wpb_column column_container" style="">
                         <div class="wpb_wrapper">
-                            <div class="ish-sc-element ish-sc_portfolio ish-layout-masonry-grid ish-ratio-masonry-grid ish-p-zoomin-rotate ish-p-packery" data-count="3">
+                            <div class="ish-sc-element ish-sc_portfolio ish-layout-masonry-grid ish-ratio-masonry-grid ish-p-zoomin ish-p-packery" data-count="3">
                                 <span class="ish-preloader"></span>
                                 <div class="ish-section-filter ish-center ish-color5 ish-text-color4">
                                     <div class="ish-vc_row_inner">

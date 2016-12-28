@@ -613,9 +613,20 @@ textarea {
 .ish-boxed.ish-percent-width.ish-sticky-on .ish-part_header {
 	width:calc(100% - 2 * 60px)
 }
-.ish-boxed .ish-wrapper-all {
-	margin:0 auto;
-	box-shadow:0 0 8px rgba(0,0,0,0.1)
+@media ( min-width: 1259px ) {
+	.ish-boxed .ish-wrapper-all {
+		margin:0 75px;
+		box-shadow:0 0 8px rgba(0,0,0,0.1)
+	}
+	.ish-ph-main_nav {
+		margin-right: 90px;
+	}
+}
+@media ( max-width: 1258px ) {
+	.ish-boxed .ish-wrapper-all {
+		margin:0 auto;
+		box-shadow:0 0 8px rgba(0,0,0,0.1)
+	}
 }
 .ish-part_tagline {
 	padding-top:60px;
@@ -3571,11 +3582,28 @@ code,pre {
 	padding:0 !important;
 	opacity:1
 }
+.ish-sc_portfolio.ish-p-zoomin a:hover .ish-p-item {
+	background: rgba(256,256,256,0.9);
+	overflow:hidden;
+	height: 100%;
+	-webkit-transition-duration:.3s;
+	-moz-transition-duration:.3s;
+	-ms-transition-duration:.3s;
+	-o-transition-duration:.3s;
+	transition-duration:.3s
+}
+.ish-sc_portfolio.ish-p-zoomin a:hover .ish-p-item:before {
+	position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: inherit;
+  content: ' ';
+	z-index: 2;
+}
 .ish-sc_portfolio.ish-p-zoomin a:hover .ish-p-img {
 	-webkit-transform:scale(1.2);
 	-moz-transform:scale(1.2);
 	-o-transform:scale(1.2);
-	transform:scale(1.2)
+	transform:scale(1.2);
 }
 .ish-sc_portfolio.ish-p-zoomin-rotate a:hover .ish-p-img {
 	-webkit-transform:scale(1.2) rotate(5deg);

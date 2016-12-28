@@ -31,11 +31,12 @@
     <link rel='stylesheet' href="{{ URL::asset('js/mediaelement/wp-mediaelement.css') }}" type='text/css' media='all' />
     <link rel='stylesheet' href="{{ URL::asset('css/js_composer.min.css') }}" type='text/css' media='all' />
     <link rel='stylesheet' href="{{ URL::asset('css/font.css') }}" type='text/css' media='all' />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     @yield('stylesheets')
 
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Dosis%3A300%2C300italic%2C400%2C400italic%2Cregular%2Citalic%2C600%2C600italic%2C700%2C700italic%2Cregular%2Cregular%2Cregular%2Cregular%2C&amp;subset=latin&amp;ver=4.4.2' type='text/css' media='all' />
-    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Lobster|Raleway|Montserrat">
+    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Lobster|Raleway|Montserrat|Crete+Round|Bitter">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&amp;subset=latin%2Clatin-ext' type='text/css' media='all' />
 
 
@@ -43,7 +44,7 @@
     <link rel="shortcut icon" href="{{ URL::asset('favicon.png') }}"/>
     <link rel="icon" href="upload/cropped-freelo-favicon-200x200.png" sizes="192x192" />
     <link rel="apple-touch-icon-precomposed" href="upload/cropped-freelo-favicon-180x180.png" />
-
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 
 </head>
 <body class="home page page-id-157 page-template-default ish-boxed ish-pixel-width ish-responsive_layout_on ish-sticky-on ish-header_bar-on wpb-js-composer js-comp-ver-4.10 vc_responsive">
@@ -103,12 +104,12 @@
                       <!-- Logo image / text -->
                       <a class="ish-ph-logo ish-ph-logo_retina-no" href="/">
                           <span>
-                <img src="{{ URL::asset('images/kevin-logo-2.png') }}" alt="kevin cunanan logo full stack engineer" title="kevin cunanan - a full stack engineer" />
+                <img src="{{ URL::asset('images/kevin-logo-3.png') }}" alt="kevin cunanan logo full stack engineer" title="kevin cunanan - a full stack engineer" />
             </span>
                       </a>
 
                       <!-- Default HTML tagline -->
-                      <span class="ish-ph-wp_tagline"><span>Full Stack Engineer</span></span>
+                      <span class="ish-ph-wp_tagline"><span></span></span>
                       <!-- Main navigation -->
                       <nav class="ish-ph-main_nav">
                           <ul id="mainnav" class="ish-ph-mn-main_nav ish-nt-regular ish-megamenu">
@@ -199,7 +200,6 @@
 
 </div>
       <script type='text/javascript' src="{{ URL::asset('js/greensock.js')  }}"></script>
-      <script type='text/javascript' src="{{ URL::asset('js/jquery/jquery.js')  }}"></script>
       <script type='text/javascript' src="{{ URL::asset('js/jquery/jquery-migrate.min.js')  }}"></script>
       <script type='text/javascript' src="{{ URL::asset('js/layerslider.kreaturamedia.jquery.js')  }}"></script>
       <script type='text/javascript' src="{{ URL::asset('js/layerslider.transitions.js')  }}"></script>
@@ -233,6 +233,7 @@
       <script type='text/javascript' src="{{ URL::asset('js/jquery.fancybox.pack.js')  }}"></script>
       <script type='text/javascript' src="{{ URL::asset('js/jquery.tooltipster.min.js')  }}"></script>
       <script type='text/javascript' src="{{ URL::asset('js/jquery.easing-1.3.pack.js')  }}"></script>
+      <script type='text/javascript' src="{{ URL::asset('js/typed.js')  }}"></script>
       @yield('scripts')
       <script type='text/javascript'>
           /* <![CDATA[ */
