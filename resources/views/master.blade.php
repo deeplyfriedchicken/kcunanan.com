@@ -33,10 +33,45 @@
     <link rel='stylesheet' href="{{ URL::asset('css/font.css') }}" type='text/css' media='all' />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     @yield('stylesheets')
+    <style>
+    .social-box {
+       width:50px;
+       height:50px;
+       border-radius: 25px;
+       color: rgba(255, 255, 255, 0.8);
+       padding: 10px;
+    }
+    .social-box:hover {
+      color:#fff;
+    }
+    .social-footer-fb {
+      background-color: #3C599F;
+    }
+    .social-footer-instagram {
+      background-color: #fbad50;
+    }
+    .social-footer-tumblr {
+      background-color: #314E6C;
+    }
+    @media (max-width: 831px) and (min-width: 769px) {
+      .tumblr-hide {
+        display:none;
+      }
+    }
+    .social-footer-pinterest {
+      background-color: #CC2127;
+    }
+    .social-footer-linkedin {
+      background-color: #0077B5;
+    }
+    .social-footer-github {
+      background-color: #000;
+    }
+    </style>
 
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Dosis%3A300%2C300italic%2C400%2C400italic%2Cregular%2Citalic%2C600%2C600italic%2C700%2C700italic%2Cregular%2Cregular%2Cregular%2Cregular%2C&amp;subset=latin&amp;ver=4.4.2' type='text/css' media='all' />
-    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Lobster|Raleway|Montserrat|Crete+Round|Bitter">
+    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Lobster|Raleway|Montserrat|Crete+Round|Bitter|Open+Sans">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&amp;subset=latin%2Clatin-ext' type='text/css' media='all' />
 
 
@@ -158,21 +193,26 @@
 
               <div id="text-2" class="ish-grid6 widget-1 widget widget_text">
                   <div class="textwidget">
-                      <p>
-                          <a href="/"><img src="{{ URL::asset('favicon.png') }}" alt="Freelo Logo"></a>
-                          <br /><span id="span_4f8c_10">Hosted and Developed By Myself</span>
-                          <br />I'm a full stack engineer with experience in big data, compression, and more.
-                          <br />Check out <a href="{{ URL::asset('kevin-resume.pdf') }}" target="_blank">my resume</a> or go to <a href="/portfolio">my portfolio</a>.</p>
+                          <h1><span style="border-bottom:10px solid black;">FOLLOW</span> <span style="background-color:#2b3956; color:#fff; padding: 10px;">ME</span></h1>
+                          <div style="margin-top: 30px;" class="ish-sc-element ish-sc_icon_button_set ish-sc_global_iconic_box">
+                              <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color3 ish-tooltip-color13 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Let's be friends"><a target="_blank" href="https://www.facebook.com/kongkuaifan"><span class="social-box social-footer-fb"><span class="ish-icon-facebook" style="font-size:24px;line-height:24px;"></span></span></a></div>
+                              <div class="ish-sc-element ish-sc_icon ish-simple ish-color2 ish-text-color3 ish-tooltip-color23 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Follow me on Instagram"><a target="_blank" href="https://www.instagram.com/cunananananan/"><span class="social-box social-footer-instagram"><span class="fa fa-instagram" style="font-size:24px;line-height:24px;"></span></span></a></div>
+                              <div class="tumblr-hide ish-sc-element ish-sc_icon ish-simple ish-color3 ish-text-color3 ish-tooltip-color1 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Follow my Tumblr pls"><a target="_blank" href="http://kcunanan.tumblr.com/"><span class="social-box social-footer-tumblr"><span class="ish-icon-tumblr" style="font-size:24px;line-height:24px;"></span></span></a></div>
+                              <div class="tumblr-hide ish-sc-element ish-sc_icon ish-simple ish-color22 ish-text-color3 ish-tooltip-color24 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="I GitHub frequently"><a target="_blank" href="http://github.com/kcunanan"><span class="social-box social-footer-github"><span class="fa fa-github" style="font-size:24px;line-height:24px;"></span></span></a></div>
+                              <div class="ish-sc-element ish-sc_icon ish-simple ish-color4 ish-text-color3 ish-tooltip-color18 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Checkout my Pins"><a target="_blank" href="https://www.pinterest.com/kevincunanan"><span class="social-box social-footer-pinterest"><span class="ish-icon-pinterest-circled" style="font-size:24px;line-height:24px;"></span></span></a></div>
+                              <div class="ish-sc-element ish-sc_icon ish-simple ish-color5 ish-text-color3 ish-tooltip-color1 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="LinkedIn Profile"><a target="_blank" href="https://www.linkedin.com/in/kevin-cunanan"><span class="social-box social-footer-linkedin"><span class="ish-icon-linkedin" style="font-size:24px;line-height:24px;"></span></span></a></div>
+                          </div>
                   </div>
               </div>
               <div id="ishyoboy-twitter-widget-3" class="ish-grid6 widget-2 widget widget_ishyoboy-twitter-widget">
-                  <div class="widget-title ish-sc-element ish-sc_separator ish-icon-left ish-text ish-separator-text ish-separator-solid ish-no-align ish-h5"><span class="ish-line ish-left"><span class="ish-line-border"></span></span><span class="ish-icon ish-left"><span class="ish-icon-pencil"></span></span><span class="ish-text">Recent Posts</span><span class="ish-line ish-right"><span class="ish-line-border"></span></span>
+                  <h1><span style="border-bottom:10px solid black;">CONT</span><span style="background-color:#edaa1e; color:#fff; padding: 10px 0;">ACT</span></h1>
+                  {{-- <div class="widget-title ish-sc-element ish-sc_separator ish-icon-left ish-text ish-separator-text ish-separator-solid ish-no-align ish-h5"><span class="ish-line ish-left"><span class="ish-line-border"></span></span><span class="ish-icon ish-left"><span class="ish-icon-pencil"></span></span><span class="ish-text">Recent Posts</span><span class="ish-line ish-right"><span class="ish-line-border"></span></span>
                   </div>
                   <a class="ab-tweet-username" href="/posts/{{ $recent->category }}/{{ $recent->sub_category }}/{{ $recent->blog_url }}">{{ $recent->blog_title }}</a>
                   <div class="ab-tweet-text">
                       {{ $recent->heading }}
                   </div>
-                  <a class="ish-button-small" href="/posts">Look at more posts.</a>
+                  <a class="ish-button-small" href="/posts">Look at more posts.</a> --}}
 
               </div>
           </div>
@@ -186,7 +226,7 @@
 
       <div class="ish-row ish-row-notfull ish-resp-centere">
           <div class="ish-row_inner">
-              <div class="ish-grid12" id="div_24aa_0">powered by <a href="https://laravel.com/" title="HTML">Laravel 5.3</a><span class="ish-spacer">/</span>Created by <a href="#" title="IshYoBoy.com">Kevin Cunanan</a></div>
+              <div class="ish-grid12" id="div_24aa_0"><a href="/" class="pull-left"><img style="height:25px;" src="{{ URL::asset('favicon.png') }}" alt="Kevin Cunanan"></a>powered by <a href="https://laravel.com/" title="HTML">Laravel 5.3</a><span class="ish-spacer">/</span>Created by <a href="#" title="IshYoBoy.com">Kevin Cunanan</a></div>
           </div>
       </div>
 

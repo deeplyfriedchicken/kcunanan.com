@@ -12,7 +12,7 @@
     font-weight: 800;
   }
   h3 {
-    font-family: 'Montserrat' !important;
+    font-family: 'Crete Round' !important;
     font-weight: 600;
   }
   .ish-sc-element-15 {
@@ -20,7 +20,7 @@
   }
   p {
     color: #000;
-    font-family: 'Montserrat Light';
+    font-family: 'Open Sans';
   }
   </style>
 @endsection

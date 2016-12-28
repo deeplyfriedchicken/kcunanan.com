@@ -21,7 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'desc')->take(10)->get();
+        $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'desc')->take(3)->get();
         return view('index', ['portfolio' => $portfolio]);
     }
     public function showPortfolio()

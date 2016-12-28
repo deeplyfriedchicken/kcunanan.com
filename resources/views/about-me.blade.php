@@ -75,31 +75,6 @@
                     <div class="ish-vc_row_inner">
                         <div class="vc_col-sm-12 wpb_column column_container ish-center" style="">
                             <div class="wpb_wrapper">
-                                <div class="ish-sc-element ish-sc_box ish-color7 ish-text-color4 ish-fullwidth ish-bottom-margin-half" style=" padding:  60px 60px 60px 60px; border-width: 3px;">
-                                    <div class="ish-box-inner">
-                                        <div class="vc_row wpb_row vc_inner vc_row-fluid ">
-                                            <div class="vc_col-sm-12 wpb_column column_container" style="">
-                                                <div class="wpb_wrapper">
-                                                    <div class="ish-sc-element ish-sc_icon_button_set ish-sc_global_iconic_box">
-                                                        <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color4 ish-tooltip-color13 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Add Me Facebook?"><a href="https://www.facebook.com/kongkuaifan"><span style="width:50px;height:24px;"><span class="ish-icon-facebook" style="font-size:24px;line-height:24px;"></span></span></a></div>
-                                                        <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color4 ish-tooltip-color21 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Follow me on Instagram"><a href="https://www.instagram.com/cunananananan/"><span style="width:50px;height:24px;"><span class="ish-icon-instagram" style="font-size:24px;line-height:24px;"></span></span></a></div>
-                                                        <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color4 ish-tooltip-color18 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Follow my Tumblr pls"><a href="http://kcunanan.tumblr.com/"><span style="width:50px;height:24px;"><span class="ish-icon-tumblr" style="font-size:24px;line-height:24px;"></span></span></a></div>
-                                                        <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color4 ish-tooltip-color18 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Checkout My Pinterest"><a href="https://www.pinterest.com/kevincunanan"><span style="width:50px;height:24px;"><span class="ish-icon-pinterest-circled" style="font-size:24px;line-height:24px;"></span></span></a></div>
-                                                        <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color4 ish-tooltip-color15 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="LinkedIn Profile"><a href="https://www.linkedin.com/in/kevin-cunanan"><span style="width:50px;height:24px;"><span class="ish-icon-linkedin" style="font-size:24px;line-height:24px;"></span></span></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-bottom-margin-half ish-resp-centered ish-row_notsection" style="">
-                    <div class="ish-vc_row_inner">
-                        <div class="vc_col-sm-12 wpb_column column_container ish-center" style="">
-                            <div class="wpb_wrapper">
                                 <div class="ish-sc-element ish-sc_box ish-color5 ish-text-color4 ish-fullwidth ish-bgimage" style=" padding:  60px 60px 60px 60px; border-width: 3px; background-image: url({{ URL::asset('images/bg-images/github-transparent2.png') }});background-repeat: no-repeat;">
                                     <div class="ish-box-inner">
                                         <div class="vc_row wpb_row vc_inner vc_row-fluid ">
