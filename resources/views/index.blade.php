@@ -76,7 +76,7 @@
     <!-- ish-body END -->
     @endsection
     @section('quote')
-      <div class="vc_row wpb_row white-quote-background vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection" >
+      <div class="black-border-right vc_row wpb_row white-quote-background vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection" >
           <div class="ish-vc_row_inner">
 
               <div class="vc_col-sm-12 wpb_column column_container" >

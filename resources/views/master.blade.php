@@ -53,7 +53,7 @@
     .social-footer-tumblr {
       background-color: #314E6C;
     }
-    @media (max-width: 831px) and (min-width: 769px) {
+    @media (max-width: 983px) and (min-width: 769px) {
       .hide-social {
         display:none;
       }
@@ -61,6 +61,16 @@
     @media (max-width: 483px) {
       .hide-social {
         display:none;
+      }
+    }
+    @media (max-width: 857px) {
+      .contact-info-div h4 span {
+        font-size: 16px;
+      }
+    }
+    @media(min-width: 858px) {
+      .contact-info-div h4 span {
+        font-size: 20px;
       }
     }
     .social-footer-pinterest {
@@ -71,6 +81,32 @@
     }
     .social-footer-github {
       background-color: #000;
+    }
+    .contact-info {
+      margin-right: 15px;
+      font-size: 35px;
+      border-radius: 25px;
+      padding: 10px;
+      color: #fff;
+    }
+    .contact-info-email {
+      background-color: #2b3956;
+    }
+    .contact-info-phone {
+      background-color: #edaa1e;
+    }
+    .contact-info-map {
+      background-color: #b70342;
+    }
+    .contact-info-div h4 span {
+      font-family: 'Montserrat';
+      color: #000;
+    }
+    .black-border-left {
+      border-left: 10px solid #000;
+    }
+    .black-border-right {
+      border-right: 10px solid #000;
     }
     </style>
 
@@ -191,7 +227,7 @@
   <!-- #content  END -->
   <!-- Footer part section -->
 
-  <section class="ish-part_footer ish-center" id="ish-part_footer">
+  <section class="black-border-left ish-part_footer ish-center" id="ish-part_footer">
 
       <div class="ish-row ish-row-notfull">
           <div class="ish-row_inner">
@@ -209,15 +245,12 @@
                           </div>
                   </div>
               </div>
-              <div id="ishyoboy-twitter-widget-3" class="ish-grid6 widget-2 widget widget_ishyoboy-twitter-widget">
+              <div id="ishyoboy-twitter-widget-3" class="ish-grid6 widget-2 widget widget_ishyoboy-twitter-widget contact-info-div">
                   <h1><span style="border-bottom:10px solid black;">CONT</span><span style="background-color:#edaa1e; color:#fff; padding: 10px 0;">ACT</span></h1>
-                  {{-- <div class="widget-title ish-sc-element ish-sc_separator ish-icon-left ish-text ish-separator-text ish-separator-solid ish-no-align ish-h5"><span class="ish-line ish-left"><span class="ish-line-border"></span></span><span class="ish-icon ish-left"><span class="ish-icon-pencil"></span></span><span class="ish-text">Recent Posts</span><span class="ish-line ish-right"><span class="ish-line-border"></span></span>
-                  </div>
-                  <a class="ab-tweet-username" href="/posts/{{ $recent->category }}/{{ $recent->sub_category }}/{{ $recent->blog_url }}">{{ $recent->blog_title }}</a>
-                  <div class="ab-tweet-text">
-                      {{ $recent->heading }}
-                  </div>
-                  <a class="ish-button-small" href="/posts">Look at more posts.</a> --}}
+                  <br>
+                  <h4><i class="fa fa-envelope contact-info contact-info-email"></i> <span>kevin.a.cunanan@gmail.com</span></h4>
+                  <h4><i class="fa fa-phone contact-info contact-info-phone" ></i> <span>+1 818 671 9284</span></h4>
+                  <h4><i class="fa fa-map-marker contact-info contact-info-map"></i> <span>Claremont Mckenna College</span></h4>
 
               </div>
           </div>
