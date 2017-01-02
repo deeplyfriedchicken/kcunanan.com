@@ -34,6 +34,8 @@
 
   <link rel="stylesheet" href="{{ URL::asset('admin/plugins/colorpicker/bootstrap-colorpicker.min.css') }}">
 
+  <link rel="shortcut icon" href="{{ URL::asset('favicon.png') }}"/>
+
   @yield('stylesheets')
 
   <!-- jQuery 2.2.3 -->
@@ -141,7 +143,7 @@
         </li>
         <li class="treeview">
           <a href="/kevin/sync">
-            <i class="fa fa-exchange"></i> <span>Sync</span>
+            <i class="fa fa-exchange"></i> <span>Sync Server</span>
           </a>
         </li>
         <li class="{{ Request::is('kevin/blog') ? 'active' : '' }} treeview">
@@ -154,6 +156,23 @@
                 <li><a href="/kevin/blog"><i class="fa fa-circle-o"></i> New Post</a></li>
                 <li><a href="/kevin/blog/edit"><i class="fa fa-circle-o"></i> Edit Post</a></li>
             </ul>
+          </a>
+        </li>
+        <li class="{{ Request::is('kevin/fitbit') ? 'active' : '' }} treeview">
+          <a href="">
+            <i class="fa fa-heartbeat"></i> <span>Fitbit</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            <ul class="treeview-menu">
+                <li><a href="https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=22839K&redirect_uri=http://kcunanan.com/fitbit&scope=activity%20nutrition%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight"><i class="fa fa-circle-o"></i> New Fitbit Access Code</a></li>
+                <li><a href="/kevin/fitbit"><i class="fa fa-circle-o"></i> New Access Token</a></li>
+            </ul>
+          </a>
+        </li>
+        <li class="{{ Request::is('kevin/kickstarter') ? 'active' : '' }} treeview">
+          <a href="/kevin/kickstarter">
+            <i class="fa fa-check-square"></i> <span>Kickstarter</span>
           </a>
         </li>
         <li class="{{ Request::is('kevin/sort') ? 'active' : '' }} treeview">

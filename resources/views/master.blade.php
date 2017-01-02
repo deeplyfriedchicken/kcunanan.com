@@ -85,18 +85,21 @@
     .contact-info {
       margin-right: 15px;
       font-size: 35px;
-      border-radius: 25px;
+      border-radius: 50px;
       padding: 10px;
       color: #fff;
+      width: 35px;
+      height: 35px;
+      text-align: center;
     }
     .contact-info-email {
       background-color: #2b3956;
     }
     .contact-info-phone {
-      background-color: #edaa1e;
+      background-color: #2b3956;
     }
     .contact-info-map {
-      background-color: #b70342;
+      background-color: #2b3956;
     }
     .contact-info-div h4 span {
       font-family: 'Montserrat';
@@ -107,6 +110,14 @@
     }
     .black-border-right {
       border-right: 10px solid #000;
+    }
+    .text-left {
+      text-align: left;
+      margin-left: 50px;
+    }
+    div.text-left h4 i {
+      margin: 10px 15px 10px 0 !important;
+      margin-right: 15px;
     }
     </style>
 
@@ -248,9 +259,11 @@
               <div id="ishyoboy-twitter-widget-3" class="ish-grid6 widget-2 widget widget_ishyoboy-twitter-widget contact-info-div">
                   <h1><span style="border-bottom:10px solid black;">CONT</span><span style="background-color:#edaa1e; color:#fff; padding: 10px 0;">ACT</span></h1>
                   <br>
-                  <h4><i class="fa fa-envelope contact-info contact-info-email"></i> <span>kevin.a.cunanan@gmail.com</span></h4>
-                  <h4><i class="fa fa-phone contact-info contact-info-phone" ></i> <span>+1 818 671 9284</span></h4>
-                  <h4><i class="fa fa-map-marker contact-info contact-info-map"></i> <span>Claremont Mckenna College</span></h4>
+                  <div class="text-left">
+                    <h4><i class="fa fa-envelope contact-info contact-info-email"></i> <span>kevin.a.cunanan@gmail.com</span></h4>
+                    <h4><i class="fa fa-phone contact-info contact-info-phone" ></i> <span>+1 818 671 9284</span></h4>
+                    <h4><i class="fa fa-map-marker contact-info contact-info-map"></i> <span>Claremont Mckenna College</span></h4>
+                  </div>
 
               </div>
           </div>

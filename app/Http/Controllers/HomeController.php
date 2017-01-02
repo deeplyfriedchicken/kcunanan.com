@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\Mail;
 use App\Lookup;
+use Tumblr\API\Client;
+use GitHub;
 
 class HomeController extends Controller
 {
@@ -22,8 +24,31 @@ class HomeController extends Controller
     public function index()
     {
         $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'desc')->take(3)->get();
-        return view('index', ['portfolio' => $portfolio]);
+        $blogs = Lookup::where('category', 'blog')->orderBy('created_at', 'desc')->take(1)->get();
+
+        $url ='https://api.instagram.com/v1/users/self/media/recent/?access_token='.env('INSTA_ACCESS');
+    		$content = file_get_contents($url);
+    		$instas = array_slice(json_decode($content, true)['data'], 0, 2);
+
+        $kickstarters = Lookup::where('category', 'kickstarter')->take(2)->get();
+
+        $fitbit = Lookup::where('category', 'fitbit_data')->orderBy('date_posted')->take(7)->get();
+        $hourSlept = 0.0;
+        foreach($fitbit as $data) {
+            $hourSlept += ((int)$data->other_1)/60.0;
+        }
+
+        return view('index', ['portfolio' => $portfolio, 'instas' => $instas, 'kickstarters' => $kickstarters, 'blogs' => $blogs, 'hourSlept' => $hourSlept]);
     }
+
+    public function about()
+    {
+      $client = new Client(env('TUMBLR_API_KEY'), env('TUMBLR_SECRET'));
+      $client->setToken(env('TUMBLR_TOKEN'), env('TUMBLR_TOKEN_SECRET'));
+      $url = $client->getBlogPosts('kcunanan.tumblr.com')->posts[0]->photos[0]->original_size->url;
+      $caption = $client->getBlogPosts('kcunanan.tumblr.com')->posts[0]->caption;
+    }
+
     public function showPortfolio()
     {
       $portfolio = DB::table('lookups')->where('category', 'portfolio')->orderBy('created_at', 'desc')->get();

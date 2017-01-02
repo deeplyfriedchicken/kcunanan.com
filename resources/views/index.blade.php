@@ -17,6 +17,59 @@
       background: #fff;
       margin-bottom: 0;
     }
+    .instas {
+      margin: 15px 75px;
+    }
+    .instas a img {
+      border-radius: 50px;
+    }
+    .kickstarter {
+      margin: 15px 30px;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .cool-button button {
+      background-color: #000;
+      color: #fff;
+      margin: 25px 0 5px 0;
+    }
+    .cool-button button:hover {
+      background-color: #fff;
+      color: #000;
+      font-size: 1.5em;
+    }
+    .margin-top-15 {
+      margin-top: 15px;
+    }
+    .instagram_h1 {
+      background: linear-gradient(330deg, #405de6 0%, #5851db 25%, #833ab4 50%, #c13584 75%, #e1306c 100%, #fd1d1d 100%, #f56040 100%, #f77737 100%, #fcaf45 100%, #ffdc80 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .kickstarter_h1 {
+      color: #2bde73;
+    }
+    .kickstarter a {
+      text-decoration: none;
+    }
+    .kickstarter a:hover {
+      text-decoration: underline;
+      color: #2bde73;
+    }
+    .feature_h1 span {
+      background-color: #405de6;
+      color: #fff;
+      padding: 15px;
+    }
+    .fitbit_h1 {
+      color: #4cc2c4;
+      margin-bottom: 15px !important;
+    }
+    .fitbit_sleep h3 {
+        font-size: 3em;
+    }
+
   </style>
 @endsection
 @section('content')
@@ -40,15 +93,13 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-bottom-margin-half ish-resp-centered ish-row_notsection ish-has-portfolio" >
                     <div class="ish-vc_row_inner">
                         <div class="vc_col-sm-12 wpb_column column_container" >
                             <div class="wpb_wrapper">
-                              <div style="text-align:center;"><h1>Featured Projects</h1></div>
+                              <div class="text-center"><h1 class="feature_h1"><span>Featured Projects</span></h1></div>
                                 <div class="ish-sc-element ish-sc_portfolio  ish-layout-masonry-tiles ish-ratio-masonry-tiles ish-p-zoomin ish-p-packery" data-count="3"><span class="ish-preloader"></span>
                                     <div class="ish-p-items-container" id="div_4f8c_2">
                                       @foreach($portfolio as $item)
@@ -66,7 +117,99 @@
                                         </div>
                                       @endforeach
                                     </div>
+                                    <div class="text-center"><a href="/portfolio" class="cool-button"><button>View Portfolio</button></a></div>
                                 </div>
+                                <div class="wpb_row vc_row-fluid ish-row-notfull ish-resp-centered ish-row_section ish-taglines-separator-row" style="">
+                                    <div class="ish-vc_row_inner">
+                                        <div class="vc_col-sm-12 wpb_column column_container" style="">
+                                            <div class="wpb_wrapper">
+                                                <div class="ish-sc_separator ish-separator-text ish-separator-double ish-taglines-separator" style="white-space: nowrap;">
+                                                    <span class="ish-line ish-left"><span class="ish-line-border"></span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="margin-top-15 text-center"><h1 class="recent_h1">Recent Blog Posts</h1></div>
+                                <div class="vc_col-sm-12 wpb_column column_container">
+                                  <section class="ish-part_content ish-blog ish-blog-2columns ish-without-sidebar">
+                                    @foreach($blogs as $blog)
+                                    <div id="post-252" class="wpb_row vc_row-fluid ish-row-notfull ish-row_notsection ish-content-align-right post-252 post type-post status-publish format-standard has-post-thumbnail hentry category-flat category-light tag-flash tag-iron">
+                                        <div class="ish-vc_row_inner">
+                                            <div class="ish-display-table">
+                                                <div class="ish-post-content ish-color9 ish-text-color4 ish-grid6">
+                                                    <div class="ish-blog-post-content">
+                                                        <h2 class="ish-h4"><a href="#">{{ $blog->blog_title }}</a></h2>
+                                                        <div class="ish-blog-post-details">
+                                                            <span><a href="#">{{ $blog->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="#">{{ ucwords($blog->sub_category) }}</a><span class="ish-spacer">/</span><span><a href="#">{{ $blog->blog_views }} Views</a></span>
+                                                        </div>
+                                                        <div class="ish-blog-post-excerpt">
+                                                            <p>
+                                                                {{ $blog->heading }}
+                                                            </p>
+                                                        </div>
+                                                        <span class="ish-blog-post-links"><a class="ish-read-more" href="#">Read more &gt;</a></span>
+                                                    </div>
+                                                </div>
+                                                <div class="ish-post-media ish-grid6 ish-color9 ish-text-color4">
+                                                    <div class="ish-blog-post-media">
+                                                        <div class="ish-blog-image-content">
+                                                            <a href="#"><img src="{{ URL::asset($blog->media_url) }}" class="attachment-theme-large size-theme-large wp-post-image" alt="papers"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                  </section>
+                                  <div class="wpb_row vc_row-fluid ish-row-notfull ish-resp-centered ish-row_section ish-taglines-separator-row" style="">
+                                      <div class="ish-vc_row_inner">
+                                          <div class="vc_col-sm-12 wpb_column column_container">
+                                              <div class="wpb_wrapper">
+                                                  <div class="ish-sc_separator ish-separator-text ish-separator-double ish-taglines-separator" style="white-space: nowrap;">
+                                                      <span class="ish-line ish-left"><span class="ish-line-border"></span></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <section class="margin-top-15">
+                                <div class="vc_col-sm-4 wpb_column column_container">
+                                  <div class="wpb_wrapper text-center">
+                                    <h1 class="instagram_h1">Instagram</h1>
+                                    @foreach($instas as $insta)
+                                      <div class="instas">
+                                        <a href="{{ $insta['link'] }}" ><img src="{{ str_replace('s150x150', 's640x640', $insta['images']['thumbnail']['url']) }}"></a>
+                                      </div>
+                                    @endforeach
+                                  </div>
+                                </div>
+                                <div class="vc_col-sm-4 wpb_column column_container" >
+                                  <div class="wpb_wrapper text-center">
+                                    <h1 class="kickstarter_h1">Kickstarter</h1>
+                                    <span>(Projects I've Backed)</span>
+                                    @foreach($kickstarters as $kick)
+                                      <div class="kickstarter">
+                                        <a href="{{ $kick->blog_url }}" >
+                                          <img src="{{ $kick->media_url }}">
+                                          <h5 class="kickstarter_heading">{{ $kick->blog_title }}</h5>
+                                        </a>
+                                      </div>
+                                    @endforeach
+                                  </div>
+                                </div>
+                                <div class="vc_col-sm-3 wpb_column column_container" >
+                                  <div class="wpb_wrapper text-center">
+                                    <h1 class="fitbit_h1">Fitbit</h1>
+                                    <div class="fitbit_sleep">
+                                      <h1><i class="fa fa-moon-o"></i></h1>
+                                      <h3>{{ $hourSlept }}</h3>
+                                      <span>Hours Slept</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </section>
                             </div>
                         </div>
                     </div>

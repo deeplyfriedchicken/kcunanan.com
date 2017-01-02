@@ -22,9 +22,7 @@ Route::get('posts/portfolio', function() {
 Route::post('search', ['uses' => 'HomeController@searchURL']);
 Route::get('search/{term}', ['uses' => 'HomeController@search']);
 
-Route::get('about', function() {
-  return view('about-me');
-});
+Route::get('about', ['uses' => 'HomeController@about']);
 
 Route::get('contact', function() {
   return view('contact');
@@ -60,6 +58,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'kevin'], function () {
 
   Route::get('sync', ['uses' => 'AdminController@sync']);
   Route::get('mail/{id}', ['uses' => 'AdminController@viewMail']);
+
+  Route::post('kickstarter', ['uses' => 'AdminController@newKickstarter']);
+  Route::get('kickstarter', ['uses' => 'AdminController@showKickstarters']);
 });
 
 Route::group(['middleware' => ['web']], function() {

@@ -38,6 +38,9 @@ class CreateLookupTable extends Migration
         $table->text('code')->nullable();
         $table->string('tag')->nullable();
         $table->date('date_posted')->nullable();
+        $table->string('other_1', 1000)->nullable();
+        $table->string('other_2', 1000)->nullable();
+        $table->string('other_3', 1000)->nullable();
         $table->timestamps();
       });
 

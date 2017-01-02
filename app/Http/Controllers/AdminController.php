@@ -39,6 +39,30 @@ class AdminController extends Controller
       $tags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
       return view('admin/blog', ['tags' => $tags]);
     }
+    public function showKickstarters() {
+      $kicks = Lookup::where('category', 'kickstarter')->get();
+      return view('admin/kickstarter', ['kicks' => $kicks]);
+    }
+    public function newKickstarter(Request $request) {
+
+      $search = $request['search_term'];
+      $url = 'https://www.kickstarter.com/projects/search.json?search=&term='.$search;
+      $content = file_get_contents($url);
+      $kickstarter = json_decode($content, true);
+      $kickstarter = $kickstarter['projects'][0];
+      $kick = new Lookup;
+      $kick->category = 'kickstarter';
+      $kick->date_posted = $kickstarter['launched_at'];
+      $kick->blog_title = $kickstarter['name'];
+      $kick->sub_category = $kickstarter['category']['name'];
+      $kick->media_url = $kickstarter['photo']['1024x576'];
+      $kick->heading = $kickstarter['blurb'];
+      $kick->blog_url = $kickstarter['urls']['web']['project'];
+      $kick->save();
+      $kicks = Lookup::where('category', 'kickstarter')->get();
+      return view('admin/kickstarter', ['kicks' => $kicks]);
+    }
+
     public function viewMail($id) {
       $mail = Mail::findOrFail($id);
       $mail->seen = 1;
