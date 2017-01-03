@@ -34,9 +34,14 @@ class HomeController extends Controller
 
         $fitbit = Lookup::where('category', 'fitbit_data')->orderBy('date_posted')->take(7)->get();
         $hourSlept = 0.0;
+        $countDays = 0;
         foreach($fitbit as $data) {
-            $hourSlept += ((int)$data->other_1)/60.0;
+          if((int)$data->other_1 != 0) {
+              $hourSlept += ((int)$data->other_1)/60.0;
+              $countDays++;
+          }
         }
+        $hourSlept = round($hourSlept/$countDays, 2);
 
         return view('index', ['portfolio' => $portfolio, 'instas' => $instas, 'kickstarters' => $kickstarters, 'blogs' => $blogs, 'hourSlept' => $hourSlept]);
     }

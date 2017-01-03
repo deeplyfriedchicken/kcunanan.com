@@ -12,6 +12,7 @@ use App\Lookup;
 use Image;
 use Auth;
 use Carbon\Carbon;
+use djchen\OAuth2\Client\Provider\Fitbit;
 
 function runSync() {
     chdir('/homepages/37/d587320544/htdocs/kcunanan');
@@ -39,10 +40,69 @@ class AdminController extends Controller
       $tags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
       return view('admin/blog', ['tags' => $tags]);
     }
+
+    public function getFitbitData(Request $request2) {
+      // need to do this in Controller since 1&1 doesn't support 5.6
+      // TODO - Create a control statement that checks if it was already downloaded today
+
+      $provider = new Fitbit([
+        'clientId'          => env('FITBIT_CLIENT'),
+        'clientSecret'      => env('FITBIT_SECRET'),
+        'redirectUri'       => 'http://kcunanan.com/fitbit'
+      ]);
+      $fitbit = Lookup::where('category', 'fitbit_access_refresh')->first();
+      $newAccessToken = $provider->getAccessToken('refresh_token', ['refresh_token' => $fitbit->other_2]);
+      // other_1 = accessToken
+      // other_2 = refreshToken
+      $fitbit->other_1 = $newAccessToken->getToken();
+      $fitbit->other_2 = $newAccessToken->getRefreshToken();
+      $fitbit->save();
+      $accessToken = $newAccessToken->getToken();
+      $request = $provider->getAuthenticatedRequest(
+          Fitbit::METHOD_GET,
+          Fitbit::BASE_FITBIT_API_URL . '/1/user/-/sleep/date/today.json',
+          $accessToken,
+          ['headers' => [Fitbit::HEADER_ACCEPT_LANG => 'en_US'], [Fitbit::HEADER_ACCEPT_LOCALE => 'en_US']]
+          // Fitbit uses the Accept-Language for setting the unit system used
+          // and setting Accept-Locale will return a translated response if available.
+          // https://dev.fitbit.com/docs/basics/#localization
+      );
+      $response = $provider->getResponse($request)['sleep'];
+      $request = $provider->getAuthenticatedRequest(
+          Fitbit::METHOD_GET,
+          Fitbit::BASE_FITBIT_API_URL . '/1/user/-/activities/date/today.json',
+          $accessToken,
+          ['headers' => [Fitbit::HEADER_ACCEPT_LANG => 'en_US'], [Fitbit::HEADER_ACCEPT_LOCALE => 'en_US']]
+          // Fitbit uses the Accept-Language for setting the unit system used
+          // and setting Accept-Locale will return a translated response if available.
+          // https://dev.fitbit.com/docs/basics/#localization
+      );
+      if(Lookup::where('date_posted', $response[0]['dateOfSleep'])->exists()) {
+        $request2->session()->flash('existing-fitbit', 'Data exists for '.$response[0]['dateOfSleep']);
+        return redirect('/kevin');
+      }
+      else {
+        $response2 = $provider->getResponse($request);
+        $data = $response2['summary'];
+        $entry = new Lookup;
+        //views = steps
+        $entry->category = 'fitbit_data';
+        $entry->blog_views = $data['steps'];
+        // shares = floors
+        $entry->blog_shares = $data['floors'];
+        $entry->other_1 = $response[0]['minutesAsleep'];
+        $entry->date_posted = $response[0]['dateOfSleep'];
+        $entry->save();
+        $request2->session()->flash('downloaded-fitbit', 'Downloaded data for '.$entry->date_posted);
+        return redirect('/kevin');
+      }
+    }
+
     public function showKickstarters() {
       $kicks = Lookup::where('category', 'kickstarter')->get();
       return view('admin/kickstarter', ['kicks' => $kicks]);
     }
+
     public function newKickstarter(Request $request) {
 
       $search = $request['search_term'];

@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'kevin'], function () {
 
   Route::post('kickstarter', ['uses' => 'AdminController@newKickstarter']);
   Route::get('kickstarter', ['uses' => 'AdminController@showKickstarters']);
+
+  Route::get('fitbit', ['uses' => 'AdminController@getFitbitData']);
 });
 
 Route::group(['middleware' => ['web']], function() {

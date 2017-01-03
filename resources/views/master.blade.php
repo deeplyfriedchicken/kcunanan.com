@@ -162,13 +162,13 @@
                   <div class="ish-row_inner">
 
                       <div class="ish-hb-left ish-hb-social">
-                          <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color17 ish-tooltip-color17 ish-tooltip-text-color4"  data-type="tooltip" title="Pinterest"><a href="https://www.pinterest.com/kevincunanan" target="_blank"><span><span class="ish-icon-pinterest"></span></span></a></div>
+                          <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color18 ish-tooltip-color18 ish-tooltip-text-color4"  data-type="tooltip" title="Pinterest"><a href="https://www.pinterest.com/kevincunanan" target="_blank"><span><span class="ish-icon-pinterest"></span></span></a></div>
 
                           <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color13 ish-tooltip-color13 ish-tooltip-text-color4"  data-type="tooltip" title="Facebook"><a href="https://www.facebook.com/kongkuaifan" target="_blank"><span><span class="ish-icon-facebook"></span></span></a></div>
 
-                          <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color14 ish-tooltip-color14 ish-tooltip-text-color4"  data-type="tooltip" title="LinkedIn"><a href="https://www.linkedin.com/in/kevin-cunanan" target="_blank"><span><span class="ish-icon-linkedin"></span></span></a></div>
+                          <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color15 ish-tooltip-color15 ish-tooltip-text-color4"  data-type="tooltip" title="LinkedIn"><a href="https://www.linkedin.com/in/kevin-cunanan" target="_blank"><span><span class="ish-icon-linkedin"></span></span></a></div>
 
-                          <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color15 ish-tooltip-color15 ish-tooltip-text-color4"  data-type="tooltip" title="GitHub"><a href="https://github.com/kcunanan" target="_blank"><span><span class="ish-icon-github-circled"></span></span></a></div>
+                          <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color24 ish-tooltip-color24 ish-tooltip-text-color4"  data-type="tooltip" title="GitHub"><a href="https://github.com/kcunanan" target="_blank"><span><span class="ish-icon-github-circled"></span></span></a></div>
 
                           <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color5 ish-tooltip-color7 ish-tooltip-text-color4"  data-type="tooltip" title="Contact Me"><a href="/contact"><span><span class="ish-icon-email"></span></span></a></div>
                       </div>
@@ -277,7 +277,7 @@
 
       <div class="ish-row ish-row-notfull ish-resp-centere">
           <div class="ish-row_inner">
-              <div class="ish-grid12" id="div_24aa_0"><a href="/" class="pull-left"><img style="height:25px;" src="{{ URL::asset('favicon.png') }}" alt="Kevin Cunanan"></a>powered by <a href="https://laravel.com/" title="HTML">Laravel 5.3</a><span class="ish-spacer">/</span>Created by <a href="#" title="IshYoBoy.com">Kevin Cunanan</a></div>
+              <div class="ish-grid12" id="div_24aa_0"><a href="/" class="pull-left"><img style="height:25px;" src="{{ URL::asset('favicon.png') }}" alt="Kevin Cunanan"></a>powered by <a target="_blank" href="https://github.com/kcunanan/kcunanan.com" title="Laravel - GitHub kcunanan.com">Laravel 5.3</a><span class="ish-spacer">/</span>Created by <a href="#" title="kcunanan.com">Kevin Cunanan</a></div>
           </div>
       </div>
 

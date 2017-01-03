@@ -165,8 +165,7 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
             <ul class="treeview-menu">
-                <li><a href="https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=22839K&redirect_uri=http://kcunanan.com/fitbit&scope=activity%20nutrition%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight"><i class="fa fa-circle-o"></i> New Fitbit Access Code</a></li>
-                <li><a href="/kevin/fitbit"><i class="fa fa-circle-o"></i> New Access Token</a></li>
+                <li><a href="/kevin/fitbit"><i class="fa fa-circle-o"></i> Download Fitbit Data</a></li>
             </ul>
           </a>
         </li>

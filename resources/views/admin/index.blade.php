@@ -8,6 +8,20 @@
           {{ Session::get('sync') }}
         </div>
       @endif
+      @if(Session::has('downloaded-fitbit'))
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Success!</h4>
+          {{ Session::get('downloaded-fitbit') }}
+        </div>
+      @endif
+      @if(Session::has('existing-fitbit'))
+        <div class="alert alert-warning alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Data Already Downloaded!</h4>
+          {{ Session::get('existing-fitbit') }}
+        </div>
+      @endif
     </div>
     <!-- Main content -->
     <section class="content">
