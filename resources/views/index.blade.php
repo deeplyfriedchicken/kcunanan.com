@@ -139,7 +139,7 @@
                                             <div class="ish-display-table">
                                                 <div class="ish-post-content ish-color9 ish-text-color4 ish-grid6">
                                                     <div class="ish-blog-post-content">
-                                                        <h2 class="ish-h4"><a href="#">{{ $blog->blog_title }}</a></h2>
+                                                        <h2 class="ish-h4"><a href="/posts/{{ strtolower($blog->category) }}/{{ strtolower($blog->sub_category) }}/{{ strtolower($blog->blog_url) }}">{{ $blog->blog_title }}</a></h2>
                                                         <div class="ish-blog-post-details">
                                                             <span><a href="#">{{ $blog->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="#">{{ ucwords($blog->sub_category) }}</a><span class="ish-spacer">/</span><span><a href="#">{{ $blog->blog_views }} Views</a></span>
                                                         </div>
@@ -148,13 +148,13 @@
                                                                 {{ $blog->heading }}
                                                             </p>
                                                         </div>
-                                                        <span class="ish-blog-post-links"><a class="ish-read-more" href="#">Read more &gt;</a></span>
+                                                        <span class="ish-blog-post-links"><a class="ish-read-more" href="/posts/{{ strtolower($blog->category) }}/{{ strtolower($blog->sub_category) }}/{{ strtolower($blog->blog_url) }}">Read more &gt;</a></span>
                                                     </div>
                                                 </div>
                                                 <div class="ish-post-media ish-grid6 ish-color9 ish-text-color4">
                                                     <div class="ish-blog-post-media">
                                                         <div class="ish-blog-image-content">
-                                                            <a href="#"><img src="{{ URL::asset($blog->media_url) }}" class="attachment-theme-large size-theme-large wp-post-image" alt="papers"></a>
+                                                            <a href="/posts/{{ strtolower($blog->category) }}/{{ strtolower($blog->sub_category) }}/{{ strtolower($blog->blog_url) }}"><img src="{{ URL::asset($blog->media_url) }}" class="attachment-theme-large size-theme-large wp-post-image" alt="papers"></a>
                                                         </div>
                                                     </div>
                                                 </div>
