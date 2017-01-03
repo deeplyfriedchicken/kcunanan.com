@@ -15,8 +15,8 @@ use Carbon\Carbon;
 use djchen\OAuth2\Client\Provider\Fitbit;
 
 function runSync() {
-    chdir('/homepages/37/d587320544/htdocs/kcunanan');
-    shell_exec('./sync.sh'); //moving things to public after image upload
+    // chdir('/homepages/37/d587320544/htdocs/kcunanan');
+    // shell_exec('./sync.sh'); //moving things to public after image upload
 }
 function cleanUrl($string) {
   $string = strtolower($string);
@@ -287,13 +287,18 @@ class AdminController extends Controller
               $section->heading = $request["title".$i];
               $section->content = $request["content".$i];
               $section->code = $request["code".$i];
-              if ($request->file('image'.$i) != null) {
-                $image = Image::make($request->file('image'.$i));
-                $image_id = uniqid();
-                $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
-                $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
-                $image->save($path);
-                runSync();
+              if($request["radio_image".$i] == "upload") {
+                if ($request->file('image'.$i) != null) {
+                  $image = Image::make($request->file('image'.$i));
+                  $image_id = uniqid();
+                  $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
+                  $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
+                  $image->save($path);
+                  runSync();
+                }
+              }
+              elseif($request["radio_image".$i] == "url") {
+                $section->media_url = $request['image'.$i.'_url'];
               }
               else {
                 $section->media_url = $request['old_image'.$i];
@@ -378,13 +383,29 @@ class AdminController extends Controller
               $section->heading = $request["title".$i];
               $section->content = $request["content".$i];
               $section->code = $request["code".$i];
-              if ($request->file('image'.$i) != null) {
-                $image = Image::make($request->file('image'.$i));
-                $image_id = uniqid();
-                $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
-                $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
-                $image->save($path);
-                runSync();
+              if($request["radio_image".$i] == "upload") {
+                if ($request->file('image'.$i) != null) {
+                  $image = Image::make($request->file('image'.$i));
+                  $image_id = uniqid();
+                  $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
+                  $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
+                  $image->save($path);
+                  runSync();
+                }
+              }
+              elseif($request["radio_image".$i] == "url") {
+                $section->media_url = $request['image'.$i.'_url'];
+              }
+              // final check
+              else {
+                if ($request->file('image'.$i) != null) {
+                  $image = Image::make($request->file('image'.$i));
+                  $image_id = uniqid();
+                  $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
+                  $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
+                  $image->save($path);
+                  runSync();
+                }
               }
               $section->save();
             }

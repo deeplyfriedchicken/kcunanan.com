@@ -141,8 +141,16 @@
                     <input id="color{{ $counter }}" name="color{{ $counter }}" type="text" class="form-control colorme" value="{{ $section->color }}">
                   </div>
                   <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="radio">
+                        <label><input type="radio" name="radio_image1" value="upload"> Upload</label>
+                        <label><input type="radio" name="radio_image1" value="url"> URL</label>
+                      </div>
+                    </div>
                     <label for="image{{ $counter }}">Section Photo {{ $counter }} (if applicable @if($section->media_url) <a target="_blank" href="{{ URL::asset($section->media_url) }}">current</a> <input type="hidden" name="old_image{{ $counter }}" value="<?php echo $section->media_url ?>"> @endif)</label>
                     <input id="image{{ $counter }}" name="image{{ $counter }}" type="file" class="file">
+                    <label for="image1_url">URL</label>
+                    <input id="image1_url" class="form-control" name="image1_url" type="text" value="{{ $section->media_url }}">
                   </div>
                 </div>
                   <div class="form-group">
@@ -219,8 +227,16 @@
         "<input id='color{{ $sections_count }}' name='color{{ $sections_count }}' type='text' class='form-control colorme'>" +
       "</div>" +
       "<div class='mid-col'>" +
+        "<div class='form-group'>" +
+          "<div class='radio'>" +
+            "<label><input type='radio' name='radio_image{{ $sections_count }}' value='upload'> Upload</label> " +
+            "<label><input type='radio' name='radio_image{{ $sections_count }}' value='url'> URL</label>" +
+          "</div>" +
+        "</div>" +
         "<label for='media'>Section {{ $sections_count }} Photo (if applicable)</label>" +
         "<input id='image{{ $sections_count }}' name='image{{ $sections_count }}' type='file' class='file'>" +
+        "<label for='image{{ $sections_count }}_url'>URL</label>" +
+        "<input id='image{{ $sections_count }}_url' class='form-control' name='image{{ $sections_count }}_url' type='text'>" +
       "</div>" +
     "</div>" +
       "<div class='form-group'>" +

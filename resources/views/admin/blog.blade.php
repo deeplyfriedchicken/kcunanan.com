@@ -136,8 +136,16 @@
                 <input id="color1" name="color1" type="text" class="form-control colorme">
               </div>
               <div class="col-md-4">
+                <div class="form-group">
+                  <div class="radio">
+                    <label><input type="radio" name="radio_image1" value="upload"> Upload</label>
+                    <label><input type="radio" name="radio_image1" value="url"> URL</label>
+                  </div>
+                </div>
                 <label for="media">Section Photo (if applicable)</label>
                 <input id="image1" name="image1" type="file" class="file">
+                <label for="image1_url">URL</label>
+                <input id="image1_url" class="form-control" name="image1_url" type="text">
               </div>
             </div>
               <div class="form-group">
@@ -177,8 +185,16 @@
         "<input id='color1' name='color1' type='text' class='form-control colorme'>" +
       "</div>" +
       "<div class='mid-col'>" +
+        "<div class='form-group'>" +
+          "<div class='radio'>" +
+            "<label><input type='radio' name='radio_image1' value='upload'> Upload</label> " +
+            "<label><input type='radio' name='radio_image1' value='url'> URL</label>" +
+          "</div>" +
+        "</div>" +
         "<label for='media'>Section 1 Photo (if applicable)</label>" +
         "<input id='image1' name='image1' type='file' class='file'>" +
+        "<label for='image1_url'>URL</label>" +
+        "<input id='image1_url' class='form-control' name='image1_url' type='text'>" +
       "</div>" +
     "</div>" +
       "<div class='form-group'>" +
