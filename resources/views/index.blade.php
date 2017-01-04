@@ -1,4 +1,13 @@
 @extends('master')
+@section('meta')
+  <meta property="og:image" content="{{ URL::asset('images/kevin-logo-3.png') }}" />
+
+  <meta property="og:description" content="Welcome! I have a lot of things to show you. Please take you time. - Kevin Cunanan" />
+
+  <meta property="og:url"content="http://kcunanan.com" />
+
+  <meta property="og:title" content="kcunanan.com - The Site About Kevin" />
+@endsection
 @section('stylesheets')
   <style>
     h1#kevin {

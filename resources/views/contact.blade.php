@@ -1,4 +1,13 @@
 @extends('master')
+@section('meta')
+  <meta property="og:image" content="{{ URL::asset('images/kevin-logo-3.png') }}" />
+
+  <meta property="og:description" content="Contact Kevin! He can get lonely." />
+
+  <meta property="og:url"content="http://kcunanan.com/contact" />
+
+  <meta property="og:title" content="kcunanan.com - The Page to Contact Kevin" />
+@endsection
 @section('content')
 
             <!-- Content part section -->

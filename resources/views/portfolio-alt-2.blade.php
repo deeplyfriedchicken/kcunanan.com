@@ -1,4 +1,13 @@
 @extends('master')
+@section('meta')
+  <meta property="og:image" content="{{ URL::asset('images/kevin-logo-3.png') }}" />
+
+  <meta property="og:description" content="Welcome to Kevin Cunanan's Portfolio! Kevin is really interested in backend and frontend engineering. But he also has other skills." />
+
+  <meta property="og:url"content="http://kcunanan.com/portfolio" />
+
+  <meta property="og:title" content="kcunanan.com - The Portfolio About Kevin" />
+@endsection
 @section('content')
             <div class="ish-part_tagline ish-tagline_regular ish-tagline-colored ish-no-pattern-img">
                 <div class="ish-overlay ish-default-tagline">
