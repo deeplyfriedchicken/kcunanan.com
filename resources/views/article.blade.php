@@ -1,4 +1,13 @@
 @extends('master')
+@section('meta')
+  <meta property="og:image" content="{{ URL::asset($blog[0]->media_url) }}" />
+
+  <meta property="og:description" content="{{ $blog[0]->heading }}" />
+
+  <meta property="og:url"content="{{ URL::asset("/posts"."/".$blog[0]->category."/".$blog[0]->sub_category."/".$blog[0]->blog_url) }}" />
+
+  <meta property="og:title" content="kcunanan.com - {{ $blog[0]->blog_title }}" />
+@endsection
 @section('stylesheets')
   <style>
   #portfolio-link, #github-link {
