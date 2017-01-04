@@ -15,6 +15,10 @@
   	color: #000;
   	font-family: 'Open Sans';
   }
+  /* Overwrite annoying CSS */
+  .ish-part_content.ish-without-sidebar>.ish-row>.ish-row_inner, .ish-part_content.ish-without-sidebar>.ish-row>.ish-vc_row_inner, .ish-part_content.ish-without-sidebar>.wpb_row>.ish-row_inner, .ish-part_content.ish-without-sidebar>.wpb_row>.ish-vc_row_inner {
+    padding-bottom: 20px;
+  }
   </style>
 @endsection
 @section('content')
@@ -123,8 +127,7 @@
                                     @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
                                     <div class="wpb_text_column wpb_content_element " style="">
                                         <div class="wpb_wrapper" style="text-align: center;">
-                                          <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img src="{{ URL::asset($section->media_url) }}" alt=""  /></a>
-
+                                          <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img src="{{ URL::asset($section->media_url) }}" alt=""  /></a
                                         </div>
                                     </div>
                                 </div>
@@ -164,6 +167,39 @@
                               </div>
                           </div>
                       </div>
+                      @elseif($section->helper_type == 'cp48')
+                        <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection ish-valign-middle" style="">
+                            <div class="ish-vc_row_inner">
+                                <div class="vc_col-sm-4 wpb_column column_container" style="">
+                                    <div class="wpb_wrapper">
+                                        <div class="ish-sc-element ish-sc_image ish-fullwidth">
+                                            {!! $section->code !!}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vc_col-sm-8 wpb_column column_container" style="">
+                                    <div class="wpb_wrapper">
+                                        <div class="ish-sc-element ish-sc_box ish-fullwidth" style=" padding:  0 30px 0 30px; border-width: 3px;">
+                                            <div class="ish-box-inner">
+                                                <div class="vc_row wpb_row vc_inner vc_row-fluid ">
+                                                    <div class="vc_col-sm-12 wpb_column column_container" style="">
+                                                        <div class="wpb_wrapper">
+                                                            @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
+                                                            <div class="wpb_text_column wpb_content_element " style="">
+                                                                <div class="wpb_wrapper">
+                                                                    {!! $section->content !!}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @elseif($section->helper_type == 'imp')
                       <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection ish-valign-middle" style="">
                           <div class="ish-vc_row_inner">
@@ -198,6 +234,40 @@
                               </div>
                           </div>
                       </div>
+                      @elseif($section->helper_type == 'imp48')
+                        <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection ish-valign-middle" style="">
+                            <div class="ish-vc_row_inner">
+                                <div class="vc_col-sm-4 wpb_column column_container" style="">
+                                    <div class="wpb_wrapper">
+                                        <div class="ish-sc-element ish-sc_image ish-fullwidth">
+                                            <a href="{{ URL::asset($section->media_url) }}" title="" target="_blank"><img width="571" height="357" src="{{ URL::asset($section->media_url) }}" class="attachment-theme-half size-theme-half" alt=""  /></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vc_col-sm-8 wpb_column column_container" style="">
+                                    <div class="wpb_wrapper">
+                                        <div class="ish-sc-element ish-sc_box ish-fullwidth" style=" padding:  0 30px 0 30px; border-width: 3px;">
+                                            <div class="ish-box-inner">
+                                                <div class="vc_row wpb_row vc_inner vc_row-fluid ">
+                                                    <div class="vc_col-sm-12 wpb_column column_container" style="">
+                                                        <div class="wpb_wrapper">
+                                                            @if($section->heading)<h3 class="article-subheading ish-sc-element-15 ish-sc_headline ish-color8" style="@if($section->color) color:{{ $section->color }} @endif">{{ $section->heading }}</h3>@endif
+                                                            <div class="wpb_text_column wpb_content_element " style="">
+                                                                <div class="wpb_wrapper">
+                                                                    {!! $section->content !!}
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                       @elseif($section->helper_type == 'pc')
                         <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection ish-valign-middle" style="">
                             <div class="ish-vc_row_inner">

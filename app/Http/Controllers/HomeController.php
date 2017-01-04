@@ -52,6 +52,7 @@ class HomeController extends Controller
       $client->setToken(env('TUMBLR_TOKEN'), env('TUMBLR_TOKEN_SECRET'));
       $url = $client->getBlogPosts('kcunanan.tumblr.com')->posts[0]->photos[0]->original_size->url;
       $caption = $client->getBlogPosts('kcunanan.tumblr.com')->posts[0]->caption;
+      return view('about-me');
     }
 
     public function showPortfolio()

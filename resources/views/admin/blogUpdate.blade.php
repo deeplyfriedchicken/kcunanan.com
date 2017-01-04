@@ -126,11 +126,13 @@
                     <label for="type{{ $counter }}">Type of Section {{ $counter }}</label>
                     <select name="type{{ $counter }}" class="form-control">
                       <option value="fp" @if($section->helper_type == "fp") selected @endif>Full Width Paragraph</option>
-                      <option value="fim" @if($section->helper_type == "fim") selected @endif>Full Image</option>
                       <option value="fc" @if($section->helper_type == "fc") selected @endif>Full Code</option>
-                      <option value="imp" @if($section->helper_type == "imp") selected @endif>Left Image and Right Paragraph</option>
-                      <option value="pim" @if($section->helper_type == "pim") selected @endif>Left Paragraph and Right Image</option>
+                      <option value="fim" @if($section->helper_type == "fim") selected @endif>Full Image</option>
                       <option value="cp" @if($section->helper_type == "cp") selected @endif>Left Code and Right Paragraph</option>
+                      <option value="imp" @if($section->helper_type == "imp") selected @endif>Left Image and Right Paragraph</option>
+                      <option value="cp48" @if($section->helper_type == "fc48") selected @endif>Left Code (4/12) and Right Paragraph (8/12)</option>
+                      <option value="imp48" @if($section->helper_type == "imp48") selected @endif>Left Image (4/12) and Right Paragraph (8/12)</option>
+                      <option value="pim" @if($section->helper_type == "pim") selected @endif>Left Paragraph and Right Image</option>
                       <option value="pc" @if($section->helper_type == "pc") selected @endif>Left Paragraph and Right Code</option>
 
                     </select>
@@ -171,8 +173,10 @@
                     <option value="fp">Full Width Paragraph</option>
                     <option value="fim">Full Image</option>
                     <option value="fc">Full Code</option>
+                    <option value="cp">Left Code and Right Paragraph</option>
                     <option value="imp">Left Image and Right Paragraph</option>
-                    <option value="pim">Left Paragraph and Right Image</option>
+                    <option value="fc48">Left Code (4/12) and Right Paragraph (8/12)</option>
+                    <option value="imp48">Left Image (4/12) and Right Paragraph (8/12)</option>
                     <option value="cp">Left Code and Right Paragraph</option>
                     <option value="pc">Left Paragraph and Right Code</option>
                   </select>
@@ -217,6 +221,8 @@
           "<option value='fc'>Full Code</option>" +
           "<option value='cp'>Left Code and Right Paragraph</option>" +
           "<option value='imp'>Left Image and Right Paragraph</option>" +
+          "<option value='cp48'>Left Code (4/12) and Right Paragraph (8/12)</option>" +
+          "<option value='imp48'>Left Image (4/12) and Right Paragraph (8/12)</option>" +
           "<option value='pim'>Left Paragraph and Right Image</option>" +
           "<option value='pc'>Left Paragraph and Right Code</option>" +
         "</select>" +

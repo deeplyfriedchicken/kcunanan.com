@@ -122,10 +122,12 @@
                 <label for="type1">Type of Section</label>
                 <select name="type1" class="form-control">
                   <option value="fp">Full Width Paragraph</option>
-                  <option value="fim">Full Image</option>
                   <option value="fc">Full Code</option>
-                  <option value="imp">Left Image and Right Paragraph</option>
+                  <option value="fim">Full Image</option>
                   <option value="cp">Left Code and Right Paragraph</option>
+                  <option value="imp">Left Image and Right Paragraph</option>
+                  <option value="cp48">Left Code (4/12) and Right Paragraph (8/12)</option>
+                  <option value="imp48">Left Image (4/12) and Right Paragraph (8/12)</option>
                   <option value="pim">Left Paragraph and Right Image</option>
                   <option value="pc">Left Paragraph and Right Code</option>
                 </select>
@@ -175,6 +177,8 @@
           "<option value='fc'>Full Code</option>" +
           "<option value='cp'>Left Code and Right Paragraph</option>" +
           "<option value='imp'>Left Image and Right Paragraph</option>" +
+          "<option value='cp48'>Left Code (4/12) and Right Paragraph (8/12)</option>" +
+          "<option value='imp48'>Left Image (4/12) and Right Paragraph (8/12)</option>" +
           "<option value='pim'>Left Paragraph and Right Image</option>" +
           "<option value='pc'>Left Paragraph and Right Code</option>" +
         "</select>" +
