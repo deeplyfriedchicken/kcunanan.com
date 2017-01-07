@@ -1,6 +1,6 @@
 @extends('master')
 @section('meta')
-  <meta property="og:image" content="{{ URL::asset('images/kevin-logo-3.png') }}" />
+  <meta property="og:image" content="{{ URL::asset('/kcunanan-og.jpg') }}" />
 
   <meta property="og:description" content="Welcome! I have a lot of things to show you. Please take you time. - Kevin Cunanan" />
 
