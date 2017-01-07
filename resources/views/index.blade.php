@@ -113,7 +113,7 @@
                                     <div class="ish-p-items-container" id="div_4f8c_2">
                                       @foreach($portfolio as $item)
                                         <div class="ish-p-col ish-p-col-w1 ish-p-col-h1">
-                                            <a href="/posts/{{ $item->category }}/{{ $item->sub_category }}/{{ $item->blog_url }}" id="a_4f8c_0">
+                                            <a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $item->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $item->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $item->blog_url)) }}" id="a_4f8c_0">
                                                 <div class="ish-p-item">
                                                     <div class="ish-p-img" style="background-image: url('{{ URL::asset($item->portfolio_image) }}')"></div>
                                                     <div class="ish-p-overlay ish-color-8 text-color-6">

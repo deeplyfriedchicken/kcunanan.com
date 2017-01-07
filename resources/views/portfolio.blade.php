@@ -98,7 +98,7 @@
                                 <div class="ish-p-items-container" style="width: calc( 100% + 20px ); margin: -10px;">
                                   @foreach($portfolio as $item)
                                     <div class="ish-p-col <?php $ptags = DB::table('lookups')->where('ref_id', $item->id)->where('category', 'ptag')->get() ?>@foreach($ptags as $ptag) pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($ptag->tag)) }} @endforeach {{ $item->portfolio_ish }}">
-                                        <a href="/posts/{{ $item->category }}/{{ $item->sub_category }}/{{ $item->blog_url }}" style="border-width: 10px;">
+                                        <a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $item->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $item->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $item->blog_url)) }}" style="border-width: 10px;">
                                         <div class="ish-p-item">
                                             <div class="ish-p-img" style="background-image: url('{{ URL::asset($item->portfolio_image) }}');">
                                             </div>

@@ -160,7 +160,7 @@ a.before:hover:before,a.after:hover:after{
                         <div id="post-249" class="wpb_row vc_row-fluid ish-row-notfull ish-row_notsection post-249 post type-post status-publish format-image has-post-thumbnail hentry category-flat category-job tag-painting post_format-post-format-image">
                             <div class="ish-vc_row_inner">
                                 <div class="ish-post-content">
-                                    <h2 class="ish-h3"><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}">{{ $post->blog_title }}</a></h2>
+                                    <h2 class="ish-h3"><a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $post->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->blog_url)) }}">{{ $post->blog_title }}</a></h2>
                                     <div class="ish-blog-post-details">
                                         <span><a href="/posts/{{ strtolower($post->category) }}/{{ strtolower($post->sub_category) }}/{{ strtolower($post->blog_url) }}">{{ $post->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}">{{ ucwords($post->sub_category) }}</a><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}"><span>{{ ucwords($post->category) }}</span></a>
                                     </div>
@@ -174,7 +174,7 @@ a.before:hover:before,a.after:hover:after{
                                         </p>
                                     </div>
                                     <span class="ish-blog-post-links">
-                                    <span class="square individual"><a class="before after ish-read-more" href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}">Read more</a></span>
+                                    <span class="square individual"><a class="before after ish-read-more" href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $post->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->blog_url)) }}">Read more</a></span>
                                     </span>
                                 </div>
                             </div>
@@ -220,7 +220,7 @@ a.before:hover:before,a.after:hover:after{
                                     <ul>
                                       @foreach($latest as $post)
                                         <li>
-                                        <a href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}">{{ $post->blog_title }}</a>
+                                        <a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $post->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->blog_url)) }}">{{ $post->blog_title }}</a>
                                         <span class="post-date">{{ $post->date_posted->format('F j, Y') }}</span>
                                         </li>
                                       @endforeach

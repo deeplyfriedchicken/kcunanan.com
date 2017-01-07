@@ -77,7 +77,7 @@
                                     <div class="ish-p-items-container" style="width: calc( 100% + 0px ); margin: 0px;">
                                         @foreach($portfolio as $item)
                                           <div class="ish-p-col  <?php $ptags = DB::table('lookups')->where('ref_id', $item->id)->where('category', 'ptag')->get() ?>@foreach($ptags as $ptag) pfilt-{{ $ptag->tag }} @endforeach">
-                                              <a href="/posts/{{ $item->category }}/{{ $item->sub_category }}/{{ $item->blog_url }}" style="border-width: 0px;">
+                                                <a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $item->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $item->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $item->blog_url)) }}" style="border-width: 0px;">
                                                   <div class="ish-p-item">
                                                       <div class="ish-p-img" style="background-image: url('{{ URL::asset($item->portfolio_image) }}');"></div>
                                                       <div class="ish-p-overlay {{ $colors[rand(0,count($colors)-1)] }}" style="background-image: url('{{ URL::asset($item->portfolio_image) }}');">
