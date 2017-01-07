@@ -14,10 +14,17 @@
                                         <div class="ish-vc_row_inner">
                                             <div class="wpb_column ish-grid1">
                                             </div>
+                                            @if(Session::has('no-results'))
+                                              <div class="wpb_column ish-grid5 ish-pt-taglines">
+                                                  <h1 data-firstletter="M">Search - {{ $term }}</h1>
+                                                  <h2>no results for {{ $term }}.</h2>
+                                              </div>
+                                            @else
                                             <div class="wpb_column ish-grid5 ish-pt-taglines">
                                                 <h1 data-firstletter="M">Search - {{ $term }}</h1>
                                                 <h2>my tagged portfolio items and articles.</h2>
                                             </div>
+                                            @endif
                                             <div class="wpb_column ish-grid5 ish-pt-taglines-additional">
                                                 <p>
                                                     I've tagged all items with relevant terms, so feel free to search for skills, languages, or random other things.
@@ -49,30 +56,40 @@
             <div class="ish-row ish-row-notfull ish-with-sidebar">
                 <div class="ish-row_inner">
                     <div class=" ish-pc-content ish-grid8 ish-with-sidebar ish-with-right-sidebar">
-                        @foreach($posts as $post)
+                      @if(Session::has('no-results'))
+                          <div id="post-249" class="wpb_row vc_row-fluid ish-row-notfull ish-row_notsection post-249 post type-post status-publish format-image has-post-thumbnail hentry category-flat category-job tag-painting post_format-post-format-image">
+                            <div class="ish-vc_row_inner">
+                              <div class="ish-post-content">
+                                <h1>No results to display</h1>
+                              </div>
+                            </div>
+                          </div>
+                      @else
+                        @foreach($posts as $result)
                           <div id="post-249" class="wpb_row vc_row-fluid ish-row-notfull ish-row_notsection post-249 post type-post status-publish format-image has-post-thumbnail hentry category-flat category-job tag-painting post_format-post-format-image">
                               <div class="ish-vc_row_inner">
                                   <div class="ish-post-content">
-                                      <h2 class="ish-h3"><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}">{{ $post->blog_title }}</a></h2>
+                                      <h2 class="ish-h3"><a href="/posts/{{ $result->category }}/{{ $result->sub_category }}/{{ $result->blog_url }}">{{ $result->blog_title }}</a></h2>
                                       <div class="ish-blog-post-details">
-                                          <span><a href="/posts/{{ strtolower($post->category) }}/{{ strtolower($post->sub_category) }}/{{ strtolower($post->blog_url) }}">{{ $post->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}">{{ ucwords($post->sub_category) }}</a><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}"><span>{{ ucwords($post->category) }}</span></a>
+                                          <span><a href="/posts/{{ strtolower($result->category) }}/{{ strtolower($result->sub_category) }}/{{ strtolower($result->blog_url) }}">{{ $result->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="/posts/{{ $result->category }}/{{ $result->sub_category }}">{{ ucwords($result->sub_category) }}</a><span class="ish-spacer">/</span><a href="/posts/{{ $result->category }}"><span>{{ ucwords($result->category) }}</span></a>
                                       </div>
                                       <div class="ish-blog-post-media ish-blog-image">
-                                          <a href="/posts/{{ strtolower($post->category) }}/{{ strtolower($post->sub_category) }}/{{ strtolower($post->blog_url) }}">
-                                          <img width="1170" height="732" src="{{ URL::asset($post->media_url) }}" class="attachment-theme-large size-theme-large wp-post-image" alt="1602123" /></a>
+                                          <a href="/posts/{{ strtolower($result->category) }}/{{ strtolower($result->sub_category) }}/{{ strtolower($result->blog_url) }}">
+                                          <img width="1170" height="732" src="{{ URL::asset($result->media_url) }}" class="attachment-theme-large size-theme-large wp-post-image" alt="1602123" /></a>
                                       </div>
                                       <div class="ish-blog-post-excerpt">
                                           <p>
-                                              {{ $post->heading }}
+                                              {{ $result->heading }}
                                           </p>
                                       </div>
                                       <span class="ish-blog-post-links">
-                                      <a class="ish-read-more" href="/posts/{{ $post->category }}/{{ $post->sub_category }}/{{ $post->blog_url }}">Read more</a>
+                                      <a class="ish-read-more" href="/posts/{{ strtolower($result->category) }}/{{ strtolower($result->sub_category) }}/{{ strtolower($result->blog_url) }}">Read more</a>
                                       </span>
                                   </div>
                               </div>
                           </div>
                         @endforeach
+                      @endif
                         {{-- {{ $posts->links('partials.paginator') }} --}}
                     </div>
                     <div class="ish-grid4 ish-main-sidebar ish-right-sidebar ish-resp-centered" id="sidebar">

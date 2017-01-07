@@ -80,21 +80,29 @@ class HomeController extends Controller
       $term = $request['s'];
       return redirect('/search/'.$term);
     }
-    public function search($term) {
+    public function search(Request $request, $term) {
       $ids = Lookup::where('tag', 'LIKE', '%'.$term.'%')->get();
-      $ids2 = Lookup::where('blog_title', 'LIKE', '%'.$term.'%')->orWhere('heading', 'LIKE', '%'.$term.'%')->get();
-      $array = [];
-      $i = 0;
-      foreach($ids as $id) {
-        $array[$i] = $id->ref_id;
-        $i++;
+      $ids2 = Lookup::where('category', 'blog')->where('blog_title', 'LIKE', '%'.$term.'%')->orWhere('category', 'blog')->where('heading', 'LIKE', '%'.$term.'%')->orWhere('category', 'portfolio')->where('blog_title', 'LIKE', '%'.$term.'%')->orWhere('category', 'portfolio')->where('heading', 'LIKE', '%'.$term.'%')->get();
+      if ($ids->isEmpty() && $ids2->isEmpty())
+      {
+        $request->session()->flash('no-results', 'No results for '.$term.".");
+        return view('search', ['term' => $term]);
       }
-      foreach($ids2 as $id) {
-        $array[$i] = $id->id;
-        $i++;
+      else
+      {
+        $array = [];
+        $i = 0;
+        foreach($ids as $id) {
+          $array[$i] = $id->ref_id;
+          $i++;
+        }
+        foreach($ids2 as $id) {
+          $array[$i] = $id->id;
+          $i++;
+        }
+        $posts = Lookup::where('category','blog')->whereIn('id', $array)->orWhere('category', 'portfolio')->whereIn('id', $array)->orderBy('created_at', 'desc')->get();
+        return view('search', ['posts' => $posts, 'ids' => $array, 'term' => $term]);
       }
-      $posts = Lookup::whereIn('id', $array)->orderBy('created_at', 'desc')->get();
-      return view('search', ['posts' => $posts, 'ids' => $array, 'term' => $term]);
     }
     public function showPosts() {
         $posts = Lookup::where('category', 'blog')->orWhere('category', 'portfolio')->orderBy('created_at', 'desc')->paginate(4);
