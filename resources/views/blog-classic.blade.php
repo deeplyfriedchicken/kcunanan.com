@@ -201,7 +201,8 @@ a.before:hover:before,a.after:hover:after{
                                     <div class="widget-title ish-sc-element ish-sc_separator ish-icon-left ish-text ish-separator-text ish-separator-solid ish-no-align ish-h5">
                                         <span class="ish-line ish-left"><span class="ish-line-border"></span></span><span class="ish-icon ish-left"><span class="ish-icon-search"></span></span><span class="ish-text">Search</span><span class="ish-line ish-right"><span class="ish-line-border"></span></span>
                                     </div>
-                                    <form role="search" method="get" id="searchform" action="#">
+                                    <form role="search" method="post" id="searchform" action="/search">
+                                      {{ csrf_field() }}
                                         <div>
                                             <label class="screen-reader-text" for="s">Search for:</label>
                                             <input type="text" value="" name="s" id="s" placeholder="Search...">

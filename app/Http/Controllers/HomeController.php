@@ -114,9 +114,7 @@ class HomeController extends Controller
     }
     public function showPost($lookup_category, $sub_category, $url)
     {
-      $lookup_category = ucwords(str_replace("-", " ", $lookup_category));
-      $sub_category = ucwords(str_replace("-", " ", $sub_category));
-      $blog = DB::table('lookups')->where('category', $lookup_category)->where('sub_category', $sub_category)->where('blog_url', $url)->get();
+      $blog = DB::table('lookups')->where('category', ucwords(str_replace("-", " ", $lookup_category)))->where('sub_category', ucwords(str_replace("-", " ", $sub_category)))->where('blog_url', $url)->get();
       if($blog == null) {
         // return 404
       }
