@@ -15,6 +15,7 @@
                 <tbody><tr>
                   <th>ID</th>
                   <th>Category</th>
+                  <th>Sub Category</th>
                   <th>Title</th>
                   <th>Date Posted</th>
                   <th>Views</th>
@@ -25,6 +26,7 @@
                 <tr>
                   <td>{{ $blog->id }}</td>
                   <td>{{ $blog->category }}</td>
+                  <td>{{ $blog->sub_category }}</td>
                   <td>{{ $blog->blog_title }}</td>
                   <td>{{ $blog->date_posted->format('F j, Y') }}</td>
                   <td>{{ $blog->blog_views }}</td>
