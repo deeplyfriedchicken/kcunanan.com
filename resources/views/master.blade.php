@@ -66,12 +66,12 @@
     }
     @media (max-width: 857px) {
       .contact-info-div h4 span {
-        font-size: 16px;
+        font-size: 12px;
       }
     }
     @media(min-width: 858px) {
       .contact-info-div h4 span {
-        font-size: 20px;
+        font-size: 15px;
       }
     }
     .social-footer-pinterest {
@@ -85,12 +85,12 @@
     }
     .contact-info {
       margin-right: 15px;
-      font-size: 35px;
+      font-size: 25px;
       border-radius: 50px;
-      padding: 10px;
+      padding: 7px;
       color: #fff;
-      width: 35px;
-      height: 35px;
+      width: 25px;
+      height: 25px;
       text-align: center;
     }
     .contact-info-email {
@@ -114,7 +114,9 @@
     }
     .text-left {
       text-align: left;
-      margin-left: 50px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 17em;
     }
     div.text-left h4 i {
       margin: 10px 15px 10px 0 !important;
