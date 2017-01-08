@@ -162,10 +162,10 @@ a.before:hover:before,a.after:hover:after{
                                 <div class="ish-post-content">
                                     <h2 class="ish-h3"><a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $post->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->blog_url)) }}">{{ $post->blog_title }}</a></h2>
                                     <div class="ish-blog-post-details">
-                                        <span><a href="/posts/{{ strtolower($post->category) }}/{{ strtolower($post->sub_category) }}/{{ strtolower($post->blog_url) }}">{{ $post->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}/{{ $post->sub_category }}">{{ ucwords($post->sub_category) }}</a><span class="ish-spacer">/</span><a href="/posts/{{ $post->category }}"><span>{{ ucwords($post->category) }}</span></a>
+                                        <span><a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $post->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->blog_url)) }}">{{ $post->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $post->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->sub_category)) }}">{{ ucwords($post->sub_category) }}</a><span class="ish-spacer">/</span><a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $post->category)) }}"><span>{{ ucwords($post->category) }}</span></a>
                                     </div>
                                     <div class="ish-blog-post-media ish-blog-image">
-                                        <a href="/posts/{{ strtolower($post->category) }}/{{ strtolower($post->sub_category) }}/{{ strtolower($post->blog_url) }}">
+                                        <a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $post->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $post->blog_url)) }}">
                                         <img width="1170" height="732" src="{{ URL::asset($post->media_url) }}" class="attachment-theme-large size-theme-large wp-post-image" alt="1602123" /></a>
                                     </div>
                                     <div class="ish-blog-post-excerpt">
