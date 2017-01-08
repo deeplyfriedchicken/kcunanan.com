@@ -17,11 +17,11 @@
    .text-center {
      text-align: center;
    }
-   .ish-sc_portfolio .ish-section-filter ul>li a {
+   .ish-sc_portfolio .ish-section-filter ul>li a.tags {
      background-color: #2b3956;
      border-radius: 25px;
      color: #fff;
-     line-height: 14px;
+     line-height: 12px;
    }
    #all {
      font-size: 17px;
@@ -31,6 +31,9 @@
    }
    .ish-part_header, .ish-part_tagline {
      background-color: #fff;
+   }
+   .port-tags ul li a.tags {
+     font-size: 12px;
    }
   </style>
 @endsection
@@ -95,7 +98,7 @@
                                             <div class="text-center"><h4>Frameworks</h4></div>
                                             <ul>
                                               @foreach($frs as $tag)
-                                                <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                                <li><a class="tags" href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
                                               @endforeach
                                             </ul>
                                           </div>
@@ -103,7 +106,7 @@
                                             <div class="text-center"><h4>Skills</h4></div>
                                             <ul>
                                               @foreach($skills as $tag)
-                                                <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                                <li><a class="tags" href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
                                               @endforeach
                                             </ul>
                                           </div>
@@ -111,7 +114,7 @@
                                             <div class="text-center"><h4>Languages</h4></div>
                                             <ul>
                                             @foreach($pls as $tag)
-                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                              <li><a class="tags" href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
                                             @endforeach
                                             </ul>
                                           </div>
@@ -119,7 +122,7 @@
                                             <div class="text-center"><h4>Previous Employment</h4></div>
                                             <ul>
                                               @foreach($workplaces as $tag)
-                                                <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                                <li><a class="tags" href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
                                               @endforeach
                                             </ul>
                                           </div>
