@@ -28,7 +28,35 @@
   .ish-part_content.ish-without-sidebar>.ish-row>.ish-row_inner, .ish-part_content.ish-without-sidebar>.ish-row>.ish-vc_row_inner, .ish-part_content.ish-without-sidebar>.wpb_row>.ish-row_inner, .ish-part_content.ish-without-sidebar>.wpb_row>.ish-vc_row_inner {
     padding-bottom: 20px;
   }
+  .text-center {
+    text-align: center;
+  }
+  .fb-share-button {
+    top: -7px;
+  }
   </style>
+@endsection
+@section('facebook-dev')
+  @if($blog[0]->category == 'blog')
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '277376799346635',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+  @endif
 @endsection
 @section('content')
             <!-- Content part section -->
@@ -45,6 +73,7 @@
                                     <div class="vc_col-sm-6 wpb_column column_container ish-center" style="">
                                         <div class="wpb_wrapper">
                                             <h1 class="ish-sc-element ish-sc_headline ish-color8 ish-bottom-margin-none" style=" @if($blog[0]->color) {{ 'color:'.$blog[0]->color }}  @endif">{{ $blog[0]->blog_title }}</h1>
+                                              @if($blog[0]->portfolio_link != null || $blog[0]->github_url != null)
                                               <div class="ish-sc-element ish-sc_cf7 ish-color6 ish-text-color1 ish-bg-text-color1 ish-button-bg-color5 ish-button-text-color4">
                                                                 <div class="ish-row">
                                                                   @if($blog[0]->portfolio_link != null && $blog[0]->github_url != null)
@@ -77,6 +106,7 @@
                                                                   @endif
                                                                 </div>
                                                     </div>
+                                                    @endif
                                             {{-- <h5 class="ish-sc-element ish-sc_headline ish-color2">{{ $blog[0]->heading }}</h5> --}}
                                         </div>
                                     </div>
@@ -85,6 +115,12 @@
 
                                             <div class="wpb_text_column wpb_content_element " style="">
                                                 <div class="wpb_wrapper">
+                                                    @if($blog[0]->category == 'blog')
+                                                      <div class="text-center">
+                                                        <a class="tumblr-share-button" data-color="blue" data-notes="right" href="https://embed.tumblr.com/share"></a> <script>!function(d,s,id){var js,ajs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://assets.tumblr.com/share-button.js";ajs.parentNode.insertBefore(js,ajs);}}(document, "script", "tumblr-js");</script>
+                                                      <div class="fb-share-button" data-href="{{ URL::asset("/posts/".strtolower(preg_replace("/[\s_]/", "-", $blog[0]->category))."/".strtolower(preg_replace("/[\s_]/", "-", $blog[0]->sub_category))."/".strtolower(preg_replace("/[\s_]/", "-", $blog[0]->blog_url))) }}" data-layout="button_count" data-size="small" data-mobile-iframe="true"></div>
+                                                    </div>
+                                                    @endif
                                                     <h6 class="tags">Tags: @foreach($tags as $tag)@if($loop->last){{ $tag->tag }}@else{{ $tag->tag }}, @endif @endforeach</h6>
                                                     <p>{{ $blog[0]->heading }}</p>
                                                 </div>
@@ -392,9 +428,7 @@
 
                                 <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color16 ish-tooltip-color16 ish-tooltip-text-color4" style="" data-type="tooltip" title="Share on LinkedIn"><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(URL::asset("/posts/".strtolower(preg_replace("/[\s_]/", "-", $blog[0]->category))."/".strtolower(preg_replace("/[\s_]/", "-", $blog[0]->sub_category))."/".strtolower(preg_replace("/[\s_]/", "-", $blog[0]->blog_url)))) }}&title={{ urlencode($blog[0]->blog_title) }}&summary={{ urlencode($blog[0]->blog_title) }}&source=KevinCunanan" style="color: #bac2c4;" target="_blank"><span><i class="fa fa-linkedin"></i></span></a></div>
 
-                                <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color17 ish-tooltip-color17 ish-tooltip-text-color4" style="" data-type="tooltip" title="Share on Tumblr"><a href="#" style="color: #bac2c4;" target="_blank"><span><span class="ish-icon-twitter"></span></span></a></div>
-
-                                <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color1 ish-tooltip-color1 ish-tooltip-text-color4" style="" data-type="tooltip" title="Share via e-mail"><a href="#" style="color: #bac2c4;" target="_blank"><span><span class="ish-icon-email"></span></span></a></div>
+                                <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color2 ish-active-text-color1 ish-tooltip-color1 ish-tooltip-text-color4" style="" data-type="tooltip" title="Share via e-mail"><a href="mailto:?subject=kcunanan.com - {{ $blog[0]->blog_title }}&body=Check out this article! {{ URL::asset("/posts/".strtolower(preg_replace("/[\s_]/", "-", $blog[0]->category))."/".strtolower(preg_replace("/[\s_]/", "-", $blog[0]->sub_category))."/".strtolower(preg_replace("/[\s_]/", "-", $blog[0]->blog_url))) }}" style="color: #bac2c4;"><span><span class="ish-icon-email"></span></span></a></div>
                             </div>
                         </div>
                     </div>
