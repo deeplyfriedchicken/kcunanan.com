@@ -137,7 +137,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 
 </head>
-<body class="home page page-id-157 page-template-default ish-boxed ish-pixel-width ish-responsive_layout_on ish-sticky-on ish-header_bar-on wpb-js-composer js-comp-ver-4.10 vc_responsive">
+<body class="home page page-id-157 page-template-default ish-boxed ish-pixel-width ish-responsive_layout_on ish-header_bar-on wpb-js-composer js-comp-ver-4.10 vc_responsive">
   <div class="ish-body">
 
 
@@ -209,8 +209,6 @@
                               </li>
                               <li class="menu-item"><a href="{{ URL::asset('kevin-resume.pdf') }}" target="_blank">Resume</a>
                               </li>
-                              {{-- <li class="menu-item {{ Request::is('gallery') ? 'current_page_parent' : '' }}"><a href="/gallery">Gallery</a>
-                              </li> --}}
                               <li class="menu-item menu-item-236 {{ Request::is('posts') ? 'current_page_parent' : '' }}"><a href="/posts">Blog</a></li>
                               <li class="menu-item ish-megamenu-item {{ Request::is('about') ? 'current_page_parent' : '' }}"><a href="/about">About Me</a></li>
                               <li class="menu-item {{ Request::is('contact') ? 'current_page_parent' : '' }}"><a href="/contact">Contact</a></li>
@@ -289,8 +287,7 @@
 
 </div>
 <!-- Wrap whole page - boxed / unboxed END -->
-
-<a href="#top" class="ish-back_to_top ish-smooth_scroll ish-icon-angle-double-up"></a>
+@yield('custom-top')
 
 </div>
       <script type='text/javascript' src="{{ URL::asset('js/greensock.js')  }}"></script>

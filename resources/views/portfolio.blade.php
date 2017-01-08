@@ -1,9 +1,36 @@
-@extends('master')
+@extends('master-no-sticky')
+@section('meta')
+  <meta property="og:image" content="{{ URL::asset('/kcunanan-og.jpg') }}" />
+
+  <meta property="og:description" content="Welcome to Kevin Cunanan's Portfolio! Kevin is really interested in backend and frontend engineering. But he also has other skills." />
+
+  <meta property="og:url"content="http://kcunanan.com/portfolio" />
+
+  <meta property="og:title" content="kcunanan.com - The Portfolio About Kevin" />
+@endsection
 @section('stylesheets')
   <style>
    .focus-heading {
      font-size: 20px;
      font-weight: 800;
+   }
+   .text-center {
+     text-align: center;
+   }
+   .ish-sc_portfolio .ish-section-filter ul>li a {
+     background-color: #2b3956;
+     border-radius: 25px;
+     color: #fff;
+     line-height: 14px;
+   }
+   #all {
+     font-size: 17px;
+     border-radius: 0;
+     padding: 15px;
+     margin-top: 15px;
+   }
+   .ish-part_header, .ish-part_tagline {
+     background-color: #fff;
    }
   </style>
 @endsection
@@ -23,12 +50,12 @@
                                   <div class="wpb_column ish-grid1">
                                   </div>
                                   <div class="wpb_column ish-grid5 ish-pt-taglines">
-                                      <h1 data-firstletter="W">What I&#039;ve done</h1>
-                                      <h2>&amp; is worth mentioning</h2>
+                                      <h1 data-firstletter="W">Portfolio</h1>
+                                      <h2>A list of professional and personal projects.</h2>
                                   </div>
                                   <div class="wpb_column ish-grid5 ish-pt-taglines-additional">
                                       <p>
-                                          Have a look around at my work! Most projects are web apps, but I do have some hardware and design projects in here too!
+                                          I have a strong focus in full stack development, but I do have hardware and design projects as well.
                                       </p>
                                   </div>
                                   <div class="wpb_column ish-grid1">
@@ -64,7 +91,42 @@
                                 <div class="ish-section-filter ish-center ish-color5 ish-text-color4">
                                     <div class="ish-vc_row_inner">
                                         <nav class="ish-sc-element ish-p-filter" data-type="organize">
-                                        <ul>
+                                          <div class="vc_col-sm-3 wpb_column column_container port-tags">
+                                            <div class="text-center"><h4>Frameworks</h4></div>
+                                            <ul>
+                                              @foreach($frs as $tag)
+                                                <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                              @endforeach
+                                            </ul>
+                                          </div>
+                                          <div class="vc_col-sm-3 wpb_column column_container port-tags">
+                                            <div class="text-center"><h4>Skills</h4></div>
+                                            <ul>
+                                              @foreach($skills as $tag)
+                                                <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                              @endforeach
+                                            </ul>
+                                          </div>
+                                          <div class="vc_col-sm-3 wpb_column column_container port-tags">
+                                            <div class="text-center"><h4>Languages</h4></div>
+                                            <ul>
+                                            @foreach($pls as $tag)
+                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                            @endforeach
+                                            </ul>
+                                          </div>
+                                          <div class="vc_col-sm-3 wpb_column column_container port-tags">
+                                            <div class="text-center"><h4>Previous Employment</h4></div>
+                                            <ul>
+                                              @foreach($workplaces as $tag)
+                                                <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
+                                              @endforeach
+                                            </ul>
+                                          </div>
+                                          <div class="vc_col-sm-12 wpb_column column_container port-tags">
+                                            <ul><li><a id="all" class="ish-active" href="#all" data-filter="*">All</a></li></ul>
+                                          </div>
+                                        {{-- <ul>
                                             <li><span class="focus-heading">I know these languages:</span></li>
                                             @foreach($pls as $tag)
                                               <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
@@ -90,8 +152,7 @@
                                               <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
                                             @endforeach
                                             <br>
-                                            <li><a class="ish-active" href="#all" data-filter="*">All</a></li>
-                                        </ul>
+                                        </ul> --}}
                                         </nav>
                                     </div>
                                 </div>
