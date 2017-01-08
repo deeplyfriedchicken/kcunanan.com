@@ -126,33 +126,6 @@
                                           <div class="vc_col-sm-12 wpb_column column_container port-tags">
                                             <ul><li><a id="all" class="ish-active" href="#all" data-filter="*">All</a></li></ul>
                                           </div>
-                                        {{-- <ul>
-                                            <li><span class="focus-heading">I know these languages:</span></li>
-                                            @foreach($pls as $tag)
-                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
-                                            @endforeach
-                                            <br>
-                                            <li><span class="focus-heading">I've used these frameworks:</span></li>
-                                            @foreach($frs as $tag)
-                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
-                                            @endforeach
-                                            <br>
-                                            <li><span class="focus-heading">I have the following skills:</span></li>
-                                            @foreach($skills as $tag)
-                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
-                                            @endforeach
-                                            <br>
-                                            <li><span class="focus-heading">I utilized these libraries and APIs:</span></li>
-                                            @foreach($js as $tag)
-                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
-                                            @endforeach
-                                            <br>
-                                            <li><span class="focus-heading">I have worked for these companies:</span></li>
-                                            @foreach($workplaces as $tag)
-                                              <li><a href="#" data-filter=".pfilt-{{ preg_replace("/[\s_]/", "-", strtolower($tag->tag)) }}">{{ ucwords($tag->tag) }}</a></li>
-                                            @endforeach
-                                            <br>
-                                        </ul> --}}
                                         </nav>
                                     </div>
                                 </div>
