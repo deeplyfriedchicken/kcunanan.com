@@ -33,7 +33,17 @@ class AdminController extends Controller
 {
     public function index() {
       $mails = Mail::get();
-      return view('admin/index', ['mails' => $mails]);
+      $fitbit = Lookup::where('category', 'fitbit_data')->orderBy('date_posted')->take(7)->get();
+      $hourSlept = 0.0;
+      $countDays = 0;
+      foreach($fitbit as $data) {
+        if((int)$data->other_1 != 0) {
+            $hourSlept += ((int)$data->other_1)/60.0;
+            $countDays++;
+        }
+      }
+      $hourSlept = round($hourSlept/$countDays, 2);
+      return view('admin/index', ['mails' => $mails, 'hoursSlept' => $hourSlept]);
     }
     public function newPost()
     {
