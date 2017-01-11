@@ -128,6 +128,8 @@
                   <option value="imp">Left Image and Right Paragraph</option>
                   <option value="cp48">Left Code (4/12) and Right Paragraph (8/12)</option>
                   <option value="imp48">Left Image (4/12) and Right Paragraph (8/12)</option>
+                  <option value="pc84">Right Code (4/12) and Left Paragraph (8/12)</option>
+                  <option value="pim84">Right Image (4/12) and Left Paragraph (8/12)</option>
                   <option value="pim">Left Paragraph and Right Image</option>
                   <option value="pc">Left Paragraph and Right Code</option>
                 </select>
@@ -179,6 +181,8 @@
           "<option value='imp'>Left Image and Right Paragraph</option>" +
           "<option class='cpsm' value='cp48'>Left Code (smol) and Right Paragraph (Bigger)</option>" +
           "<option class='impsm' value='imp48'>Left Image (smol) and Right Paragraph (Bigger)</option>" +
+          "<option class='pcsm' value='pc84'>Right Code (smol) and Left Paragraph (Bigger)</option>" +
+          "<option class='pimsm' value='pim84'>RIght Image (smol) and Left Paragraph (Bigger)</option>" +
           "<option value='pim'>Left Paragraph and Right Image</option>" +
           "<option value='pc'>Left Paragraph and Right Code</option>" +
         "</select>" +
@@ -219,6 +223,8 @@
     $('.mid-col').removeClass('.mid-col').addClass(colmd4);
     $('.cpsm').val(cp48);
     $('.impsm').val(imp48);
+    $('.pcsm').val('pc84');
+    $('.pimsm').val('pim84');
     $('.textarea' + parseInt(sectionCount)).wysihtml5();
     $('.colorme').colorpicker({ /*options...*/ });
     $("#image" + parseInt(sectionCount)).fileinput({'showUpload':false, 'previewFileType':'any'});

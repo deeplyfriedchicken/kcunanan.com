@@ -10,7 +10,7 @@
     @endif
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title">Update Post {{ $blog->blog_title }}
+        <h3 class="box-title">Update Post <a target="_blank" href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $blog->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $blog->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $blog->blog_url)) }}">{{ $blog->blog_title }}</a>
           <small>Editing {{ $blog->category }}</small>
         </h3>
         <!-- tools box -->
@@ -132,6 +132,8 @@
                       <option value="imp" @if($section->helper_type == "imp") selected @endif>Left Image and Right Paragraph</option>
                       <option value="cp48" @if($section->helper_type == "fc48") selected @endif>Left Code (4/12) and Right Paragraph (8/12)</option>
                       <option value="imp48" @if($section->helper_type == "imp48") selected @endif>Left Image (4/12) and Right Paragraph (8/12)</option>
+                        <option value="pc84" @if($section->helper_type == "pc84") selected @endif>Right Code (4/12) and Left Paragraph (8/12)</option>
+                        <option value="pim84" @if($section->helper_type == "pim84") selected @endif>Right Image (4/12) and Left Paragraph (8/12)</option>
                       <option value="pim" @if($section->helper_type == "pim") selected @endif>Left Paragraph and Right Image</option>
                       <option value="pc" @if($section->helper_type == "pc") selected @endif>Left Paragraph and Right Code</option>
 
@@ -145,8 +147,8 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <div class="radio">
-                        <label><input type="radio" name="radio_image1" value="upload"> Upload</label>
-                        <label><input type="radio" name="radio_image1" value="url"> URL</label>
+                        <label><input type="radio" name="radio_image{{ $counter }}" value="upload"> Upload</label>
+                        <label><input type="radio" name="radio_image{{ $counter }}" value="url"> URL</label>
                       </div>
                     </div>
                     <label for="image{{ $counter }}">Section Photo {{ $counter }} (if applicable @if($section->media_url) <a target="_blank" href="{{ URL::asset($section->media_url) }}">current</a> <input type="hidden" name="old_image{{ $counter }}" value="<?php echo $section->media_url ?>"> @endif)</label>
@@ -177,6 +179,8 @@
                     <option value="imp">Left Image and Right Paragraph</option>
                     <option value="fc48">Left Code (4/12) and Right Paragraph (8/12)</option>
                     <option value="imp48">Left Image (4/12) and Right Paragraph (8/12)</option>
+                    <option value="pc84">Right Code (4/12) and Left Paragraph (8/12)</option>
+                    <option value="pim84">Right Image (4/12) and Left Paragraph (8/12)</option>
                     <option value="cp">Left Code and Right Paragraph</option>
                     <option value="pc">Left Paragraph and Right Code</option>
                   </select>
@@ -223,6 +227,8 @@
           "<option value='imp'>Left Image and Right Paragraph</option>" +
           "<option class='cpsm'>Left Code (smol) and Right Paragraph (Bigger)</option>" +
           "<option class='impsm'>Left Image (smol) and Right Paragraph (Bigger)</option>" +
+          "<option class='pcsm'>Right Code (smol) and Left Paragraph (Bigger)</option>" +
+          "<option class='pimsm'>RIght Image (smol) and Left Paragraph (Bigger)</option>" +
           "<option value='pim'>Left Paragraph and Right Image</option>" +
           "<option value='pc'>Left Paragraph and Right Code</option>" +
         "</select>" +
@@ -267,6 +273,8 @@
     $('.mid-col').removeClass('mid-col').addClass(colmd4);
     $('.cpsm').val(cp48);
     $('.impsm').val(imp48);
+    $('.pcsm').val('pc84');
+    $('.pimsm').val('pim84');
     $('.colorme').colorpicker({ /*options...*/ });
     $("#image" + parseInt(sectionCount)).fileinput({'showUpload':false, 'previewFileType':'any'});
     $("#num-sections").val(sectionCount);
