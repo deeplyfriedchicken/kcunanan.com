@@ -221,8 +221,8 @@
           "<option value='fc'>Full Code</option>" +
           "<option value='cp'>Left Code and Right Paragraph</option>" +
           "<option value='imp'>Left Image and Right Paragraph</option>" +
-          "<option value='cp48'>Left Code (4/12) and Right Paragraph (8/12)</option>" +
-          "<option value='imp48'>Left Image (4/12) and Right Paragraph (8/12)</option>" +
+          "<option class='cpsm'>Left Code (smol) and Right Paragraph (Bigger)</option>" +
+          "<option class='impsm'>Left Image (smol) and Right Paragraph (Bigger)</option>" +
           "<option value='pim'>Left Paragraph and Right Image</option>" +
           "<option value='pc'>Left Paragraph and Right Code</option>" +
         "</select>" +
@@ -252,6 +252,8 @@
         "<textarea name='content{{ $sections_count }}' class='textarea textarea{{ $sections_count }}' placeholder='Place some text here'></textarea>" +
       "</div>" +
     "</div>";
+    var cp48 = "cp48";
+    var imp48 = "imp48";
     var colmd4 = "col-md-4"
     var textareaStyle = 'width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;';
   function newSection() {
@@ -263,6 +265,8 @@
     $('.textarea' + parseInt(sectionCount)).attr("style", textareaStyle);
     $('.textarea' + parseInt(sectionCount)).wysihtml5();
     $('.mid-col').removeClass('mid-col').addClass(colmd4);
+    $('.cpsm').val(cp48);
+    $('.impsm').val(imp48);
     $('.colorme').colorpicker({ /*options...*/ });
     $("#image" + parseInt(sectionCount)).fileinput({'showUpload':false, 'previewFileType':'any'});
     $("#num-sections").val(sectionCount);
