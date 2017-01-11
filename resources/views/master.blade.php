@@ -74,6 +74,11 @@
         font-size: 15px;
       }
     }
+    @media(max-width: 450px) {
+      .fb-hide {
+        display: none;
+      }
+    }
     .social-footer-pinterest {
       background-color: #CC2127;
     }
@@ -251,7 +256,7 @@
                   <div class="textwidget">
                           <h1><span style="border-bottom:10px solid black;">FOLLOW</span> <span style="background-color:#2b3956; color:#fff; padding: 10px;">ME</span></h1>
                           <div style="margin-top: 30px;" class="ish-sc-element ish-sc_icon_button_set ish-sc_global_iconic_box">
-                              <div class="ish-sc-element ish-sc_icon ish-simple ish-color1 ish-text-color3 ish-tooltip-color13 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Let's be friends"><a target="_blank" href="https://www.facebook.com/kongkuaifan"><span class="social-box social-footer-fb"><span class="ish-icon-facebook" style="font-size:24px;line-height:24px;"></span></span></a></div>
+                              <div class="ish-sc-element fb-hide ish-sc_icon ish-simple ish-color1 ish-text-color3 ish-tooltip-color13 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Let's be friends"><a target="_blank" href="https://www.facebook.com/kongkuaifan"><span class="social-box social-footer-fb"><span class="ish-icon-facebook" style="font-size:24px;line-height:24px;"></span></span></a></div>
                               <div class="hide-social ish-sc-element ish-sc_icon ish-simple ish-color2 ish-text-color3 ish-tooltip-color23 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Follow me on Instagram"><a target="_blank" href="https://www.instagram.com/cunananananan/"><span class="social-box social-footer-instagram"><span class="fa fa-instagram" style="font-size:24px;line-height:24px;"></span></span></a></div>
                               <div class="ish-sc-element ish-sc_icon ish-simple ish-color3 ish-text-color3 ish-tooltip-color1 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="Follow my Tumblr pls"><a target="_blank" href="http://kcunanan.tumblr.com/"><span class="social-box social-footer-tumblr"><span class="ish-icon-tumblr" style="font-size:24px;line-height:24px;"></span></span></a></div>
                               <div class="ish-sc-element ish-sc_icon ish-simple ish-color22 ish-text-color3 ish-tooltip-color24 ish-tooltip-text-color3" style="font-size:24px;width:50px;height:24px;" data-type="tooltip" title="I GitHub frequently"><a target="_blank" href="http://github.com/kcunanan"><span class="social-box social-footer-github"><span class="fa fa-github" style="font-size:24px;line-height:24px;"></span></span></a></div>
