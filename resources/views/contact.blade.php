@@ -27,7 +27,7 @@
                                                   <div class="wpb_text_column wpb_content_element  ish-right" style="">
                                                       <div class="wpb_wrapper">
                                                           <p>Have something you want me to make? A small website? A logo? Design? All of those things and more? Feel free to contact me however you see fit. Message me for more information.</p>
-                                                          <p>Email: kevin@kcunanan.com</p>
+                                                          <p>Email: kevin.a.cunanan@gmail.com</p>
                                                       </div>
                                                   </div>
                                               </div>
@@ -99,7 +99,7 @@
                                                     <div class="wpb_text_column wpb_content_element " style="">
                                                         <div class="wpb_wrapper">
                                                             <p>Phone: <a href="/kevin-resume.pdf" target="_blank">See Resume</a>
-                                                                <br /> kevin@kcunanan.com
+                                                                <br /> kevin.a.cunanan@gmail.com
                                                             </p>
 
                                                         </div>
