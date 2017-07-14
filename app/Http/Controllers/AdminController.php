@@ -87,13 +87,20 @@ class AdminController extends Controller
           // and setting Accept-Locale will return a translated response if available.
           // https://dev.fitbit.com/docs/basics/#localization
       );
+      $response2 = $provider->getResponse($request);
+      $data = $response2['summary'];
       if(Lookup::where('date_posted', $response[0]['dateOfSleep'])->exists()) {
-        $request2->session()->flash('existing-fitbit', 'Data exists for '.$response[0]['dateOfSleep']);
+        $entry = Lookup::where('date_posted', $response[0]['dateOfSleep'])->first();
+        $entry->blog_views = $data['steps'];
+        // shares = floors
+        $entry->blog_shares = $data['floors'];
+        $entry->other_1 = $response[0]['minutesAsleep'];
+        $entry->date_posted = $response[0]['dateOfSleep'];
+        $entry->save();
+        $request2->session()->flash('existing-fitbit', 'Updated existing data for '.$response[0]['dateOfSleep']);
         return redirect('/kevin');
       }
       else {
-        $response2 = $provider->getResponse($request);
-        $data = $response2['summary'];
         $entry = new Lookup;
         //views = steps
         $entry->category = 'fitbit_data';

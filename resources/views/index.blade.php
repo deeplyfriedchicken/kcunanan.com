@@ -148,7 +148,7 @@
                                             <div class="ish-display-table">
                                                 <div class="ish-post-content ish-color9 ish-text-color4 ish-grid6">
                                                     <div class="ish-blog-post-content">
-                                                        <h2 class="ish-h4"><a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $item->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $item->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $item->blog_url)) }}">{{ $blog->blog_title }}</a></h2>
+                                                        <h2 class="ish-h4"><a href="/posts/{{ strtolower(preg_replace("/[\s_]/", "-", $blog->category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $blog->sub_category)) }}/{{ strtolower(preg_replace("/[\s_]/", "-", $blog->blog_url)) }}">{{ $blog->blog_title }}</a></h2>
                                                         <div class="ish-blog-post-details">
                                                             <span><a href="#">{{ $blog->date_posted->format('F j, Y') }}</a></span><span class="ish-spacer">/</span><a href="#">{{ ucwords($blog->sub_category) }}</a><span class="ish-spacer">/</span><span><a href="#">{{ $blog->blog_views }} Views</a></span>
                                                         </div>

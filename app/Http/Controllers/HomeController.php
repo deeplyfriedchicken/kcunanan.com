@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         $kickstarters = Lookup::where('category', 'kickstarter')->take(2)->get();
 
-        $fitbit = Lookup::where('category', 'fitbit_data')->orderBy('date_posted')->take(7)->get();
+        $fitbit = Lookup::where('category', 'fitbit_data')->orderBy('date_posted', 'desc')->take(7)->get();
         $hourSlept = 0.0;
         $countDays = 0;
         foreach($fitbit as $data) {
@@ -48,10 +48,10 @@ class HomeController extends Controller
 
     public function about()
     {
-      $client = new Client(env('TUMBLR_API_KEY'), env('TUMBLR_SECRET'));
-      $client->setToken(env('TUMBLR_TOKEN'), env('TUMBLR_TOKEN_SECRET'));
-      $url = $client->getBlogPosts('kcunanan.tumblr.com')->posts[0]->photos[0]->original_size->url;
-      $caption = $client->getBlogPosts('kcunanan.tumblr.com')->posts[0]->caption;
+      // $client = new Client(env('TUMBLR_API_KEY'), env('TUMBLR_SECRET'));
+      // $client->setToken(env('TUMBLR_TOKEN'), env('TUMBLR_TOKEN_SECRET'));
+      // $url = $client->getBlogPosts('kcunanan.tumblr.com')->posts[1]->photos[0]->original_size->url;
+      // $caption = $client->getBlogPosts('kcunanan.tumblr.com')->posts[0]->caption;
       return view('about-me');
     }
 
