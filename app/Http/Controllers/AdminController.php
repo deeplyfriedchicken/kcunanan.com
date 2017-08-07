@@ -86,27 +86,26 @@ class AdminController extends Controller
       );
       $response2 = $provider->getResponse($request);
       $data = $response2['summary'];
-      if(Lookup::where('date_posted', $response[0]['dateOfSleep'])->exists()) {
-        $entry = Lookup::where('date_posted', $response[0]['dateOfSleep'])->first();
+      if(Lookup::where('date_posted', Carbon::today())->exists()) {
+        $entry = Lookup::where('date_posted', Carbon::today())->first();
         $entry->blog_views = $data['steps'];
         $entry->blog_shares = $data['floors'];
-        $entry->other_1 = $response[0]['minutesAsleep'];
-        $entry->date_posted = $response[0]['dateOfSleep'];
+        if (count($response) > 0) {
+            $entry->other_1 = $response[0]['minutesAsleep'];
+            $entry->date_posted = $response[0]['dateOfSleep'];
+        }
         $entry->save();
-        $request2->session()->flash('existing-fitbit', 'Updated existing data for '.$response[0]['dateOfSleep']);
-        return redirect('/kevin');
       }
       else {
         $entry = new Lookup;
-        //views = steps
         $entry->category = 'fitbit_data';
         $entry->blog_views = $data['steps'];
         $entry->blog_shares = $data['floors'];
-        $entry->other_1 = $response[0]['minutesAsleep'];
-        $entry->date_posted = $response[0]['dateOfSleep'];
+        if (count($response) > 0) {
+            $entry->other_1 = $response[0]['minutesAsleep'];
+            $entry->date_posted = $response[0]['dateOfSleep'];
+        }
         $entry->save();
-        $request2->session()->flash('downloaded-fitbit', 'Downloaded data for '.$entry->date_posted);
-        return redirect('/kevin');
       }
     }
 

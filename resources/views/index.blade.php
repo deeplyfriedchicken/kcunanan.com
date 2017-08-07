@@ -78,6 +78,9 @@
     .fitbit_sleep h3 {
         font-size: 3em;
     }
+    .feet {
+        margin-bottom: 7.5px;
+    }
 
   </style>
 @endsection
@@ -215,6 +218,9 @@
                                       <h1><i class="fa fa-moon-o"></i></h1>
                                       <h3>{{ $hourSlept }}</h3>
                                       <span>Hours Slept</span>
+                                      <h1><img class="feet" width="50px" src="{{ URL::asset('images/icons/steps.png') }}"</h1>
+                                      <h3>{{ $steps }}</h3>
+                                      <span>Steps</span>
                                     </div>
                                   </div>
                                 </div>

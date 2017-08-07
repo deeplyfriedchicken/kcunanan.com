@@ -7,6 +7,7 @@ use DB;
 use App\Mail;
 use App\Lookup;
 use Tumblr\API\Client;
+use Carbon\Carbon;
 use GitHub;
 
 class HomeController extends Controller
@@ -32,8 +33,9 @@ class HomeController extends Controller
 
         $kickstarters = Lookup::where('category', 'kickstarter')->take(2)->get();
 
-        $fitbit = Lookup::where('category', 'fitbit_data')->orderBy('date_posted', 'desc')->take(7)->get();
+        $fitbit = Lookup::where('category', 'fitbit_data')->orderBy('date_posted', 'desc')->take(30)->get();
         $hourSlept = 0.0;
+        $steps = $fitbit[0]->blog_views;
         $countDays = 0;
         foreach($fitbit as $data) {
           if((int)$data->other_1 != 0) {
@@ -43,7 +45,7 @@ class HomeController extends Controller
         }
         $hourSlept = round($hourSlept/$countDays, 2);
 
-        return view('index', ['portfolio' => $portfolio, 'instas' => $instas, 'kickstarters' => $kickstarters, 'blogs' => $blogs, 'hourSlept' => $hourSlept]);
+        return view('index', ['portfolio' => $portfolio, 'instas' => $instas, 'kickstarters' => $kickstarters, 'blogs' => $blogs, 'hourSlept' => $hourSlept, 'steps' => $steps]);
     }
 
     public function about()

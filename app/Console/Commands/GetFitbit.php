@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use djchen\OAuth2\Client\Provider\Fitbit;
 use App\Lookup;
+use Carbon\Carbon;
+
 class GetFitbit extends Command
 {
     /**
@@ -72,12 +74,14 @@ class GetFitbit extends Command
       );
       $response2 = $provider->getResponse($request);
       $data = $response2['summary'];
-      if(Lookup::where('date_posted', $response[0]['dateOfSleep'])->exists()) {
-        $entry = Lookup::where('date_posted', $response[0]['dateOfSleep'])->first();
+      if(Lookup::where('date_posted', Carbon::today())->exists()) {
+        $entry = Lookup::where('date_posted', Carbon::today())->first();
         $entry->blog_views = $data['steps'];
         $entry->blog_shares = $data['floors'];
-        $entry->other_1 = $response[0]['minutesAsleep'];
-        $entry->date_posted = $response[0]['dateOfSleep'];
+        if (count($response) > 0) {
+            $entry->other_1 = $response[0]['minutesAsleep'];
+            $entry->date_posted = $response[0]['dateOfSleep'];
+        }
         $entry->save();
       }
       else {
@@ -85,8 +89,10 @@ class GetFitbit extends Command
         $entry->category = 'fitbit_data';
         $entry->blog_views = $data['steps'];
         $entry->blog_shares = $data['floors'];
-        $entry->other_1 = $response[0]['minutesAsleep'];
-        $entry->date_posted = $response[0]['dateOfSleep'];
+        if (count($response) > 0) {
+            $entry->other_1 = $response[0]['minutesAsleep'];
+            $entry->date_posted = $response[0]['dateOfSleep'];
+        }
         $entry->save();
       }
     }
