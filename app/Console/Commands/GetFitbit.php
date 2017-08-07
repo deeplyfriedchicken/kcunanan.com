@@ -48,9 +48,7 @@ class GetFitbit extends Command
       // other_1 = accessToken
       // other_2 = refreshToken
       $fitbit->other_1 = $newAccessToken->getToken();
-      echo "Access: ".$fitbit->other_1;
       $fitbit->other_2 = $newAccessToken->getRefreshToken();
-      echo "Refresh: ".$fitbit->other_2;
       $fitbit->save();
       $accessToken = $newAccessToken->getToken();
       $request = $provider->getAuthenticatedRequest(
@@ -63,7 +61,6 @@ class GetFitbit extends Command
           // https://dev.fitbit.com/docs/basics/#localization
       );
       $response = $provider->getResponse($request)['sleep'];
-      var_dump($response);
       $request = $provider->getAuthenticatedRequest(
           Fitbit::METHOD_GET,
           Fitbit::BASE_FITBIT_API_URL . '/1/user/-/activities/date/today.json',
@@ -75,16 +72,22 @@ class GetFitbit extends Command
       );
       $response2 = $provider->getResponse($request);
       $data = $response2['summary'];
-      $entry = new Lookup;
-      //views = steps
-      $entry->category = 'fitbit_data';
-      $entry->blog_views = $data['steps'];
-      // shares = floors
-      $entry->blog_shares = $data['floors'];
-      $entry->other_1 = $response[0]['minutesAsleep'];
-      $entry->date_posted = $response[0]['dateOfSleep'];
-      $entry->save();
-      echo "Saved";
-
+      if(Lookup::where('date_posted', $response[0]['dateOfSleep'])->exists()) {
+        $entry = Lookup::where('date_posted', $response[0]['dateOfSleep'])->first();
+        $entry->blog_views = $data['steps'];
+        $entry->blog_shares = $data['floors'];
+        $entry->other_1 = $response[0]['minutesAsleep'];
+        $entry->date_posted = $response[0]['dateOfSleep'];
+        $entry->save();
+      }
+      else {
+        $entry = new Lookup;
+        $entry->category = 'fitbit_data';
+        $entry->blog_views = $data['steps'];
+        $entry->blog_shares = $data['floors'];
+        $entry->other_1 = $response[0]['minutesAsleep'];
+        $entry->date_posted = $response[0]['dateOfSleep'];
+        $entry->save();
+      }
     }
 }

@@ -52,9 +52,6 @@ class AdminController extends Controller
     }
 
     public function getFitbitData(Request $request2) {
-      // need to do this in Controller since 1&1 doesn't support 5.6
-      // TODO - Create a control statement that checks if it was already downloaded today
-
       $provider = new Fitbit([
         'clientId'          => env('FITBIT_CLIENT'),
         'clientSecret'      => env('FITBIT_SECRET'),
@@ -92,7 +89,6 @@ class AdminController extends Controller
       if(Lookup::where('date_posted', $response[0]['dateOfSleep'])->exists()) {
         $entry = Lookup::where('date_posted', $response[0]['dateOfSleep'])->first();
         $entry->blog_views = $data['steps'];
-        // shares = floors
         $entry->blog_shares = $data['floors'];
         $entry->other_1 = $response[0]['minutesAsleep'];
         $entry->date_posted = $response[0]['dateOfSleep'];
@@ -105,7 +101,6 @@ class AdminController extends Controller
         //views = steps
         $entry->category = 'fitbit_data';
         $entry->blog_views = $data['steps'];
-        // shares = floors
         $entry->blog_shares = $data['floors'];
         $entry->other_1 = $response[0]['minutesAsleep'];
         $entry->date_posted = $response[0]['dateOfSleep'];
