@@ -78,9 +78,9 @@ class GetFitbit extends Command
         $entry = Lookup::where('date_posted', Carbon::today())->first();
         $entry->blog_views = $data['steps'];
         $entry->blog_shares = $data['floors'];
+        $entry->date_posted = Carbon::today();
         if (count($response) > 0) {
             $entry->other_1 = $response[0]['minutesAsleep'];
-            $entry->date_posted = $response[0]['dateOfSleep'];
         }
         $entry->save();
       }
@@ -89,11 +89,12 @@ class GetFitbit extends Command
         $entry->category = 'fitbit_data';
         $entry->blog_views = $data['steps'];
         $entry->blog_shares = $data['floors'];
+        $entry->date_posted = Carbon::today();
         if (count($response) > 0) {
             $entry->other_1 = $response[0]['minutesAsleep'];
-            $entry->date_posted = $response[0]['dateOfSleep'];
         }
         $entry->save();
       }
+      echo $entry->date_posted;
     }
 }
