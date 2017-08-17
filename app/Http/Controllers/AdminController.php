@@ -14,10 +14,6 @@ use Auth;
 use Carbon\Carbon;
 use djchen\OAuth2\Client\Provider\Fitbit;
 
-function runSync() {
-    chdir('/homepages/37/d587320544/htdocs/kcunanan');
-    shell_exec('./sync.sh'); //moving things to public after image upload
-}
 function cleanUrl($string) {
   $string = strtolower($string);
   //Make alphanumeric (removes all other characters)
@@ -141,7 +137,6 @@ class AdminController extends Controller
       return view('admin/read-mail', ['mail' => $mail]);
     }
     public function sync(Request $request) {
-      runSync();
       $request->session()->flash('sync', 'Successfully synced.');
       return redirect('/kevin');
     }
@@ -157,7 +152,6 @@ class AdminController extends Controller
         $path = public_path('img/profile_pictures/'.$id.".".$request->file('photo')->extension());
         $user->image_url = $id.".".$request->file('photo')->extension();
         $image->save($path);
-        runSync();
       }
       $user->save();
       $request->session()->flash('updated-user', 'User settings successfully updated.');
@@ -261,7 +255,6 @@ class AdminController extends Controller
         $path = public_path('uploads/'.$image_id.".".$request->file('photo')->extension());
         $blog->media_url = 'uploads/'.$image_id.".".$request->file('photo')->extension();
         $image->save($path);
-        runSync();
       }
       if ($request->file('portf-photo') != null) {
         $image = Image::make($request->file('portf-photo'));
@@ -269,7 +262,6 @@ class AdminController extends Controller
         $path = public_path('uploads/'.$image_id.".".$request->file('portf-photo')->extension());
         $blog->portfolio_image = 'uploads/'.$image_id.".".$request->file('portf-photo')->extension();
         $image->save($path);
-        runSync();
       }
       $blog->save();
       Lookup::where('category', 'tag')->where('ref_id', $blog->id)->orwhere('category', 'ptag')->where('ref_id', $blog->id)->delete();
@@ -305,7 +297,6 @@ class AdminController extends Controller
                   $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
                   $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
                   $image->save($path);
-                  runSync();
                 }
               }
               elseif($request["radio_image".$i] == "url") {
@@ -356,7 +347,6 @@ class AdminController extends Controller
           $path = public_path('uploads/'.$image_id.".".$request->file('portf-photo')->extension());
           $blog->portfolio_image = 'uploads/'.$image_id.".".$request->file('portf-photo')->extension();
           $image->save($path);
-          runSync();
         }
         if ($request->file('photo') != null) {
           $image = Image::make($request->file('photo'));
@@ -364,7 +354,6 @@ class AdminController extends Controller
           $path = public_path('uploads/'.$image_id.".".$request->file('photo')->extension());
           $blog->media_url = 'uploads/'.$image_id.".".$request->file('photo')->extension();
           $image->save($path);
-          runSync();
         }
         $blog->date_posted = Carbon::now()->toDateString();
         $blog->save();
@@ -401,7 +390,6 @@ class AdminController extends Controller
                   $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
                   $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
                   $image->save($path);
-                  runSync();
                 }
               }
               elseif($request["radio_image".$i] == "url") {
@@ -415,7 +403,6 @@ class AdminController extends Controller
                   $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
                   $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
                   $image->save($path);
-                  runSync();
                 }
               }
               $section->save();
