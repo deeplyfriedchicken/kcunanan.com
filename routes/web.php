@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('php', function () {
+    return view('php-ini');
+});
+
 Route::get('/', ['uses' => 'HomeController@index']);
 
 Route::get('portfolio', ['uses' => 'HomeController@showPortfolio']);
