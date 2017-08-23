@@ -222,6 +222,10 @@
       float: right;
   }
 
+  /* editor styles  */
+  .text-center {
+      text-align: center;
+  }
   </style>
 @endsection
 @section('facebook-dev')

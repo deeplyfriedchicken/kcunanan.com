@@ -134,7 +134,6 @@ jQuery(document).ready(function ($) {
 	ish.activate_shortcode_slidable();
 	ish.activate_tooltips();
 	ish.activate_blog_packery();
-	ish.activate_iframe_embed_video_heigh_fix();
 	ish.activate_ish_like_it();
 	ish.activate_vunit();
 	ish.activate_fancybox();
@@ -1854,41 +1853,6 @@ if ( ! function_exists( 'activate_blog_packery' ) ) {
 }
 
 
-// Video ---------------------------------------------------------------------------------------------------------------
-function fixVideoHeights(){
-	var src = jQuery('.ish-blog-video-content');
-	var rec_post = jQuery('.recent_posts_post_content');
-
-	src.each(function() {
-		var me = jQuery(this);
-		var iframe = me.find('iframe');
-		var iframe_w = iframe.attr('width');
-		var iframe_h = iframe.attr('height');
-
-		var parent_w = me.width();
-
-		if (iframe_h > 0 && 0 == parent_w) {
-
-			var visible_parent_w = 0;
-			var visible_parent = me.parents('.ish-slidable').find('.recent_posts_post_content');
-			if (visible_parent.length > 0 ){
-				visible_parent_w = visible_parent.width();
-			}
-
-			parent_w = visible_parent_w;
-		}
-
-		var rat = parent_w / iframe_w;
-
-		if ( parent_w > 0 && iframe_h > 0 ){
-			iframe.attr('width', parent_w);
-			iframe.attr('height', iframe_h * rat);
-			iframe.show();
-		}
-	});
-}
-
-
 
 
 // Multiple dropdown menu ----------------------------------------------------------------------------------------------
@@ -2076,67 +2040,6 @@ jQuery.fn.multipleDropDown = function() {
     });
 
 };
-
-// Iframe video height fix ---------------------------------------------------------------------------------------------
-if ( ! function_exists( 'activate_iframe_embed_video_heigh_fix' ) ) {
-	ish.activate_iframe_embed_video_heigh_fix = function (){
-
-		if ( jQuery('.ish-blog-video-content').length > 0 ) {
-			jQuery(window).resize(function() {
-				fixVideoHeights();
-			});
-		}
-
-		if ( jQuery('embed').length > 0 ) {
-			jQuery(window).resize(function() {
-				var src = jQuery('embed');
-				src.each(function() {
-					var self = jQuery(this);
-					var parent = self.parent();
-					var ow = parent.width();
-
-					var w = self.attr('width');
-					var h = self.attr('height');
-					var rat = ow / w;
-
-					self.attr('width', ow);
-					self.attr('height', parseInt(h * rat), 10);
-
-					self.show();
-				});
-			});
-		}
-		if ( jQuery('iframe').length > 0 ) {
-			jQuery(window).resize(function() {
-				var src = jQuery('iframe');
-				src.each(function() {
-					var self = jQuery(this);
-					var parent = self.parent();
-					var ow = parent.width();
-
-					var attsrc = self.attr('src');
-
-					if ( attsrc ){
-
-						var w = self.attr('width');
-						var h = self.attr('height');
-						var rat = ow / w;
-
-						self.css('width', '100%');
-
-						if ( ow > 0 ){
-							self.attr('width', ow);
-							self.attr('height', parseInt(h * rat) , 1);
-						}
-
-						self.show();
-					}
-				});
-			});
-		}
-
-	}
-}
 
 
 // Ish Like It ---------------------------------------------------------------------------------------------------------
