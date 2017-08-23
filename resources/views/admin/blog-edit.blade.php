@@ -9,6 +9,7 @@
   <meta property="og:title" content="kcunanan.com - {{ $blog->blog_title }}" />
 @endsection
 @section('stylesheets')
+  <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-col.css') }}">
   <style>
   #portfolio-link, #github-link {
     @if($blog->color) background-color: {{ $blog->color }}; @endif
