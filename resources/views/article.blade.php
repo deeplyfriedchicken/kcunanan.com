@@ -132,6 +132,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection" style="">
+                        <div class="ish-vc_row_inner">
+                            <div class="vc_col-sm-12 wpb_column column_container" style="">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element " style="">
+                                        <div class="wpb_wrapper">
+                                          {!! $blog[0]->content !!}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @foreach($sections as $section)
                     @if($section->helper_type == 'fp')
                     <div class="vc_row wpb_row vc_row-fluid ish-row-notfull ish-row-full-nopadding ish-has-nobgimage ish-resp-centered ish-row_notsection" style="">

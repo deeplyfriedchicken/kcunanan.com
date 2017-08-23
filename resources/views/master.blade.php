@@ -146,6 +146,7 @@
 <body class="home page page-id-157 page-template-default ish-boxed ish-pixel-width ish-responsive_layout_on ish-sticky-on ish-header_bar-on wpb-js-composer js-comp-ver-4.10 vc_responsive">
   @yield('facebook-dev')
   <div class="ish-body">
+      @yield('alert')
 
 
       <!-- Search bar -->

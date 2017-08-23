@@ -27,8 +27,6 @@
   <link rel="stylesheet" href="{{ URL::asset('admin/plugins/datepicker/datepicker3.css') }}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{ URL::asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{ URL::asset('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 
   <link rel="stylesheet" href="{{ URL::asset('admin/plugins/select2/select2.css') }}">
 
@@ -56,6 +54,9 @@
 </head>
 <body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
+  <div class="row">
+    @yield('alert')
+  </div>
 
   <header class="main-header">
     <!-- Logo -->
@@ -174,6 +175,11 @@
             <i class="fa fa-check-square"></i> <span>Kickstarter</span>
           </a>
         </li>
+        <li class="{{ Request::is('kevin/images') ? 'active' : '' }} treeview">
+          <a href="/kevin/images">
+            <i class="fa fa-image"></i> <span>Images</span>
+          </a>
+        </li>
         <li class="{{ Request::is('kevin/sort') ? 'active' : '' }} treeview">
           <a href="#">
             <i class="fa fa-edit"></i>
@@ -263,7 +269,6 @@
 <script src="{{ URL::asset('admin/plugins/datepicker/bootstrap-datepicker.js') }}"></script> --}}
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{ URL::asset('admin/plugins/colorpicker/bootstrap-colorpicker.min.js') }}"></script>
-<script src="{{ URL::asset('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
 <!-- Slimscroll -->
 <script src="{{ URL::asset('admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->

@@ -11,6 +11,7 @@ use App\Mail;
 use App\Lookup;
 use Image;
 use Auth;
+use File;
 use Carbon\Carbon;
 use djchen\OAuth2\Client\Provider\Fitbit;
 
@@ -226,6 +227,17 @@ class AdminController extends Controller
     public function editBlog($id) {
       $blog = Lookup::findOrFail($id);
       $tag = Lookup::where('category', 'tag')->where('ref_id', $id)->orWhere('category', 'ptag')->where('ref_id', $id)->get();
+      $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
+      $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
+      if($sections_count == null) {
+        $sections_count = 1;
+      }
+      return view('admin/blog-edit', ['blog' => $blog, 'tags' => $tag, 'sections' => $sections, 'sections_count' => $sections_count]);
+    }
+
+    public function editBlogData($id) {
+      $blog = Lookup::findOrFail($id);
+      $tag = Lookup::where('category', 'tag')->where('ref_id', $id)->orWhere('category', 'ptag')->where('ref_id', $id)->get();
       $allTags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
       $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
       $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
@@ -234,6 +246,48 @@ class AdminController extends Controller
       }
       return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'allTags' => $allTags, 'sections' => $sections, 'sections_count' => $sections_count]);
     }
+
+    public function uploadImage(Request $request) {
+      if ($request->file('image') != null) {
+        $image = Image::make($request->file('image'));
+        $image_id = uniqid();
+        $path = public_path('uploads/'.$image_id.".".$request->file('image')->extension());
+        $image->save($path);
+        $request->session()->flash('added-image', 'Successfully added image.');
+      }
+      else {
+        $request->session()->flash('no-image', 'Image not added image.');
+      }
+      $files = collect(File::allFiles('../public/uploads'));
+      $files = $files->sortByDesc(function ($file) {
+        return $file->getCTime();
+      });
+      return view('admin/images', ['images' => $files]);
+    }
+
+    public function showUploadedImages() {
+      $files = collect(File::allFiles('../public/uploads'));
+      $files = $files->sortByDesc(function ($file) {
+        return $file->getCTime();
+      });
+      return view('admin/images', ['images' => $files]);
+    }
+
+    public function deleteImage(Request $request) {
+      $image = $request->input('image');
+      File::delete($image);
+      return ['msg' => 'Deleted Image!'];
+    }
+
+    public function updateBlogContent(Request $request, $id) {
+      $content = $request->input('content');
+      $blog = Lookup::findOrFail($id);
+      $blog->content = $content;
+      $blog->save();
+
+      return ['msg' => $id, 'data' => $request->input('content')];
+    }
+
     public function updateBlog(Request $request, $id) {
       $blog = Lookup::findOrFail($id);
       $blog->category = $request['lookup_category'];
@@ -279,35 +333,6 @@ class AdminController extends Controller
               $tag->save();
           }
       }
-      Lookup::where('category', 'article_helper')->where('ref_id', $blog->id)->delete();
-      for($i = 1; $i <= $request['num-sections']; $i++) {
-            if($request["content".$i] || $request["code".$i] || $request->file('portf-photo') != null) {
-              $section = new Lookup;
-              $section->ref_id = $blog->id;
-              $section->category = "article_helper";
-              $section->helper_type = $request["type".$i];
-              $section->color = $request["color".$i];
-              $section->heading = $request["title".$i];
-              $section->content = $request["content".$i];
-              $section->code = $request["code".$i];
-              if($request["radio_image".$i] == "upload") {
-                if ($request->file('image'.$i) != null) {
-                  $image = Image::make($request->file('image'.$i));
-                  $image_id = uniqid();
-                  $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
-                  $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
-                  $image->save($path);
-                }
-              }
-              elseif($request["radio_image".$i] == "url") {
-                $section->media_url = $request['image'.$i.'_url'];
-              }
-              else {
-                $section->media_url = $request['old_image'.$i];
-              }
-              $section->save();
-            }
-        }
       $blog = Lookup::findOrFail($id);
       $tag = Lookup::where('category', 'tag')->where('ref_id', $id)->orWhere('category', 'ptag')->where('ref_id', $id)->get();
       $allTags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
@@ -334,7 +359,6 @@ class AdminController extends Controller
         $blog->github_url = $request['github_repo'];
         $blog->sub_category = strtolower($request['category']);
         $blog->heading = $request['intro-paragraph'];
-        $blog->content = $request['content'];
 
         if($request['lookup_category'] == 'portfolio') {
             $blog->portfolio_ish = $request['portfolio-ish'];
@@ -373,56 +397,10 @@ class AdminController extends Controller
             $tag->save();
           }
         }
-        for($i = 1; $i <= $request['num-sections']; $i++) {
-            if($request["content".$i] || $request["code".$i] || $request->file('portf-photo') != null) {
-              $section = new Lookup;
-              $section->ref_id = $blog->id;
-              $section->category = "article_helper";
-              $section->helper_type = $request["type".$i];
-              $section->color = $request["color".$i];
-              $section->heading = $request["title".$i];
-              $section->content = $request["content".$i];
-              $section->code = $request["code".$i];
-              if($request["radio_image".$i] == "upload") {
-                if ($request->file('image'.$i) != null) {
-                  $image = Image::make($request->file('image'.$i));
-                  $image_id = uniqid();
-                  $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
-                  $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
-                  $image->save($path);
-                }
-              }
-              elseif($request["radio_image".$i] == "url") {
-                $section->media_url = $request['image'.$i.'_url'];
-              }
-              // final check
-              else {
-                if ($request->file('image'.$i) != null) {
-                  $image = Image::make($request->file('image'.$i));
-                  $image_id = uniqid();
-                  $path = public_path('uploads/'.$image_id.".".$request->file('image'.$i)->extension());
-                  $section->media_url = 'uploads/'.$image_id.".".$request->file('image'.$i)->extension();
-                  $image->save($path);
-                }
-              }
-              $section->save();
-            }
-        }
-          // $file = new Lookup;
-          // $file->category = 'blog_cover_photo';
-          // $file->ref_id = $blog->id;
-          // $file->save();
         $request->session()->flash('added-blog', 'Blog post successfully saved.');
         $tag = Lookup::where('category', 'tag')->orWhere('category', 'ptag')->where('ref_id', $return_id)->get();
         $allTags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
         $sections = Lookup::where('category', 'article_helper')->where('ref_id', $return_id)->get();
-        $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $return_id)->get();
-        if($sections_count->count()) {
-          $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $return_id)->count();
-        }
-        else {
-          $sections_count = 1;
-        }
         return redirect('/kevin/blog/edit/'.$return_id);
     }
 }

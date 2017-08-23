@@ -51,7 +51,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'kevin'], function () {
   Route::post('blog', ['uses' => 'AdminController@storePost']);
   Route::get('blog/edit', ['uses' => 'AdminController@showBlogs']);
   Route::get('blog/edit/{id}', ['uses' => 'AdminController@editBlog']);
-  Route::post('blog/edit/{id}', ['uses' => 'AdminController@updateBlog']);
+  Route::post('blog/edit/{id}', ['uses' => 'AdminController@updateBlogContent']);
+  Route::get('blog/update/{id}', ['uses' => 'AdminController@editBlogData']);
+  Route::post('blog/update/{id}', ['uses' => 'AdminController@updateBlog']);
+  Route::get('images', ['uses' => 'AdminController@showUploadedImages']);
+  Route::post('images', ['uses' => 'AdminController@uploadImage']);
+  Route::post('images/delete', ['uses' => 'AdminController@deleteImage']);
 
   Route::get('users', ['uses' => 'AdminController@showUsers']);
 

@@ -114,122 +114,14 @@
               </div>
             </div>
           </div>
-          <input type="hidden" id="num-sections" name="num-sections" value=1>
-          <div>
-          <div class="section1">
-            <div class="row push-down">
-              <div class="col-md-4">
-                <label for="type1">Type of Section</label>
-                <select name="type1" class="form-control">
-                  <option value="fp">Full Width Paragraph</option>
-                  <option value="fc">Full Code</option>
-                  <option value="fim">Full Image</option>
-                  <option value="cp">Left Code and Right Paragraph</option>
-                  <option value="imp">Left Image and Right Paragraph</option>
-                  <option value="cp48">Left Code (4/12) and Right Paragraph (8/12)</option>
-                  <option value="imp48">Left Image (4/12) and Right Paragraph (8/12)</option>
-                  <option value="pc84">Right Code (4/12) and Left Paragraph (8/12)</option>
-                  <option value="pim84">Right Image (4/12) and Left Paragraph (8/12)</option>
-                  <option value="pim">Left Paragraph and Right Image</option>
-                  <option value="pc">Left Paragraph and Right Code</option>
-                </select>
-                <label for="title1">Subtitle</label><input type="text" class="form-control title-help" name="title1">
-              </div>
-              <div class="col-md-4">
-                <label for="color1">Title Color</label>
-                <input id="color1" name="color1" type="text" class="form-control colorme">
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <div class="radio">
-                    <label><input type="radio" name="radio_image1" value="upload"> Upload</label>
-                    <label><input type="radio" name="radio_image1" value="url"> URL</label>
-                  </div>
-                </div>
-                <label for="media">Section Photo (if applicable)</label>
-                <input id="image1" name="image1" type="file" class="file">
-                <label for="image1_url">URL</label>
-                <input id="image1_url" class="form-control" name="image1_url" type="text">
-              </div>
-            </div>
-              <div class="form-group">
-                <label for="code1">Code 1</label>
-                <textarea name="code1" id="code1" class='form-control'></textarea>
-                <textarea name="content1" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-              </div>
-            </div>
-          </div>
-          <button class="btn btn-success" type="submit">Save</button>
+          <button class="btn btn-success" type="submit">Create Post</button>
         </form>
-        <button onclick="newSection()" class="btn btn-primary">New Section</button>
       </div>
     </div>
   </div>
 @endsection
 @section('more-scripts')
   <script>
-  var sectionCount = 1;
-  var sectionForm = "<div class='section1'>" +
-    "<div class='row push-down'>" +
-      "<div class='mid-col'>" +
-        "<label for='type1'>Section 1 Type</label>" +
-        "<select name='type1' class='form-control'>" +
-          "<option value='fp'>Full Width Paragraph</option>" +
-          "<option value='fim'>Full Image</option>" +
-          "<option value='fc'>Full Code</option>" +
-          "<option value='cp'>Left Code and Right Paragraph</option>" +
-          "<option value='imp'>Left Image and Right Paragraph</option>" +
-          "<option class='cpsm' value='cp48'>Left Code (smol) and Right Paragraph (Bigger)</option>" +
-          "<option class='impsm' value='imp48'>Left Image (smol) and Right Paragraph (Bigger)</option>" +
-          "<option class='pcsm' value='pc84'>Right Code (smol) and Left Paragraph (Bigger)</option>" +
-          "<option class='pimsm' value='pim84'>RIght Image (smol) and Left Paragraph (Bigger)</option>" +
-          "<option value='pim'>Left Paragraph and Right Image</option>" +
-          "<option value='pc'>Left Paragraph and Right Code</option>" +
-        "</select>" +
-        "<label for='title1'>Subtitle 1</label>" + "<input type='text' class='form-control title-help' name='title1'>" +
-      "</div>" +
-      "<div class='mid-col'>" +
-        "<label for='color1'>Title 1 Color</label>" +
-        "<input id='color1' name='color1' type='text' class='form-control colorme'>" +
-      "</div>" +
-      "<div class='mid-col'>" +
-        "<div class='form-group'>" +
-          "<div class='radio'>" +
-            "<label><input type='radio' name='radio_image1' value='upload'> Upload</label> " +
-            "<label><input type='radio' name='radio_image1' value='url'> URL</label>" +
-          "</div>" +
-        "</div>" +
-        "<label for='media'>Section 1 Photo (if applicable)</label>" +
-        "<input id='image1' name='image1' type='file' class='file'>" +
-        "<label for='image1_url'>URL</label>" +
-        "<input id='image1_url' class='form-control' name='image1_url' type='text'>" +
-      "</div>" +
-    "</div>" +
-      "<div class='form-group'>" +
-        "<textarea name='content1' class='textarea textarea1' placeholder='Place some text here'></textarea>" +
-      "</div>" +
-    "</div>";
-    var cp48 = "cp48";
-    var imp48 = "imp48";
-    var colmd4 = "col-md-4";
-    var textareaStyle = 'width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;';
-  function newSection() {
-    sectionCount++;
-    var re = new RegExp(parseInt(sectionCount-1),"g");
-    sectionForm = sectionForm.replace(re, parseInt(sectionCount));
-    console.log(sectionCount);
-    $('.section' + parseInt(sectionCount-1)).after(sectionForm);
-    $('.textarea' + parseInt(sectionCount)).attr("style", textareaStyle);
-    $('.mid-col').removeClass('.mid-col').addClass(colmd4);
-    $('.cpsm').val(cp48);
-    $('.impsm').val(imp48);
-    $('.pcsm').val('pc84');
-    $('.pimsm').val('pim84');
-    $('.textarea' + parseInt(sectionCount)).wysihtml5();
-    $('.colorme').colorpicker({ /*options...*/ });
-    $("#image" + parseInt(sectionCount)).fileinput({'showUpload':false, 'previewFileType':'any'});
-    $("#num-sections").val(sectionCount);
-  }
   $("#image1, #photo, #portf-photo").fileinput({'showUpload':false, 'previewFileType':'any'});
   $('#subcategory').select2({
     tags: true,
@@ -245,6 +137,8 @@
   $("#tags").select2({
     tags: true
   });
-  $('.textarea').wysihtml5();
+  var editor = new wysihtml.Editor('editor', {
+    toolbar: 'toolbar',
+  });
   </script>
 @endsection

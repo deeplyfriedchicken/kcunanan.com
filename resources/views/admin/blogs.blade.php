@@ -20,7 +20,8 @@
                   <th>Date Posted</th>
                   <th>Views</th>
                   <th>Description</th>
-                  <th>Action</th>
+                  <th>Action 1</th>
+                  <th>Action 2</th>
                 </tr>
                 @foreach($blogs as $blog)
                 <tr>
@@ -31,7 +32,8 @@
                   <td>{{ $blog->date_posted->format('F j, Y') }}</td>
                   <td>{{ $blog->blog_views }}</td>
                   <td>{{ $blog->heading }}</td>
-                  <td><a href="/kevin/blog/edit/{{ $blog->id }}" class="btn btn-success">Edit</a></td>
+                  <td><a target="_blank" href="/kevin/blog/edit/{{ $blog->id }}" class="btn btn-success">Edit Content</a></td>
+                  <td><a target="_blank" href="/kevin/blog/update/{{ $blog->id }}" class="btn btn-success">Edit Data</a></td>
                 </tr>
                 @endforeach
               </tbody>

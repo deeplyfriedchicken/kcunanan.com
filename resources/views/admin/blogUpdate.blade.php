@@ -115,170 +115,14 @@
               </div>
             </div>
           </div>
-          <input type="hidden" id="num-sections" name="num-sections" value=@if(isset($sections_count)) {{ $sections_count }} @else 1 @endif>
-          <div>
-          <?php $counter = 1 ?>
-          @if($sections->count())
-            @foreach($sections as $section)
-              <div class="section{{ $counter }}">
-                <div class="row push-down">
-                  <div class="col-md-4">
-                    <label for="type{{ $counter }}">Type of Section {{ $counter }}</label>
-                    <select name="type{{ $counter }}" class="form-control">
-                      <option value="fp" @if($section->helper_type == "fp") selected @endif>Full Width Paragraph</option>
-                      <option value="fc" @if($section->helper_type == "fc") selected @endif>Full Code</option>
-                      <option value="fim" @if($section->helper_type == "fim") selected @endif>Full Image</option>
-                      <option value="cp" @if($section->helper_type == "cp") selected @endif>Left Code and Right Paragraph</option>
-                      <option value="imp" @if($section->helper_type == "imp") selected @endif>Left Image and Right Paragraph</option>
-                      <option value="cp48" @if($section->helper_type == "fc48") selected @endif>Left Code (4/12) and Right Paragraph (8/12)</option>
-                      <option value="imp48" @if($section->helper_type == "imp48") selected @endif>Left Image (4/12) and Right Paragraph (8/12)</option>
-                        <option value="pc84" @if($section->helper_type == "pc84") selected @endif>Right Code (4/12) and Left Paragraph (8/12)</option>
-                        <option value="pim84" @if($section->helper_type == "pim84") selected @endif>Right Image (4/12) and Left Paragraph (8/12)</option>
-                      <option value="pim" @if($section->helper_type == "pim") selected @endif>Left Paragraph and Right Image</option>
-                      <option value="pc" @if($section->helper_type == "pc") selected @endif>Left Paragraph and Right Code</option>
-
-                    </select>
-                    <label for="title1">Subtitle {{ $counter }}</label><input type="text" class="form-control title-help" name="title{{ $counter }}" value="{{ $section->heading }}">
-                  </div>
-                  <div class="col-md-4">
-                    <label for="color{{ $counter }}">Title Color {{ $counter }}</label>
-                    <input id="color{{ $counter }}" name="color{{ $counter }}" type="text" class="form-control colorme" value="{{ $section->color }}">
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <div class="radio">
-                        <label><input type="radio" name="radio_image{{ $counter }}" value="upload"> Upload</label>
-                        <label><input type="radio" name="radio_image{{ $counter }}" value="url"> URL</label>
-                      </div>
-                    </div>
-                    <label for="image{{ $counter }}">Section Photo {{ $counter }} (if applicable @if($section->media_url) <a target="_blank" href="{{ URL::asset($section->media_url) }}">current</a> <input type="hidden" name="old_image{{ $counter }}" value="<?php echo $section->media_url ?>"> @endif)</label>
-                    <input id="image{{ $counter }}" name="image{{ $counter }}" type="file" class="file">
-                    <label for="image1_url">URL</label>
-                    <input id="image1_url" class="form-control" name="image1_url" type="text" value="{{ $section->media_url }}">
-                  </div>
-                </div>
-                  <div class="form-group">
-                    <label for="code{{ $counter }}">Code {{ $counter }} </label>
-                    <textarea name="code{{ $counter }}" id="code{{ $counter }}" class='form-control'>{{ $section->code }}</textarea>
-                    <label for="content{{ $counter }}">Paragraph {{ $counter }}</label>
-                    <textarea name="content{{ $counter }}" id="content{{ $counter }}" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $section->content }}</textarea>
-                  </div>
-                </div>
-                <?php $counter++ ?>
-            @endforeach
-          @else
-            <div class="section{{ $counter }}">
-              <div class="row push-down">
-                <div class="col-md-4">
-                  <label for="type{{ $counter }}">Type of Section {{ $counter }}</label>
-                  <select name="type{{ $counter }}" class="form-control">
-                    <option value="fp">Full Width Paragraph</option>
-                    <option value="fim">Full Image</option>
-                    <option value="fc">Full Code</option>
-                    <option value="cp">Left Code and Right Paragraph</option>
-                    <option value="imp">Left Image and Right Paragraph</option>
-                    <option value="fc48">Left Code (4/12) and Right Paragraph (8/12)</option>
-                    <option value="imp48">Left Image (4/12) and Right Paragraph (8/12)</option>
-                    <option value="pc84">Right Code (4/12) and Left Paragraph (8/12)</option>
-                    <option value="pim84">Right Image (4/12) and Left Paragraph (8/12)</option>
-                    <option value="cp">Left Code and Right Paragraph</option>
-                    <option value="pc">Left Paragraph and Right Code</option>
-                  </select>
-                  <label for="title1">Subtitle {{ $counter }}</label><input type="text" class="form-control title-help" name="title{{ $counter }}" value="">
-                </div>
-                <div class="col-md-4">
-                  <label for="color{{ $counter }}">Title Color {{ $counter }}</label>
-                  <input id="color{{ $counter }}" name="color{{ $counter }}" type="text" class="form-control colorme" value="">
-                </div>
-                <div class="col-md-4">
-                  <label for="image{{ $counter }}">Section Photo {{ $counter }}</label>
-                  <input id="image{{ $counter }}" name="image{{ $counter }}" type="file" class="file">
-                </div>
-              </div>
-                <div class="form-group">
-                  <label for="code{{ $counter }}">Code {{ $counter }}</label>
-                  <textarea name="code{{ $counter }}" id="code{{ $counter }}" class='form-control'></textarea>
-                  <label for="content{{ $counter }}">Paragraph {{ $counter }}</label>
-                  <textarea name="content{{ $counter }}" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                </div>
-              </div>
-              <?php $counter++ ?>
-          @endif
-          </div>
           <button class="btn btn-success" type="submit">Save</button>
         </form>
-        <button onclick="newSection()" class="btn btn-primary">New Section</button>
       </div>
     </div>
   </div>
 @endsection
 @section('more-scripts')
   <script>
-  var sectionCount = {{ $sections_count }};
-  var sectionForm = "<div class='section{{ $sections_count }}'>" +
-    "<div class='row push-down'>" +
-      "<div class='mid-col'>" +
-        "<label for='type{{ $sections_count }}'>Section {{ $sections_count }} Type</label>" +
-        "<select name='type{{ $sections_count }}' class='form-control'>" +
-          "<option value='fp'>Full Width Paragraph</option>" +
-          "<option value='fim'>Full Image</option>" +
-          "<option value='fc'>Full Code</option>" +
-          "<option value='cp'>Left Code and Right Paragraph</option>" +
-          "<option value='imp'>Left Image and Right Paragraph</option>" +
-          "<option class='cpsm'>Left Code (smol) and Right Paragraph (Bigger)</option>" +
-          "<option class='impsm'>Left Image (smol) and Right Paragraph (Bigger)</option>" +
-          "<option class='pcsm'>Right Code (smol) and Left Paragraph (Bigger)</option>" +
-          "<option class='pimsm'>RIght Image (smol) and Left Paragraph (Bigger)</option>" +
-          "<option value='pim'>Left Paragraph and Right Image</option>" +
-          "<option value='pc'>Left Paragraph and Right Code</option>" +
-        "</select>" +
-        "<label for='title{{ $sections_count }}'>Subtitle {{ $sections_count }}</label>" + "<input type='text' class='form-control title-help' name='title{{ $sections_count }}'>" +
-      "</div>" +
-      "<div class='mid-col'>" +
-        "<label for='color{{ $sections_count }}'>Title {{ $sections_count }} Color</label>" +
-        "<input id='color{{ $sections_count }}' name='color{{ $sections_count }}' type='text' class='form-control colorme'>" +
-      "</div>" +
-      "<div class='mid-col'>" +
-        "<div class='form-group'>" +
-          "<div class='radio'>" +
-            "<label><input type='radio' name='radio_image{{ $sections_count }}' value='upload'> Upload</label> " +
-            "<label><input type='radio' name='radio_image{{ $sections_count }}' value='url'> URL</label>" +
-          "</div>" +
-        "</div>" +
-        "<label for='media'>Section {{ $sections_count }} Photo (if applicable)</label>" +
-        "<input id='image{{ $sections_count }}' name='image{{ $sections_count }}' type='file' class='file'>" +
-        "<label for='image{{ $sections_count }}_url'>URL</label>" +
-        "<input id='image{{ $sections_count }}_url' class='form-control' name='image{{ $sections_count }}_url' type='text'>" +
-      "</div>" +
-    "</div>" +
-      "<div class='form-group'>" +
-        "<label for='code{{ $sections_count }}'>Code {{ $counter }}</label>" +
-        "<textarea name='code{{ $counter }}' id='code{{ $counter }}' class='form-control'></textarea>" +
-        "<label for='content{{ $counter }}'>Paragraph {{ $counter }}</label>" +
-        "<textarea name='content{{ $sections_count }}' class='textarea textarea{{ $sections_count }}' placeholder='Place some text here'></textarea>" +
-      "</div>" +
-    "</div>";
-    var cp48 = "cp48";
-    var imp48 = "imp48";
-    var colmd4 = "col-md-4"
-    var textareaStyle = 'width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;';
-  function newSection() {
-    sectionCount++;
-    var re = new RegExp(parseInt(sectionCount-1),"g");
-    sectionForm = sectionForm.replace(re, parseInt(sectionCount));
-    console.log(sectionCount);
-    $('.section' + parseInt(sectionCount-1)).after(sectionForm);
-    $('.textarea' + parseInt(sectionCount)).attr("style", textareaStyle);
-    $('.textarea' + parseInt(sectionCount)).wysihtml5();
-    $('.mid-col').removeClass('mid-col').addClass(colmd4);
-    $('.cpsm').val(cp48);
-    $('.impsm').val(imp48);
-    $('.pcsm').val('pc84');
-    $('.pimsm').val('pim84');
-    $('.colorme').colorpicker({ /*options...*/ });
-    $("#image" + parseInt(sectionCount)).fileinput({'showUpload':false, 'previewFileType':'any'});
-    $("#num-sections").val(sectionCount);
-  }
   $("#image1, #photo, #portf-photo").fileinput({'showUpload':false, 'previewFileType':'any'});
   $('#subcategory').select2({
     tags: true,
@@ -294,6 +138,8 @@
   $("#tags").select2({
     tags: true
   });
-  $('.textarea').wysihtml5();
+  $('.textarea').wysihtml5({
+     "html": true,
+  });
   </script>
 @endsection
