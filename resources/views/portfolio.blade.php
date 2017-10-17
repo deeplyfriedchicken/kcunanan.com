@@ -58,7 +58,7 @@
                                   </div>
                                   <div class="wpb_column ish-grid5 ish-pt-taglines-additional">
                                       <p>
-                                          I have a strong focus in full stack development, but I do have hardware and design projects as well.
+                                         I'm a <b>Computer Science + Philosophy double major</b> from Claremont McKenna College. As an aspiring software engineer, I enjoy working with the full stack. I have lots of experience using MVC frameworks like <b>Django</b>, <b>Ruby on Rails</b>, and <b>Laravel</b> and have experience using <b>AJAX</b>, <b>Polymer</b>, and <b>Angular 2</b>.
                                       </p>
                                   </div>
                                   <div class="wpb_column ish-grid1">

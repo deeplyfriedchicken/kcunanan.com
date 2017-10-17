@@ -474,7 +474,6 @@ $.ajaxSetup({
 
 function saveContent(){
     const content = document.querySelector('#editor').innerHTML
-    console.log(content)
     $.ajax({
         type: 'POST',
         url: '{{ URL::action('AdminController@updateBlogContent', ['id' => $blog->id]) }}',

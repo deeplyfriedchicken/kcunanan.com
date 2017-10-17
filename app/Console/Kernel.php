@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('fitbit:get')->hourly();
+        $schedule->command('fitbit:get')->twiceDaily(10, 20);
     }
 
     /**
