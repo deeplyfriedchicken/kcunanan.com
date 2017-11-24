@@ -299,7 +299,6 @@ class AdminController extends Controller
       $blog->github_url = $request['github_repo'];
       $blog->sub_category = $request['category'];
       $blog->heading = $request['intro-paragraph'];
-      $blog->content = $request['content'];
       if($request['lookup_category'] == 'portfolio') {
           $blog->portfolio_ish = $request['portfolio-ish'];
       }
@@ -336,16 +335,8 @@ class AdminController extends Controller
       $blog = Lookup::findOrFail($id);
       $tag = Lookup::where('category', 'tag')->where('ref_id', $id)->orWhere('category', 'ptag')->where('ref_id', $id)->get();
       $allTags = Lookup::distinct()->where('category', 'tag')->orWhere('category', 'ptag')->orWhere('category', 'sort')->get();
-      $sections = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
-      $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->get();
-      if($sections_count->count()) {
-        $sections_count = Lookup::where('category', 'article_helper')->where('ref_id', $id)->count();
-      }
-      else {
-        $sections_count = 1;
-      }
       $request->session()->flash('updated-blog', 'Blog post successfully updated.');
-      return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'allTags' => $allTags, 'sections' => $sections, 'sections_count' => $sections_count]);
+      return view('admin/blogUpdate', ['blog' => $blog, 'tagged' => $tag, 'allTags' => $allTags]);
     }
     public function storePost(Request $request)
     {
