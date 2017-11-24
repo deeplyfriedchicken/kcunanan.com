@@ -317,7 +317,8 @@ class AdminController extends Controller
         $image->save($path);
       }
       $blog->save();
-      Lookup::where('category', 'tag')->where('ref_id', $blog->id)->orwhere('category', 'ptag')->where('ref_id', $blog->id)->delete();
+      Lookup::where('category', 'article_helper')->where('ref_id', $blog->id)->delete(); // delete all sections on save
+      Lookup::where('category', 'section')->where('ref_id', $blog->id)->orwhere('category', 'ptag')->where('ref_id', $blog->id)->delete();
       if($request['tags']) {
           foreach($request['tags'] as $tags) {
               $tag = new Lookup;
