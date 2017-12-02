@@ -259,7 +259,12 @@
     <script>
 
     $("#typed").typed({
-        strings: ["the full stack", "the fun stack <i class='fa fa-heart'></i>", "data <i class='fa fa-bar-chart'></i>", "to be challenged <i class='fa fa-cog fa-spin'></i>"],
+        strings: ["rock climbing",
+         "the frontend",
+         "philosophy",
+         "the backend",
+         "sports",
+         "the full stack"],
         typeSpeed: 50,
         backSpeed: 100,
         backDelay: 1000,
