@@ -3169,7 +3169,7 @@ input, textarea, select
 }
 
 .ish-part_tagline, .ish-part_tagline:before {
-	background-color: #f9f9f9;
+	background-color: #fff;
 }
 .ish-part_tagline > .ish-row {
 	background-color: transparent;
