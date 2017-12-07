@@ -39,7 +39,12 @@ class AdminController extends Controller
             $countDays++;
         }
       }
-      $hourSlept = round($hourSlept/$countDays, 2);
+      if($countDays == 0) {
+        $hourSlept = 0;
+      }
+      else {
+        $hourSlept = round($hourSlept/$countDays, 2);
+      }
       return view('admin/index', ['mails' => $mails, 'hoursSlept' => $hourSlept]);
     }
     public function newPost()
