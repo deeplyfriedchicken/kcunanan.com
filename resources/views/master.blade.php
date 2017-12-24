@@ -215,7 +215,7 @@
                               </li>
                               <li class="menu-item {{ Request::is('portfolio/') ? 'current_page_parent' : '' }}"><a href="/portfolio">Portfolio</a>
                               </li>
-                              <li class="menu-item"><a href="{{ URL::asset('kevin-resume.pdf') }}" target="_blank">Resume</a>
+                              <li class="menu-item"><a href="{{ URL::asset('resume.pdf') }}" target="_blank">Resume</a>
                               </li>
                               {{-- <li class="menu-item {{ Request::is('gallery') ? 'current_page_parent' : '' }}"><a href="/gallery">Gallery</a>
                               </li> --}}
