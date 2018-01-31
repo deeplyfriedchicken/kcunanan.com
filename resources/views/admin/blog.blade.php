@@ -144,8 +144,5 @@
       }
     }
   });
-  var editor = new wysihtml.Editor('editor', {
-    toolbar: 'toolbar',
-  });
   </script>
 @endsection

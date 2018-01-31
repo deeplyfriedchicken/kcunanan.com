@@ -136,10 +136,14 @@
   });
   $('.colorme').colorpicker({ /*options...*/ });
   $("#tags").select2({
-    tags: true
-  });
-  $('.textarea').wysihtml5({
-     "html": true,
+    tags: true,
+    createTag: function (params) {
+      return {
+        id: params.term,
+        text: params.term,
+        newOption: true
+      }
+    }
   });
   </script>
 @endsection
