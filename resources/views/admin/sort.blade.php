@@ -87,7 +87,14 @@
   @section('more-scripts')
     <script>
     $("#pl, #frs, #skills, #js, #workplaces").select2({
-      tags: true
+      tags: true,
+      createTag: function (params) {
+        return {
+          id: params.term,
+          text: params.term,
+          newOption: true
+        }
+      }
     });
     </script>
   @endsection

@@ -126,16 +126,23 @@
   $('#subcategory').select2({
     tags: true,
     createTag: function (params) {
-    return {
-      id: params.term,
-      text: params.term,
-      newOption: true
+      return {
+        id: params.term,
+        text: params.term,
+        newOption: true
       }
     }
   });
   $('.colorme').colorpicker({ /*options...*/ });
   $("#tags").select2({
-    tags: true
+    tags: true,
+    createTag: function (params) {
+      return {
+        id: params.term,
+        text: params.term,
+        newOption: true
+      }
+    }
   });
   var editor = new wysihtml.Editor('editor', {
     toolbar: 'toolbar',
